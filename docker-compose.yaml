@@ -1,5 +1,6 @@
 name: proyecto_desa_web
 services:
+
   backend_proyecto:
     image: backend
     container_name: backend_proyecto
@@ -13,11 +14,13 @@ services:
       - PGUSER=${PGUSER}
       - PGPASSWORD=${PGPASSWORD}
       - PGHOST=${PGHOST}
+
   frontend_proyecto:
     image: nginx:alpine
     container_name: frontend_proyecto
     volumes:
       - ./frontend/:/usr/share/nginx/html
+
   database_proyecto:
     image: database
     container_name: database_proyecto
@@ -29,6 +32,7 @@ services:
       - POSTGRES_PASSWORD=${PGPASSWORD}
     ports:
       - 5434:5432
+
   proxy_proyecto:
     image: proxy
     container_name: proxy_proyecto
