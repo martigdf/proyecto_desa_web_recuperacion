@@ -1,4 +1,4 @@
-import fastifyOauth2 from "@fastify/oauth2";
+// import fastifyOauth2 from "@fastify/oauth2";
 import {FastifyReply, FastifyRequest} from "fastify";
 
 
