@@ -1,6 +1,6 @@
 import { Static, Type } from "@sinclair/typebox";
 
-//Ubicación
+//Ubicación propiedad
 export const UbicacionSchema = Type.Object({
     address: Type.String({ minLength: 2, maxLength: 100 }),
     city: Type.String({ minLength: 2, maxLength: 50 }),
