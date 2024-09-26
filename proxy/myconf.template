@@ -21,4 +21,15 @@ server {
         proxy_set_header Referer $sent_http_referer; 
         proxy_cache_bypass $http_upgrade;
     }
+
+    location /data/{
+        rewrite  ^/data(.*)$ $1 break;
+        proxy_pass http://data-source_proyecto:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header Referer $sent_http_referer;
+        proxy_cache_bypass $http_upgrade;
+    }
 }
