@@ -18,14 +18,14 @@ const options : SwaggerOptions = {
         ],
         tags: [
             {name: 'auth', description: 'Auth description'},
-            {name: 'usuario', description: 'User description'}
+            {name: 'users', description: 'User description'}
         ],
         components: {
             securitySchemes: {
-                apiKey: {
-                    type: 'apiKey',
-                    name: 'apiKey',
-                    in: 'header'
+                bearerAuth: {
+                    "type": "http",
+                    "scheme": "bearer",
+                    "bearerFormat": "JWT",
                 }
             }
         },
