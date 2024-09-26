@@ -33,6 +33,23 @@ services:
     ports:
       - 5434:5432
 
+  # Ahora hacemos el contenedor de data-source
+  data-source_proyecto:
+      image: data-source
+      container_name: data-source_proyecto
+      build:
+        context: ./data-source
+      command: sh -c "npm install && npm run dev"
+      volumes:
+        - ./data-source:/data-source
+      environment:
+        - PGDATABASE=${PGDATABASE}
+        - PGUSER=${PGUSER}
+        - PGPASSWORD=${PGPASSWORD}
+        - PGHOST=${PGHOST}
+      depends_on:
+      - database_proyecto
+
   proxy_proyecto:
     image: proxy
     container_name: proxy_proyecto
@@ -42,3 +59,4 @@ services:
     depends_on:
       - frontend_proyecto
       - backend_proyecto
+      - database_proyecto
