@@ -40,7 +40,6 @@ export const UsuarioPostSchema = Type.Object({
     lastname: nameSchema,
     email: emailSchema,
     password: nameSchema,
-    registration_date:Type.String({ format: 'date-time' }),
     role:Type.Union([Type.Literal("admin"), Type.Literal("user")]),
 });
 
@@ -49,7 +48,6 @@ export const UsuarioPutSchema = Type.Object({
     lastname: Type.Optional(nameSchema),
     email: Type.Optional(nameSchema),
     password: Type.Optional(nameSchema),
-    registration_date: Type.Optional(Type.String({ format: 'date-time' })),
     role: Type.Optional(Type.Union([Type.Literal("admin"), Type.Literal("user")])),
 });
 
@@ -57,8 +55,8 @@ export const UsuarioIdSchema = Type.Object({
     id: Type.Number(),
 });
 
-export type PersonaIdType = Static<typeof UsuarioIdSchema>;
+export type UsuarioIdType = Static<typeof UsuarioIdSchema>;
 export type UsuarioType = Static<typeof UsuarioSchema>;
-export type PersonaPostType = Static<typeof UsuarioPostSchema>;
-export type PersonaPutType = Static<typeof UsuarioPutSchema>;
+export type UsuarioPostType = Static<typeof UsuarioPostSchema>;
+export type UsuarioPutType = Static<typeof UsuarioPutSchema>;
 export type NameSchemaType = Static<typeof nameSchema>;

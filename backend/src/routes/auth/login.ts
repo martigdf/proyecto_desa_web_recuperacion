@@ -17,7 +17,7 @@ const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         },
         handler: async (request, reply) => {
             const { email, password } = request.body as { email: string, password: string };
-            const res = await query(`select id, email, password, name, lastname from personas where email = '${email}'`);
+            const res = await query(`select id, email, password, name, lastname from users where email = '${email}'`);
             if (res.rows.length === 0) {
                 reply.code(404).send({ message: 'Usuario no encontrado' });
                 return;
