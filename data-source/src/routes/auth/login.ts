@@ -17,14 +17,20 @@ const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         },
         handler: async (request, reply) => {
             const { email, password } = request.body as { email: string, password: string };
-            const res = await query(`select id, email, password, name, lastname, rol from users where email = '${email}'`);
+            const res = await query(`select id, email, password, name, lastname, role from users where email = '${email}'`);
             if (res.rows.length === 0) {
-                reply.code(404).send({ message: 'Usuario no encontrado' });
+                reply.code(404).send({ message: 'User not found' });
                 return;
             }
             const user = res.rows[0];
             if (!await bcrypt.compare(password, user.password)) {
-                reply.code(401).send({ message: 'Contraseña incorrecta' });
+                reply.code(401).send({ message: 'Wrong password' });
+                return;
+            }
+
+            // Si el usuario no es administrador, no puede loguearse
+            if (user.role !== 'admin') {
+                reply.code(401).send({message: 'You are not an admin'});
                 return;
             }
 

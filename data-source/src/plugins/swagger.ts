@@ -12,7 +12,7 @@ const options : SwaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost/data-source',
+                url: 'http://localhost/data',
                 description: 'Development server'
             }
         ],
@@ -20,7 +20,7 @@ const options : SwaggerOptions = {
             {name: 'auth', description: 'Auth description'},
             {name: 'management', description: 'Data source management'},
             {name: 'fetch', description: 'Data source fetching'},
-            {name: 'scraping', description: 'Web scraping'},
+            {name: 'scrape', description: 'Web scraping'},
             {name: 'export', description: 'Data export'}
         ],
         components: {
