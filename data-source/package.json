@@ -32,7 +32,8 @@
     "fastify": "^5.0.0",
     "fastify-cli": "^6.3.0",
     "fastify-plugin": "^4.0.0",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "puppeteer": "^23.4.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
