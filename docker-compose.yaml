@@ -31,7 +31,7 @@ services:
       - POSTGRES_USER=${PGUSER}
       - POSTGRES_PASSWORD=${PGPASSWORD}
     ports:
-      - 5434:5432
+      - 5436:5432
 
   # Ahora hacemos el contenedor de data-source
   data-source_proyecto:

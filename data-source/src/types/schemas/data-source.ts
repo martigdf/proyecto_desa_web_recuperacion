@@ -16,8 +16,14 @@ const DataSourceSchema = Type.Object({
     transformacion: Type.Optional(Type.String()),
 })
 
+const ParamsSchema = Type.Object({
+    id: Type.Integer()
+})
+
+
+
 const CreateDataSourceSchema = Type.Omit(DataSourceSchema, ['id', 'ultima_actualizacion', 'numero_propiedades', 'error_rate'])
 
 const UpdateDataSourceSchema = Type.Partial(CreateDataSourceSchema)
 
-export { DataSourceSchema, CreateDataSourceSchema, UpdateDataSourceSchema }
+export { DataSourceSchema, CreateDataSourceSchema, UpdateDataSourceSchema, ParamsSchema }

@@ -13,4 +13,4 @@ CREATE table if not exists users (
 insert into users (name, lastname, email, password, role)
     values('Nicolás', 'Márquez', 'nicomars270@gmail.com', crypt('27DEenero2003_', gen_salt('bf')), 'admin'),
           ('Martina', 'Guzmán', 'martina14288@gmail.com', crypt('28DEenero2003_', gen_salt('bf')), 'admin'),
-          ('Ana', 'Sena', 'anaclarasenanunez@gmail.com', crypt('29DEenero2003_', gen_salt('bf')), 'admin')
+          ('Ana', 'Sena', 'anaclarasenanunez@gmail.com', crypt('Ana0411!', gen_salt('bf')), 'admin')
