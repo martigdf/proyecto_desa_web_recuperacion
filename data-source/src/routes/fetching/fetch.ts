@@ -15,7 +15,7 @@ const fetchRoute: FastifyPluginAsync = async (
         onRequest: fastify.verifyAdmin,
         // Mandamos un not implemented
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -26,7 +26,7 @@ const fetchRoute: FastifyPluginAsync = async (
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -37,7 +37,7 @@ const fetchRoute: FastifyPluginAsync = async (
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 }

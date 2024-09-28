@@ -10,7 +10,7 @@ export const UserSchema = Type.Object({
     email: Type.String({ type: 'string', format: 'email' }),
     registration_date: Type.String({ format: 'date-time' }),
     role: Type.Union([Type.Literal("admin"), Type.Literal("user")]),
-}, { additionalProperties: false });
+});
 
 export const UserPostSchema = Type.Object({
     name: Type.String(),
@@ -30,8 +30,11 @@ export const UserPutSchema = Type.Object({
 
 export const UserIdSchema = Type.Object({
     id: Type.Number(),
-});
+}, { $id: 'UserIdSchema' });
 
+export const UserIdReference = Type.Ref(UserIdSchema);
+
+export type UserIdRef = Static<typeof UserIdReference>;
 export type UserIdType = Static<typeof UserIdSchema>;
 export type UserType = Static<typeof UserSchema>;
 export type UserPostType = Static<typeof UserPostSchema>;

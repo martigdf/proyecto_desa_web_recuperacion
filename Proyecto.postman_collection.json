@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "79aa177e-d83e-438d-9cb4-2cf9599b851f",
+		"name": "Proyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31646706"
+	},
+	"item": [
+		{
+			"name": "Backend",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "favorites",
+							"item": [
+								{
+									"name": "All favorites",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\" : 1,\r\n    \"propertyId\" : 2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "One favorite",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit an user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Lorena\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Lorena\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an user",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"anaclarasenanunez@gmail.com\",\r\n    \"password\":\"Ana0411!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "Get all users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/admin/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users properties",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/admin/properties",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"admin",
+										"properties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all data sources",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/admin/data-sources",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"admin",
+										"data-sources"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "properties",
+					"item": [
+						{
+							"name": "Get all properties",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/properties",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one property",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/properties/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users properties Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : 1,\r\n    \"title\": \"title\",\r\n    \"name\" : \"name\",\r\n    \"description\" : \"description\",\r\n    \"price\" : 1234,\r\n    \"location\" : {\r\n        \"address\" : \"address\",\r\n        \"city\" : \"city\",\r\n        \"country\" : \"country\"\r\n    },\r\n    \"number_rooms\" : 2,\r\n    \"number_bathrooms\" : 2\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/properties/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users properties Copy 2",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : 1,\r\n    \"title\": \"title\",\r\n    \"name\" : \"name\",\r\n    \"description\" : \"description\",\r\n    \"price\" : 1234,\r\n    \"location\" : {\r\n        \"address\" : \"address\",\r\n        \"city\" : \"city\",\r\n        \"country\" : \"country\"\r\n    },\r\n    \"number_rooms\" : 2,\r\n    \"number_bathrooms\" : 2\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/properties/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "search_criteria",
+					"item": [
+						{
+							"name": "Criteria",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/search_criteria",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"search_criteria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"location\": {\r\n        \"city\": \"Montevideo\",\r\n        \"country\": \"Uruguay\"\r\n    },\r\n    \"price_rangeMin\": 100000,\r\n    \"price_rangeMax\": 300000,\r\n    \"number_rooms\": 3,\r\n    \"property_type\": \"casa\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/search_criteria",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"search_criteria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Data source",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"anaclarasenanunez@gmail.com\",\r\n    \"password\":\"Ana0411!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/data/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "export",
+					"item": []
+				},
+				{
+					"name": "fetching",
+					"item": []
+				},
+				{
+					"name": "scraping",
+					"item": []
+				},
+				{
+					"name": "sources",
+					"item": []
+				},
+				{
+					"name": "auth Copy",
+					"item": []
+				}
+			]
+		}
+	]
+}
