@@ -29,6 +29,8 @@ export const PropertySchema = Type.Object({
     contact_details: ContactDetailsSchema,
 });
 
+
+
 export const PropertyIdSchema = Type.Object({
     id: Type.Number(),
 }, { $id: 'PropertyIdSchema' });
@@ -44,8 +46,23 @@ export const PropertyPostSchema = Type.Object({
     contact_details: Type.String(),
 });
 
+export const PropertyGetQuerySchema = Type.Object({
+    id: Type.Optional(Type.Number()),
+    title: Type.Optional(Type.String({ minLength: 2, maxLength: 100 })),
+    description: Type.Optional(Type.String({ maxLength: 500 })),
+    price: Type.Optional(Type.Number({ minimum: 0 })),
+    location: Type.Optional(UbicationSchema),
+    area: Type.Optional(Type.Number({ minimum: 0, maximum: 1000 })),
+    number_rooms: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
+    number_bathrooms: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
+    publication_date: Type.Optional(Type.String({ format: 'date-time' })),
+    contact_details: Type.Optional(ContactDetailsSchema),
+});
+
 export const PropertyIdReference = Type.Ref(PropertyIdSchema);
 
 export type PropertyIdRef = Static<typeof PropertyIdReference>;
 export type PropertyType = Static<typeof PropertySchema>;
 export type PropertyPostType = Static<typeof PropertyPostSchema>;
+export type PropertyGetQueryType = Static<typeof PropertyGetQuerySchema>;
+

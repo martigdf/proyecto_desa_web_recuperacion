@@ -16,7 +16,6 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
         schema: {
             tags: ['search_criteria'],
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
             /*const res = await query(`
                 SELECT
@@ -35,7 +34,7 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
             }
 
             return res.rows;*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -45,7 +44,6 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
             tags: ['search_criteria'],
             body: SearchPostSchema
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
             /*const criterioPost = request.body as SearchPostType;
             const usuarioId = criterioPost.userId;
@@ -84,7 +82,7 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
                 console.error('Error al insertar criterio de búsqueda:', error);
                 reply.code(500).send({ message: "Error al insertar criterio de búsqueda en la base de datos" });
             }*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 };

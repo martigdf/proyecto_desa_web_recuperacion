@@ -3,7 +3,7 @@ import { FastifyInstance } from "fastify/types/instance.js";
 // import { query } from '../../services/database.js';
 import { 
     PropertyIdSchema, 
-    // PropertyPostSchema,
+    PropertyGetQuerySchema
     // PropertyPostType
 } from "../../schemas/property/propertySchema.js";
 
@@ -13,7 +13,6 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         schema: {
             tags: ['properties'],
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
             /* const res = await query(`SELECT
                 id,
@@ -31,7 +30,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
             return res.rows;*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -40,7 +39,6 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             tags: ['properties'],
             params: PropertyIdSchema
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
             /*const { id } = request.params as { id: string };
             const res = await query(`SELECT
@@ -59,7 +57,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
             return res.rows[0];*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -68,7 +66,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             tags: ['properties'],
             params: PropertyIdSchema
         },
-        onRequest: fastify.authenticate,
+        onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
             /*const { id } = request.params as { id: string };
             const res = await query(`DELETE FROM properties WHERE id = ${id} RETURNING id`);
@@ -78,19 +76,20 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
 
-            reply.code(200).send({ message: "Propiedad eliminada exitosamente" });
+            reply.code(200).send({ message: "Propiedad eliminada exitosamente" });*/
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
     fastify.put('/:id', {
         schema: {
             tags: ['properties'],
-            body: PropertyPostSchema,
+            body: PropertyGetQuerySchema,
             params: PropertyIdSchema
         },
-        onRequest: fastify.authenticate,
+        onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            const { id } = request.params as { id: string };
+            /*const { id } = request.params as { id: string };
             const propiedadUpdate = request.body as PropertyPostType;
             const title = propiedadUpdate.title;
             const description = propiedadUpdate.description;
@@ -133,7 +132,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 console.error('Error al actualizar la propiedad:', error);
                 reply.code(500).send({ message: "Error al actualizar la propiedad en la base de datos" });
             }*/
-            reply.notImplemented();
+        reply.status(501).send({ message: "Not implemented" });
         }
     });
     

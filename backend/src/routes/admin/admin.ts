@@ -36,8 +36,7 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         }
     });
 
-    // Para obtener los favoritos
-    fastify.get('/favorites', {
+    fastify.get('/properties', {
         schema: {
             tags: ['admin'],
             response: {
@@ -68,12 +67,12 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
             return res.rows;*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
     // Para obtener las propiedades
-    fastify.get('data-sources', {
+    fastify.get('/data-sources', {
         schema: {
             tags: ['admin'],
             response: {
@@ -91,7 +90,7 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 };
