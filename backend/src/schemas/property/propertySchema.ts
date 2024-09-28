@@ -5,14 +5,14 @@ export const UbicationSchema = Type.Object({
     address: Type.String({ minLength: 2, maxLength: 100 }),
     city: Type.String({ minLength: 2, maxLength: 50 }),
     country: Type.String({ minLength: 2, maxLength: 50 }),
-}, { additionalProperties: false });
+});
 
 //Datos de contacto
 const ContactDetailsSchema = Type.Object({
     name: Type.String({ minLength: 2, maxLength: 100 }),
     email: Type.String({ format: 'email' }),
     phone: Type.String({ minLength: 7, maxLength: 15 }),
-}, { additionalProperties: false });
+});
 
 
 export const PropertySchema = Type.Object({
@@ -27,11 +27,11 @@ export const PropertySchema = Type.Object({
     publication_date: Type.String({ format: 'date-time' }),
     //image: Type.Optional(Type.String({  })),
     contact_details: ContactDetailsSchema,
-}, { additionalProperties: false });
+});
 
 export const PropertyIdSchema = Type.Object({
     id: Type.Number(),
-}, { additionalProperties: false });
+}, { $id: 'PropertyIdSchema' });
 
 export const PropertyPostSchema = Type.Object({
     title: Type.String(),
@@ -42,7 +42,10 @@ export const PropertyPostSchema = Type.Object({
     number_rooms: Type.Number({ minimum: 1, maximum: 10 }),
     number_bathrooms: Type.Number({ minimum: 1, maximum: 10 }),
     contact_details: Type.String(),
-}, { additionalProperties: false });
+});
 
+export const PropertyIdReference = Type.Ref(PropertyIdSchema);
+
+export type PropertyIdRef = Static<typeof PropertyIdReference>;
 export type PropertyType = Static<typeof PropertySchema>;
 export type PropertyPostType = Static<typeof PropertyPostSchema>;

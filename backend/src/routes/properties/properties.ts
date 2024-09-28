@@ -1,10 +1,10 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
-import { query } from '../../services/database.js';
+// import { query } from '../../services/database.js';
 import { 
     PropertyIdSchema, 
-    PropertyPostSchema, 
-    PropertyPostType 
+    // PropertyPostSchema,
+    // PropertyPostType
 } from "../../schemas/property/propertySchema.js";
 
 const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance, 
@@ -15,7 +15,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const res = await query(`SELECT
+            /* const res = await query(`SELECT
                 id,
                 title,
                 description,
@@ -30,7 +30,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.code(404).send({ message: "No hay propiedades registradas" });
                 return;
             }
-            return res.rows;
+            return res.rows;*/
+            reply.notImplemented();
         }
     });
 
@@ -41,7 +42,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const { id } = request.params as { id: string };
+            /*const { id } = request.params as { id: string };
             const res = await query(`SELECT
                 id,
                 title,
@@ -57,7 +58,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.code(404).send({ message: "Propiedad no encontrada" });
                 return;
             }
-            return res.rows[0];
+            return res.rows[0];*/
+            reply.notImplemented();
         }
     });
 
@@ -68,7 +70,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const { id } = request.params as { id: string };
+            /*const { id } = request.params as { id: string };
             const res = await query(`DELETE FROM properties WHERE id = ${id} RETURNING id`);
             
             if (res.rowCount === 0) {
@@ -130,7 +132,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             } catch (error) {
                 console.error('Error al actualizar la propiedad:', error);
                 reply.code(500).send({ message: "Error al actualizar la propiedad en la base de datos" });
-            }
+            }*/
+            reply.notImplemented();
         }
     });
     
