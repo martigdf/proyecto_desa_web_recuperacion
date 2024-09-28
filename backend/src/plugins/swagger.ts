@@ -18,7 +18,10 @@ const options : SwaggerOptions = {
         ],
         tags: [
             {name: 'auth', description: 'Auth description'},
-            {name: 'users', description: 'User description'}
+            {name: 'users', description: 'User description'},
+            {name: 'properties', description: 'Properties description'},
+            {name: 'compare', description: 'Compare description'},
+            {name: 'search_criteria', description: 'Search criteria description'}
         ],
         components: {
             securitySchemes: {

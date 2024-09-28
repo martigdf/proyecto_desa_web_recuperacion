@@ -4,14 +4,26 @@ import { FastifyInstance } from "fastify/types/instance.js";
 const compareRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
     opts: FastifyPluginOptions): Promise<void> => {
     // POST /compare
-    fastify.post('/compare', async (request, reply) => {
-    return reply.status(501).send();
+    fastify.post('/compare', {
+        schema: {
+            tags: ['compare'],
+        },
+        onRequest: fastify.authenticate,
+        handler: async function (request, reply) {
+        return reply.notImplemented();
+        }
     });
 
     // GET /compare/:id
-    fastify.get('/compare/:id', async (request, reply) => {
-    //const { id } = request.params as { id: string };
-    return reply.status(501).send();
+    fastify.get('/compare/:id', {
+        schema: {
+            tags: ['compare'],
+            //params:
+        },
+        onRequest: fastify.authenticate,
+        handler: async function (request, reply) {
+        return reply.notImplemented();
+        }
     });
 };
 
