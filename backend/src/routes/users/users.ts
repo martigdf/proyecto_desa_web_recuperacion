@@ -77,11 +77,11 @@ const usersRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         handler: async function (request, reply) {
             const personaPost = request.body as UserPostType;
-            const name = personaPost.name.value;
-            const lastname = personaPost.lastname.value;
-            const email = personaPost.email.value;
+            const name = personaPost.name;
+            const lastname = personaPost.lastname;
+            const email = personaPost.email;
             const role = personaPost.role;
-            const hashedPassword = await bcrypt.hash(personaPost.password.value, 10);
+            const hashedPassword = await bcrypt.hash(personaPost.password, 10);
     
             try {
                 const res = await query(
@@ -128,11 +128,11 @@ const usersRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         handler: async function (request, reply) {
             const { id } = request.params as { id: string };
             const personaPut = request.body as UserPostType;
-            const name = personaPut.name?.value;
-            const lastname = personaPut.lastname?.value;
-            const email = personaPut.email?.value;
+            const name = personaPut.name;
+            const lastname = personaPut.lastname;
+            const email = personaPut.email;
             const role = personaPut.role;
-            const hashedPassword = await bcrypt.hash(personaPut.password.value, 10);
+            const hashedPassword = await bcrypt.hash(personaPut.password, 10);
 
             try {
                 const res = await query(

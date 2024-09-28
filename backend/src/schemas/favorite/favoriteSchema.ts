@@ -1,6 +1,6 @@
 import { Static, Type } from "@sinclair/typebox";
 import { UserSchema } from "../user/userSchema.js"
-import { PropertySchema } from "../properties/propertySchema.js";
+import { PropertySchema } from "../property/propertySchema.js";
 
 export const FavoriteSchema = Type.Object({
     id: Type.Number(),

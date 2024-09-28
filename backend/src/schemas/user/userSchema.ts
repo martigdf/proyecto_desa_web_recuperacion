@@ -1,17 +1,7 @@
 import { Static, Type } from "@sinclair/typebox";
 
-export const FieldSchema = Type.Object(
-    {
-        type: Type.Literal("field"),
-        fieldname: Type.String(),
-        mimetype: Type.String(),
-        encoding: Type.String(),
-        value: Type.String(),
-        fieldnameTruncated: Type.Boolean(),
-        valueTruncated: Type.Boolean(),
-    },
-    { additionalProperties: false }
-);
+// La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/;
 
 export const UserSchema = Type.Object({
     id: Type.Number(),
@@ -23,18 +13,18 @@ export const UserSchema = Type.Object({
 }, { additionalProperties: false });
 
 export const UserPostSchema = Type.Object({
-    name: FieldSchema,
-    lastname: FieldSchema,
-    email: FieldSchema,
-    password: FieldSchema,
+    name: Type.String(),
+    lastname: Type.String(),
+    email: Type.String({format: 'email'}),
+    password: Type.String({pattern: passwordPattern.source}),
     role:Type.Union([Type.Literal("admin"), Type.Literal("user")]),
 });
 
 export const UserPutSchema = Type.Object({
-    name: Type.Optional(FieldSchema),
-    lastname: Type.Optional(FieldSchema),
-    email: Type.Optional(FieldSchema),
-    password: Type.Optional(FieldSchema),
+    name: Type.Optional(Type.String()),
+    lastname: Type.Optional(Type.String()),
+    email: Type.Optional(Type.String({format: 'email'})),
+    password: Type.Optional(Type.String({pattern: passwordPattern.source})),
     role: Type.Optional(Type.Union([Type.Literal("admin"), Type.Literal("user")])),
 });
 
@@ -46,4 +36,3 @@ export type UserIdType = Static<typeof UserIdSchema>;
 export type UserType = Static<typeof UserSchema>;
 export type UserPostType = Static<typeof UserPostSchema>;
 export type UserPutType = Static<typeof UserPostSchema>;
-export type FieldSchemaType = Static<typeof FieldSchema>;
