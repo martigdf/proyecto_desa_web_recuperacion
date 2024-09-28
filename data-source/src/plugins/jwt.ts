@@ -2,6 +2,7 @@ import jwt, { FastifyJWTOptions } from "@fastify/jwt";
 import fp from "fastify-plugin";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { authenticateFunction } from '../types/fastify.js';
+import {query} from '../services/database.js';
 
 const jwtOptions: FastifyJWTOptions = {
     secret: 'man-supersecret'
@@ -14,9 +15,11 @@ export default fp(async (fastify) => {
     const verifyAdmin: authenticateFunction = async (request: FastifyRequest, reply: FastifyReply) => {
         try {
             await request.jwtVerify();
-            const { rol } = request.user as { rol: string };
-            if (rol !== 'admin') {
-                reply.code(401).send({ error: 'Unauthorized, you must be an admin' });
+            const { id } = request.user as { id: number };
+            const { rows } = await query(`SELECT role FROM users WHERE id = ${id}`);
+            const role = rows[0].role;
+            if (role !== 'admin') {
+                reply.code(401).send({ error: `Unauthorized, you must be an admin and you are ${role}` });
             }
         } catch (err) {
             reply.code(401).send({ error: 'Unauthorized' });
@@ -24,4 +27,5 @@ export default fp(async (fastify) => {
     }
 
     fastify.decorate("verifyAdmin", verifyAdmin);
+
 });

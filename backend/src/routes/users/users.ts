@@ -2,7 +2,7 @@ import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
 import { query } from '../../services/database.js';
 import {
-    UserIdSchema, UserPostSchema, UserPostType, UserSchema, UserPutSchema
+    UserIdSchema, UserPostSchema, UserPostType, UserSchema, UserPutSchema, UserPutType
 } from "../../schemas/user/userSchema.js";
 import bcrypt from 'bcryptjs';
 
@@ -127,7 +127,7 @@ const usersRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
             const { id } = request.params as { id: string };
-            const personaPut = request.body as UserPostType;
+            const personaPut = request.body as UserPutType;
             const name = personaPut.name;
             const lastname = personaPut.lastname;
             const email = personaPut.email;

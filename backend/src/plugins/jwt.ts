@@ -24,7 +24,6 @@ export default fp(async (fastify) => {
     const verifyAdmin: authenticateFunction = async (request: FastifyRequest, reply: FastifyReply) => {
         try {
             await request.jwtVerify();
-            // Obtenemos el usuario del token y consultamos la base de datos para obtener su rol
             const { id } = request.user as { id: number };
             const { rows } = await query(`SELECT role FROM users WHERE id = ${id}`);
             const role = rows[0].role;
