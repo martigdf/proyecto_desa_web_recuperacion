@@ -29,4 +29,20 @@ export const PropertySchema = Type.Object({
     contact_details: ContactDetailsSchema,
 }, { additionalProperties: false });
 
+export const PropertyIdSchema = Type.Object({
+    id: Type.Number(),
+}, { additionalProperties: false });
+
+export const PropertyPostSchema = Type.Object({
+    title: Type.String(),
+    description: Type.String(),
+    price: Type.Number({ minimum: 0 }),
+    location: Type.String(),
+    area: Type.Number({ minimum: 0, maximum: 1000 }),
+    number_rooms: Type.Number({ minimum: 1, maximum: 10 }),
+    number_bathrooms: Type.Number({ minimum: 1, maximum: 10 }),
+    contact_details: Type.String(),
+}, { additionalProperties: false });
+
 export type PropertyType = Static<typeof PropertySchema>;
+export type PropertyPostType = Static<typeof PropertyPostSchema>;

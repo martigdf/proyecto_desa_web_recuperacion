@@ -22,4 +22,14 @@ export const SearchSchema = Type.Object({
     property_type: PropertyTypeEnum,
 }, { additionalProperties: false });
 
+export const SearchPostSchema = Type.Object({
+    userId: Type.Ref(UserSchema.properties.id),
+    location: UbicacionCriteriosSchema,
+    price_rangeMin: Type.Number({ minimum: 0 }),
+    price_rangeMax: Type.Number({ minimum: 0 }),
+    number_rooms: Type.Number({ minimum: 1, maximum: 10 }),
+    property_type: PropertyTypeEnum,
+}, { additionalProperties: false });
+
 export type CriteriosDeBusquedaType = Static<typeof SearchSchema>;
+export type SearchPostType = Static<typeof SearchPostSchema>;
