@@ -19,4 +19,33 @@ export default fp(async (fastify) => {
     };
 
     fastify.decorate("authenticate", authenticate);
+
+    const verifyAdmin: authenticateFunction = async (request: FastifyRequest, reply: FastifyReply) => {
+        try {
+            await request.jwtVerify();
+            const { rol } = request.user as { rol: string };
+            if (rol !== 'admin') {
+                reply.code(401).send({ error: 'Unauthorized, you must be an admin' });
+            }
+        } catch (err) {
+            reply.code(401).send({ error: 'Unauthorized' });
+        }
+    }
+
+    fastify.decorate("verifyAdmin", verifyAdmin);
+
+    const verifySelfOrAdmin: authenticateFunction = async (request: FastifyRequest, reply: FastifyReply) => {
+        try{
+            await request.jwtVerify();
+            const { id, role } = request.user as { id: number, role: string };
+            const { id: userId } = request.params as { id: string };
+            if (role === 'admin' || id === Number(userId)) {
+                return;
+            }
+        } catch (err) {
+            reply.code(401).send({error: 'Unauthorized'})
+        }
+    }
+
+    fastify.decorate("verifySelfOrAdmin", verifySelfOrAdmin);
 });

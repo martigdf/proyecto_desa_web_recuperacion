@@ -1,7 +1,7 @@
 import { Static, Type } from "@sinclair/typebox";
 
 //Ubicación propiedad
-export const UbicacionSchema = Type.Object({
+export const UbicationSchema = Type.Object({
     address: Type.String({ minLength: 2, maxLength: 100 }),
     city: Type.String({ minLength: 2, maxLength: 50 }),
     country: Type.String({ minLength: 2, maxLength: 50 }),
@@ -15,12 +15,12 @@ const ContactDetailsSchema = Type.Object({
 }, { additionalProperties: false });
 
 
-export const PropiedadSchema = Type.Object({
+export const PropertySchema = Type.Object({
     id: Type.Number(),
     title: Type.String({ minLength: 2, maxLength: 100 }),
     description: Type.Optional(Type.String({ maxLength: 500 })),
     price: Type.Number({ minimum: 0 }),
-    location: UbicacionSchema,
+    location: UbicationSchema,
     area: Type.Optional(Type.Number({ minimum: 0, maximum: 1000 })),
     number_rooms: Type.Number({ minimum: 1, maximum: 10 }),
     number_bathrooms: Type.Number({ minimum: 1, maximum: 10 }),
@@ -29,4 +29,4 @@ export const PropiedadSchema = Type.Object({
     contact_details: ContactDetailsSchema,
 }, { additionalProperties: false });
 
-export type PropertyType = Static<typeof PropiedadSchema>;
+export type PropertyType = Static<typeof PropertySchema>;
