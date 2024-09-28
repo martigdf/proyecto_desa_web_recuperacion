@@ -1,5 +1,5 @@
 import { Static, Type } from "@sinclair/typebox";
-import { UsuarioSchema } from "../usuario/UsuarioSchema.js";
+import { UserSchema } from "../user/userSchema.js";
 
 const PropertyTypeEnum = Type.Union([
     Type.Literal("apartmento"),
@@ -12,9 +12,9 @@ export const UbicacionCriteriosSchema = Type.Object({
     country: Type.String({ minLength: 2, maxLength: 50 }),
 }, { additionalProperties: false });
 
-export const Criterios_busquedaSchema = Type.Object({
+export const SearchSchema = Type.Object({
     id: Type.Number(),
-    userId: Type.Ref(UsuarioSchema.properties.id),
+    userId: Type.Ref(UserSchema.properties.id),
     location: UbicacionCriteriosSchema,
     price_rangeMin: Type.Number({ minimum: 0 }),
     price_rangeMax: Type.Number({ minimum: 0 }),
@@ -22,4 +22,4 @@ export const Criterios_busquedaSchema = Type.Object({
     property_type: PropertyTypeEnum,
 }, { additionalProperties: false });
 
-export type CriteriosDeBusquedaType = Static<typeof Criterios_busquedaSchema>;
+export type CriteriosDeBusquedaType = Static<typeof SearchSchema>;

@@ -8,7 +8,9 @@ export interface authenticateFunction{
 
 declare module "fastify" {
     interface FastifyInstance {
-        authenticate: authenticateFunction
+        authenticate: authenticateFunction,
+        verifyAdmin: authenticateFunction,
+        verifySelfOrAdmin: authenticateFunction
         //googleOAuth2: fastifyOauth2.OAuth2Namespace
     }
 }
