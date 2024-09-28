@@ -9,6 +9,6 @@ export const NotificationSchema = Type.Object({
     notificationDate: Type.String({ format: 'date-time' }),
     summary:Type.String(),
     link: Type.String({ maxLength: 225 }),
-}, { additionalProperties: false });
+});
 
 export type NotificationType = Static<typeof NotificationSchema>;

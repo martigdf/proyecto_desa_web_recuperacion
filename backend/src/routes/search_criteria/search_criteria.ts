@@ -1,9 +1,9 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
-import { query } from '../../services/database.js';
+//import { query } from '../../services/database.js';
 import {
     SearchPostSchema,
-    SearchPostType
+    //SearchPostType
 } from "../../schemas/search/searchSchema.js";
 
 const criteriosBusquedaRoute: FastifyPluginAsync = async (
@@ -11,14 +11,13 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
     opts: FastifyPluginOptions
 ): Promise<void> => {
 
-
+    // GET /criterios_busqueda
     fastify.get('/', {
         schema: {
             tags: ['search_criteria'],
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const res = await query(`
+            /*const res = await query(`
                 SELECT
                     id,
                     userId,
@@ -34,7 +33,8 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
                 return;
             }
 
-            return res.rows;
+            return res.rows;*/
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -44,9 +44,8 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
             tags: ['search_criteria'],
             body: SearchPostSchema
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const criterioPost = request.body as SearchPostType;
+            /*const criterioPost = request.body as SearchPostType;
             const usuarioId = criterioPost.userId;
             const location = criterioPost.location;
             const rangoPreciosMin = criterioPost.price_rangeMin;
@@ -82,7 +81,8 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
             } catch (error) {
                 console.error('Error al insertar criterio de búsqueda:', error);
                 reply.code(500).send({ message: "Error al insertar criterio de búsqueda en la base de datos" });
-            }
+            }*/
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 };

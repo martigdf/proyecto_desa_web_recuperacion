@@ -1,10 +1,10 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
-import { query } from '../../services/database.js';
+// import { query } from '../../services/database.js';
 import { 
     PropertyIdSchema, 
-    PropertyPostSchema, 
-    PropertyPostType 
+    PropertyGetQuerySchema
+    // PropertyPostType
 } from "../../schemas/property/propertySchema.js";
 
 const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance, 
@@ -13,9 +13,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         schema: {
             tags: ['properties'],
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const res = await query(`SELECT
+            /* const res = await query(`SELECT
                 id,
                 title,
                 description,
@@ -30,7 +29,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.code(404).send({ message: "No hay propiedades registradas" });
                 return;
             }
-            return res.rows;
+            return res.rows;*/
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -39,9 +39,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             tags: ['properties'],
             params: PropertyIdSchema
         },
-        onRequest: fastify.authenticate,
         handler: async function (request, reply) {
-            const { id } = request.params as { id: string };
+            /*const { id } = request.params as { id: string };
             const res = await query(`SELECT
                 id,
                 title,
@@ -57,7 +56,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.code(404).send({ message: "Propiedad no encontrada" });
                 return;
             }
-            return res.rows[0];
+            return res.rows[0];*/
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -66,9 +66,9 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             tags: ['properties'],
             params: PropertyIdSchema
         },
-        onRequest: fastify.authenticate,
+        onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            const { id } = request.params as { id: string };
+            /*const { id } = request.params as { id: string };
             const res = await query(`DELETE FROM properties WHERE id = ${id} RETURNING id`);
             
             if (res.rowCount === 0) {
@@ -76,19 +76,20 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
 
-            reply.code(200).send({ message: "Propiedad eliminada exitosamente" });
+            reply.code(200).send({ message: "Propiedad eliminada exitosamente" });*/
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
     fastify.put('/:id', {
         schema: {
             tags: ['properties'],
-            body: PropertyPostSchema,
+            body: PropertyGetQuerySchema,
             params: PropertyIdSchema
         },
-        onRequest: fastify.authenticate,
+        onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            const { id } = request.params as { id: string };
+            /*const { id } = request.params as { id: string };
             const propiedadUpdate = request.body as PropertyPostType;
             const title = propiedadUpdate.title;
             const description = propiedadUpdate.description;
@@ -130,7 +131,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             } catch (error) {
                 console.error('Error al actualizar la propiedad:', error);
                 reply.code(500).send({ message: "Error al actualizar la propiedad en la base de datos" });
-            }
+            }*/
+        reply.status(501).send({ message: "Not implemented" });
         }
     });
     
