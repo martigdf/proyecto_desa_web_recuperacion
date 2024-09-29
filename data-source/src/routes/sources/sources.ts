@@ -16,7 +16,7 @@ const sourceRoute: FastifyPluginAsync = async (
         onRequest: fastify.verifyAdmin,
         // Mandamos un not implemented
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -34,7 +34,7 @@ const sourceRoute: FastifyPluginAsync = async (
         handler: async function (request, reply) {
             /*const res = await query(`SELECT * FROM data_sources;`);
             reply.send(res.rows);*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -48,7 +48,7 @@ const sourceRoute: FastifyPluginAsync = async (
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -72,7 +72,7 @@ const sourceRoute: FastifyPluginAsync = async (
                 return;
             }
             reply.send({ success: true });*/
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -92,7 +92,7 @@ const sourceRoute: FastifyPluginAsync = async (
             }
             reply.send({ success: true });*/
 
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 }
