@@ -34,6 +34,11 @@ const options : SwaggerOptions = {
                 }
             }
         },
+        security: [
+            {
+              bearerAuth: [],
+            },
+        ],
         externalDocs: {
             url: 'https://swagger.io',
             description: 'Find more info here'
