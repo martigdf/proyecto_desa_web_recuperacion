@@ -5,13 +5,36 @@ import {
     PropertyIdSchema, 
     PropertyGetQuerySchema
     // PropertyPostType
-} from "../../schemas/property/propertySchema.js";
+} from "../../types/schemas/property/propertySchema.js";
 
 const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance, 
     opts: FastifyPluginOptions): Promise<void> => {
     fastify.get('/', {
         schema: {
+            description: "Obtener todas las propiedades",
+            summary: "Obtener todas las propiedades registradas",
             tags: ['properties'],
+            response: {
+                200: {
+                    description: "Listado de propiedades",
+                    type: "array",
+                    items: PropertyGetQuerySchema
+                },
+                404: {
+                    description: "No hay propiedades registradas",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                }
+            }
         },
         handler: async function (request, reply) {
             /* const res = await query(`SELECT
@@ -36,8 +59,31 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.get('/:id', {
         schema: {
+            description: "Obtener una propiedad",
+            summary: "Obtener una propiedad por id",
             tags: ['properties'],
-            params: PropertyIdSchema
+            params: PropertyIdSchema,
+            response: {
+                200: {
+                    description: "Propiedad encontrada",
+                    type: "object",
+                    properties: PropertyGetQuerySchema.properties
+                },
+                404: {
+                    description: "Propiedad no encontrada",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                }
+            }
         },
         handler: async function (request, reply) {
             /*const { id } = request.params as { id: string };
@@ -63,8 +109,33 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.delete('/:id', {
         schema: {
+            description: "Eliminar una propiedad",
+            summary: "Eliminar una propiedad por id",
             tags: ['properties'],
-            params: PropertyIdSchema
+            params: PropertyIdSchema,
+            response: {
+                200: {
+                    description: "Propiedad eliminada exitosamente",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                },
+                404: {
+                    description: "Propiedad no encontrada o ya eliminada",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                }
+            }
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
@@ -83,9 +154,32 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.put('/:id', {
         schema: {
+            description: "Actualizar una propiedad",
+            summary: "Actualizar una propiedad por id",
             tags: ['properties'],
             body: PropertyGetQuerySchema,
-            params: PropertyIdSchema
+            params: PropertyIdSchema,
+            response: {
+                200: {
+                    description: "Propiedad actualizada exitosamente",
+                    type: "object",
+                    properties: PropertyGetQuerySchema.properties
+                },
+                404: {
+                    description: "No se pudo actualizar la propiedad",
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                }
+            }
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {

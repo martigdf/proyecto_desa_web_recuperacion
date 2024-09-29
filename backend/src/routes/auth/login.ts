@@ -5,6 +5,8 @@ import bcrypt from 'bcryptjs';
 const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
     fastify.post('/login', {
         schema: {
+            summary: 'Hacer login',
+            description: 'Ruta para loguearse usando email y contraseña',
             tags: ['auth'],
             body: {
                 type: 'object',

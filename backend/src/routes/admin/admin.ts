@@ -1,14 +1,16 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
-import { UserSchema } from "../../schemas/user/userSchema.js";
-import {PropertySchema} from "../../schemas/property/propertySchema.js";
+import { UserSchema } from "../../types/schemas/user/userSchema.js";
+import {PropertySchema} from "../../types/schemas/property/propertySchema.js";
 import {query} from "../../services/database.js";
 
 const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
-    opts: FastifyPluginOptions): Promise<void> => {
+    opts: FastifyPluginOptions) : Promise<void> => {
     fastify.get('/users', {
         schema: {
+            summary: "Obtener todos los usuarios",
             tags: ['admin'],
+            description: "Obtener todos los usuarios registrados",
             response: {
                 200: {
                     type: 'array',
@@ -38,6 +40,8 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.get('/properties', {
         schema: {
+            summary: "Obtener todas las propiedades",
+            description: "Obtener todas las propiedades registradas",
             tags: ['admin'],
             response: {
                 200: {
@@ -74,6 +78,8 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
     // Para obtener las propiedades
     fastify.get('/data-sources', {
         schema: {
+            summary: "Obtener todas las fuentes de datos",
+            description: "Obtener todas las fuentes de datos registradas",
             tags: ['admin'],
             response: {
                 200: {
