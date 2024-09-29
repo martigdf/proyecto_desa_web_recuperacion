@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d6e5e530-e3d8-4523-83a6-f4df19569617",
+		"_postman_id": "4d47a193-6a5c-4326-a80e-47e48d833c6f",
 		"name": "Proyecto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "38043537"
+		"_exporter_id": "31646706"
 	},
 	"item": [
 		{
@@ -626,6 +626,50 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "compare",
+					"item": [
+						{
+							"name": "Post a comparison",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/compare",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"compare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a comparison",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/compare/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"compare",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -672,6 +716,16 @@
 						{
 							"name": "Get General",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjM2MTIxLCJleHAiOjE3Mjc2Mzk3MjF9.qPEAK7b7UqPMKVsrA3lPcFsKv5BoS4bXhZHCIccqBW4",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
