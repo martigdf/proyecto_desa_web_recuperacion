@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "79aa177e-d83e-438d-9cb4-2cf9599b851f",
+		"_postman_id": "d6e5e530-e3d8-4523-83a6-f4df19569617",
 		"name": "Proyecto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31646706"
+		"_exporter_id": "38043537"
 	},
 	"item": [
 		{
@@ -668,23 +668,285 @@
 				},
 				{
 					"name": "export",
-					"item": []
+					"item": [
+						{
+							"name": "Get General",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/export/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"export",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by Format",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/export/formato",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"export",
+										"formato"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "fetching",
-					"item": []
+					"item": [
+						{
+							"name": "General Post for fetching",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/fetching/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"fetching",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post by SourceId",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/fetching/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"fetching",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Fetching Status By JobID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/fetching/status/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"fetching",
+										"status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "scraping",
-					"item": []
+					"item": [
+						{
+							"name": "Post Scrapping",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/scrapping/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrapping",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post by site ID",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/scrapping/123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrapping",
+										"123"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Scrapping Status by Job ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/scrapping/status/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrapping",
+										"status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "sources",
-					"item": []
-				},
-				{
-					"name": "auth Copy",
-					"item": []
+					"item": [
+						{
+							"name": "Source Post",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Modify by ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Delete by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
