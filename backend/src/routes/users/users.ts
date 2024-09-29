@@ -17,8 +17,20 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
     opts: FastifyPluginOptions): Promise<void> => {
     fastify.post('/register', {
         schema: {
+            description: "Registrar un usuario",
+            summary: "Registrar un usuario",
             tags: ['users'],
-            body: UserPostSchema
+            body: UserPostSchema,
+            response: {
+                201: {
+                    description: "Usuario registrado",
+                    type: "object",
+                    properties: UserSchema.properties
+                },
+                404: {
+                    description: "Error al registrar al usuario"
+                }
+            }
         },
         handler: async function (request, reply) {
             const personaPost = request.body as UserPostType;
@@ -59,12 +71,17 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.get('/:id', {
         schema: {
+            description: "Obtener un usuario",
+            summary: "Obtener un usuario",
             tags: ['users'],
             params: UserIdSchema,
             response: {
                 200: {
                     type: 'object',
                     properties: UserSchema.properties
+                },
+                404: {
+                    description: "Usuario no encontrado"
                 }
             },
         },
@@ -89,6 +106,8 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.put('/:id', {
         schema:{
+            description: "Actualizar un usuario",
+            summary: "Actualizar un usuario",
             tags: ['users'],
             body: UserPutSchema,
             params: UserIdSchema,
@@ -149,6 +168,8 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.delete('/:id', {
         schema: {
+            description: "Eliminar un usuario",
+            summary: "Eliminar un usuario",
             tags: ['users'],
             params: UserIdSchema,
             response: {
@@ -175,23 +196,34 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
 
     fastify.get('/:id/favorites/:id', {
         schema: {
+            description: "Obtener un favorito",
+            summary: "Obtener un favorito de un usuario específico",
             tags: ['favorites'],
             response: {
                 200:{
                     description: 'Un favorito',
                     type: 'object',
                     properties: FavoriteSchema.properties
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
                 }
             }
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
     fastify.get('/:id/favorites', {
         schema: {
+            description: "Obtener favoritos",
+            summary: "Obtener los favoritos de un usuario específico",
             tags: ['favorites'],
             response: {
                 200:{
@@ -201,17 +233,26 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                         type: 'object',
                         properties: FavoriteSchema.properties
                     }
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
                 }
             }
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
     fastify.post('/:id/favorites', {
         schema: {
+            description: "Crear un favorito",
+            summary: "Crear un favorito para un usuario",
             tags: ['favorites'],
             body: FavoritePostSchema,
             response: {
@@ -219,28 +260,44 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                     description: 'Favorito creado',
                     type: 'object',
                     properties: FavoriteSchema.properties
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
                 }
             }
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 
     fastify.delete('/:id/favorites/:id', {
         schema: {
+            description: "Eliminar un favorito",
+            summary: "Eliminar un favorito de un usuario",
             tags: ['favorites'],
             params: FavoriteIdSchema,
             response: {
                 204: {
                     description: 'Favorito eliminado'
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
                 }
             }
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.notImplemented();
+            reply.status(501).send({ message: "Not implemented" });
         }
     });
 }

@@ -14,7 +14,30 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
     // GET /criterios_busqueda
     fastify.get('/', {
         schema: {
+            summary: "Obtener todos los criterios de búsqueda",
+            description: "Obtener todos los criterios de búsqueda registrados",
             tags: ['search_criteria'],
+            response: {
+                200: {
+                    description: "Listado de criterios de búsqueda",
+                    type: "array",
+                    items: SearchPostSchema
+                },
+                404: {
+                    description: "No hay criterios de búsqueda registrados",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                },
+                501: {
+                    description: "Not implemented",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                }
+            }
         },
         handler: async function (request, reply) {
             /*const res = await query(`
@@ -41,8 +64,39 @@ const criteriosBusquedaRoute: FastifyPluginAsync = async (
 
     fastify.post('/', {
         schema: {
+            summary: "Insertar criterio de búsqueda",
+            description: "Insertar un nuevo criterio de búsqueda",
             tags: ['search_criteria'],
-            body: SearchPostSchema
+            body: SearchPostSchema,
+            response: {
+                201: {
+                    description: "Criterio de búsqueda insertado",
+                    type: "object",
+                    properties: {
+                        id: { type: "number" },
+                        userId: { type: "number" },
+                        location: { type: "object" },
+                        price_rangeMin: { type: "number" },
+                        price_rangeMax: { type: "number" },
+                        number_rooms: { type: "number" },
+                        property_type: { type: "string" }
+                    }
+                },
+                404: {
+                    description: "Error al insertar criterio de búsqueda",
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
+                },
+                500: {
+                    description: "Error al insertar criterio de búsqueda en la base de datos",
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                }
+            }
         },
         handler: async function (request, reply) {
             /*const criterioPost = request.body as SearchPostType;
