@@ -6,8 +6,8 @@ const options : SwaggerOptions = {
     openapi: {
         openapi: '3.0.0',
         info: {
-            title: 'Personas API',
-            description: 'Personas API Documentation',
+            title: 'Project API',
+            description: 'Project API Documentation',
             version: '0.1.0'
         },
         servers: [
@@ -22,7 +22,8 @@ const options : SwaggerOptions = {
             {name: 'properties', description: 'Property description'},
             {name: 'search_criteria', description: 'Search Criteria description'},
             {name: 'favorites', description: 'Favorites description'},
-            {name: 'admin', description: 'Admin description'}
+            {name: 'admin', description: 'Admin description'},
+            {name: 'compare', description: 'Comparison description'},
         ],
         components: {
             securitySchemes: {
