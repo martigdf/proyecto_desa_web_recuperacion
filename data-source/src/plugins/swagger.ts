@@ -25,13 +25,18 @@ const options : SwaggerOptions = {
         ],
         components: {
             securitySchemes: {
-                apiKey: {
-                    type: 'apiKey',
-                    name: 'apiKey',
-                    in: 'header'
+                bearerAuth: {
+                    "type": "http",
+                    "scheme": "bearer",
+                    "bearerFormat": "JWT",
                 }
             }
         },
+        security: [
+            {
+              bearerAuth: [],
+            },
+        ],
         externalDocs: {
             url: 'https://swagger.io',
             description: 'Find more info here'
