@@ -1,11 +1,11 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
-import { UserSchema } from "../../schemas/user/userSchema.js";
-import {PropertySchema} from "../../schemas/property/propertySchema.js";
+import { UserSchema } from "../../types/schemas/user/userSchema.js";
+import {PropertySchema} from "../../types/schemas/property/propertySchema.js";
 import {query} from "../../services/database.js";
 
 const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
-    opts: FastifyPluginOptions): Promise<void> => {
+    opts: FastifyPluginOptions) : Promise<void> => {
     fastify.get('/users', {
         schema: {
             summary: "Obtener todos los usuarios",

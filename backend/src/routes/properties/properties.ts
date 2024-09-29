@@ -5,7 +5,7 @@ import {
     PropertyIdSchema, 
     PropertyGetQuerySchema
     // PropertyPostType
-} from "../../schemas/property/propertySchema.js";
+} from "../../types/schemas/property/propertySchema.js";
 
 const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance, 
     opts: FastifyPluginOptions): Promise<void> => {

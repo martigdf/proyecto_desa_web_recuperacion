@@ -5,6 +5,8 @@ import bcrypt from 'bcryptjs';
 const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
     fastify.post('/login', {
         schema: {
+            summary: 'Login',
+            description: 'Ruta para loguearse usando email y contraseña',
             tags: ['auth'],
             body: {
                 type: 'object',
@@ -12,6 +14,37 @@ const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
                 properties: {
                     email: { type: 'string' },
                     password: { type: 'string' }
+                }
+            },
+            response: {
+                200: {
+                    description: 'Datos del usuario dentro del token',
+                    type: 'object',
+                    properties: {
+                        token: {type: 'string'},
+                        id: {type: 'number'},
+                        user: {
+                            type: 'object',
+                            properties: {
+                                name: {type: 'string'},
+                                lastname: {type: 'string'}
+                            }
+                        }
+                    }
+                },
+                401: {
+                    description: 'Credenciales incorrectas',
+                    type: 'object',
+                    properties: {
+                        message: {type: 'string'}
+                    }
+                },
+                404: {
+                    description: 'Usuario no encontrado',
+                    type: 'object',
+                    properties: {
+                        message: {type: 'string'}
+                    }
                 }
             }
         },

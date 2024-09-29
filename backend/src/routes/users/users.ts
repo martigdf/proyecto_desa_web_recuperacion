@@ -8,9 +8,9 @@ import {
     UserPutSchema,
     UserPutType,
     UserSchema
-} from "../../schemas/user/userSchema.js";
+} from "../../types/schemas/user/userSchema.js";
 import bcrypt from 'bcryptjs';
-import {FavoriteIdSchema, FavoritePostSchema, FavoriteSchema} from "../../schemas/favorite/favoriteSchema.js";
+import {FavoriteIdSchema, FavoritePostSchema, FavoriteSchema} from "../../types/schemas/favorite/favoriteSchema.js";
 
 
 const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,

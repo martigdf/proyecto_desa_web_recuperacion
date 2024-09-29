@@ -7,12 +7,20 @@ const exportRoute: FastifyPluginAsync = async (
 ): Promise<void> => {
     fastify.get("/", {
         schema: {
+            description: "Exportar datos",
+            summary: "Exportar datos",
             tags: ["export"],
             response: {
                 200: {
                     type: "array",
                     items: {
                         type: "string"
+                    }
+                },
+                501: {
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
                     }
                 }
             }
@@ -25,11 +33,27 @@ const exportRoute: FastifyPluginAsync = async (
 
     fastify.get("/:format", {
         schema: {
+            description: "Exportar datos en un formato específico",
+            summary: "Exportar datos",
             tags: ["export"],
             params: {
                 type: "object",
                 properties: {
                     format: { type: "string" }
+                }
+            },
+            response:{
+                200: {
+                    type: "array",
+                    items: {
+                        type: "string"
+                    }
+                },
+                501: {
+                    type: "object",
+                    properties: {
+                        message: { type: "string" }
+                    }
                 }
             }
         },

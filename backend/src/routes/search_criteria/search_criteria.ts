@@ -4,7 +4,7 @@ import { FastifyInstance } from "fastify/types/instance.js";
 import {
     SearchPostSchema,
     //SearchPostType
-} from "../../schemas/search/searchSchema.js";
+} from "../../types/schemas/search/searchSchema.js";
 
 const criteriosBusquedaRoute: FastifyPluginAsync = async (
     fastify: FastifyInstance,

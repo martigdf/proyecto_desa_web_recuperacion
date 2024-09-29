@@ -9,12 +9,22 @@ const sourceRoute: FastifyPluginAsync = async (
     opts: FastifyPluginOptions
 ): Promise<void> => {
     fastify.post("/", {
-        schema: {
+        schema:{
+            description: "Crear una nueva fuente de datos",
+            summary: "Crear una nueva fuente de datos",
             tags: ["management"],
-            body: CreateDataSourceSchema
+            body: CreateDataSourceSchema,
+            response: {
+                200: DataSourceSchema,
+                501: {
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                }
+            }
         },
         onRequest: fastify.verifyAdmin,
-        // Mandamos un not implemented
         handler: async function (request, reply) {
             reply.status(501).send({ message: "Not implemented" });
         }
@@ -22,11 +32,19 @@ const sourceRoute: FastifyPluginAsync = async (
 
     fastify.get("/", {
         schema: {
+            description: "Obtener todas las fuentes de datos",
+            summary: "Obtener todas las fuentes de datos",
             tags: ["management"],
             response: {
                 200: {
                     type: "array",
                     items: DataSourceSchema
+                },
+                501: {
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
                 }
             }
         },
@@ -40,10 +58,18 @@ const sourceRoute: FastifyPluginAsync = async (
 
     fastify.get("/:id", {
         schema: {
+            description: "Obtener una fuente de datos por su id",
+            summary: "Obtener una fuente de datos",
             tags: ["management"],
             params: ParamsSchema,
             response: {
-                200: DataSourceSchema
+                200: DataSourceSchema,
+                501: {
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                }
             }
         },
         onRequest: fastify.verifyAdmin,
@@ -54,9 +80,20 @@ const sourceRoute: FastifyPluginAsync = async (
 
     fastify.put("/:id", {
         schema: {
+            description: "Actualizar una fuente de datos",
+            summary: "Actualizar una fuente de datos",
             tags: ["management"],
             params: ParamsSchema,
-            body: UpdateDataSourceSchema
+            body: UpdateDataSourceSchema,
+            response: {
+                200: DataSourceSchema,
+                501: {
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                }
+            }
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
@@ -78,8 +115,24 @@ const sourceRoute: FastifyPluginAsync = async (
 
     fastify.delete("/:id", {
         schema: {
+            description: "Eliminar una fuente de datos",
+            summary: "Eliminar una fuente de datos",
             tags: ["management"],
-            params: ParamsSchema
+            params: ParamsSchema,
+            response: {
+                200: {
+                    type: "object",
+                    properties: {
+                        success: {type: "boolean"}
+                    }
+                },
+                501: {
+                    type: "object",
+                    properties: {
+                        message: {type: "string"}
+                    }
+                }
+            }
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
