@@ -9,6 +9,14 @@ const compareRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             description: "Comparar dos propiedades",
             summary: "Realizar una comparación entre dos propiedades",
             tags: ['compare'],
+            body: {
+                type: "object",
+                required: ["property1", "property2"],
+                properties: {
+                    property1: { type: "string" },
+                    property2: { type: "string" }
+                }
+            },
             response: {
                 501: {
                     description: "Not implemented",

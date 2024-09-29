@@ -1,6 +1,7 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
 import { SourceIdSchema, JobIdSchema} from "../../types/schemas/id.js";
+import { DataSourceSchema } from "../../types/schemas/data-source.js";
 
 // Definición del plugin de ruta
 const fetchRoute: FastifyPluginAsync = async (
@@ -40,6 +41,7 @@ const fetchRoute: FastifyPluginAsync = async (
             summary: "Iniciar una nueva tarea de fetch",
             tags: ["fetch"],
             params: SourceIdSchema,
+            body: DataSourceSchema,
             response: {
                 200: {
                     type: "object",
