@@ -1,9 +1,9 @@
 name: proyecto_desa_web
 services:
 
-  backend_proyecto:
+  backend-proyecto:
     image: backend
-    container_name: backend_proyecto
+    container_name: backend-proyecto
     build:
       context: ./backend
     command: sh -c "npm install && npm run dev"
@@ -15,15 +15,18 @@ services:
       - PGPASSWORD=${PGPASSWORD}
       - PGHOST=${PGHOST}
 
-  frontend_proyecto:
-    image: nginx:alpine
-    container_name: frontend_proyecto
+  frontend-proyecto:
+    image: frontend
+    container_name: frontend-proyecto
+    command: sh -c "npm install && npm start"
+    build:
+      context: ./frontend
     volumes:
-      - ./frontend/:/usr/share/nginx/html
+      - ./frontend/:/frontend
 
-  database_proyecto:
+  database-proyecto:
     image: database
-    container_name: database_proyecto
+    container_name: database-proyecto
     build:
       context: ./database
     environment:
@@ -34,9 +37,9 @@ services:
       - 5436:5432
 
   # Ahora hacemos el contenedor de data-source
-  data-source_proyecto:
+  data-source-proyecto:
       image: data-source
-      container_name: data-source_proyecto
+      container_name: data-source-proyecto
       build:
         context: ./data-source
       command: sh -c "npm install && npm run dev"
@@ -48,15 +51,18 @@ services:
         - PGPASSWORD=${PGPASSWORD}
         - PGHOST=${PGHOST}
       depends_on:
-      - database_proyecto
+      - database-proyecto
 
-  proxy_proyecto:
+  proxy-proyecto:
     image: proxy
-    container_name: proxy_proyecto
+    container_name: proxy-proyecto
     build: ./proxy
     ports:
       - 80:80
     depends_on:
-      - frontend_proyecto
-      - backend_proyecto
-      - database_proyecto
+      - frontend-proyecto
+      - backend-proyecto
+      - database-proyecto
+      - data-source-proyecto
+    environment:
+      - FRONTEND_PORT=${FRONTEND_PORT}

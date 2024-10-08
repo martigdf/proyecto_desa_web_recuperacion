@@ -3,7 +3,7 @@ server {
     listen [::]:80;
 
     location / {
-        proxy_pass http://frontend_proyecto;
+        proxy_pass http://frontend-proyecto:${FRONTEND_PORT};
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -13,7 +13,7 @@ server {
     
     location /backend/ {
         rewrite  ^/backend(.*)$ $1 break;
-        proxy_pass http://backend_proyecto:3000;
+        proxy_pass http://backend-proyecto:3000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -24,7 +24,7 @@ server {
 
     location /data/{
         rewrite  ^/data(.*)$ $1 break;
-        proxy_pass http://data-source_proyecto:5000;
+        proxy_pass http://data-source-proyecto:5000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
