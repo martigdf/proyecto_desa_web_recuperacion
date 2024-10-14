@@ -1,0 +1,1055 @@
+{
+	"info": {
+		"_postman_id": "4d47a193-6a5c-4326-a80e-47e48d833c6f",
+		"name": "Proyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31646706"
+	},
+	"item": [
+		{
+			"name": "Backend",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "favorites",
+							"item": [
+								{
+									"name": "All favorites",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\" : 1,\r\n    \"propertyId\" : 2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "One favorite",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/backend/users/2/favorites/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"backend",
+												"users",
+												"2",
+												"favorites",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit an user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Lorena\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Lorena\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an user",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Gloria\",\r\n    \"lastname\" : \"Olivera\",\r\n    \"email\": \"gloria2@correo.com\",\r\n    \"password\" : \"Asd@1234\",\r\n    \"role\" : \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"anaclarasenanunez@gmail.com\",\r\n    \"password\":\"Ana0411!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "Get all users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/admin/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users properties",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/admin/properties",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"admin",
+										"properties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all data sources",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/admin/data-sources",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"admin",
+										"data-sources"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "properties",
+					"item": [
+						{
+							"name": "Get all properties",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/properties",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one property",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/properties/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users properties Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : 1,\r\n    \"title\": \"title\",\r\n    \"name\" : \"name\",\r\n    \"description\" : \"description\",\r\n    \"price\" : 1234,\r\n    \"location\" : {\r\n        \"address\" : \"address\",\r\n        \"city\" : \"city\",\r\n        \"country\" : \"country\"\r\n    },\r\n    \"number_rooms\" : 2,\r\n    \"number_bathrooms\" : 2\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/properties/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users properties Copy 2",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU3NzQ4LCJleHAiOjE3Mjc1Njg1NDh9.ORMqZ7j0YyjZ0fgP5qI1vUyugdRatE0dttoIHg4K2DI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : 1,\r\n    \"title\": \"title\",\r\n    \"name\" : \"name\",\r\n    \"description\" : \"description\",\r\n    \"price\" : 1234,\r\n    \"location\" : {\r\n        \"address\" : \"address\",\r\n        \"city\" : \"city\",\r\n        \"country\" : \"country\"\r\n    },\r\n    \"number_rooms\" : 2,\r\n    \"number_bathrooms\" : 2\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/properties/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"properties",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "search_criteria",
+					"item": [
+						{
+							"name": "Criteria",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/search_criteria",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"search_criteria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"location\": {\r\n        \"city\": \"Montevideo\",\r\n        \"country\": \"Uruguay\"\r\n    },\r\n    \"price_rangeMin\": 100000,\r\n    \"price_rangeMax\": 300000,\r\n    \"number_rooms\": 3,\r\n    \"property_type\": \"casa\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/search_criteria",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"search_criteria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "compare",
+					"item": [
+						{
+							"name": "Post a comparison",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"property1\": \"property_id_12345\",\r\n  \"property2\": \"property_id_67890\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/backend/compare",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"compare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a comparison",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/backend/compare/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"backend",
+										"compare",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Data source",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"anaclarasenanunez@gmail.com\",\r\n    \"password\":\"Ana0411!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/data/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "export",
+					"item": [
+						{
+							"name": "Get General",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjM2MTIxLCJleHAiOjE3Mjc2Mzk3MjF9.qPEAK7b7UqPMKVsrA3lPcFsKv5BoS4bXhZHCIccqBW4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/export/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"export",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by Format",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/export/formato",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"export",
+										"formato"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "fetching",
+					"item": [
+						{
+							"name": "General Post for fetching",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjQwNzA0LCJleHAiOjE3Mjc2NDQzMDR9.DXC-Yh1cfUWuq-b_2mONBY76HunFwkdNbFcPzS0D5IY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"sourceId\": 1,\r\n  \"nombre\": \"Inmobiliaria XYZ\",\r\n  \"tipo\": \"API\",\r\n  \"url\": \"https://api.inmobiliariaxyz.com/propiedades\",\r\n  \"activo\": true,\r\n  \"ultima_actualizacion\": \"2023-09-15T14:30:00Z\",\r\n  \"numero_propiedades\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/data/fetching/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"fetching",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post by SourceId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjQwNzA0LCJleHAiOjE3Mjc2NDQzMDR9.DXC-Yh1cfUWuq-b_2mONBY76HunFwkdNbFcPzS0D5IY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 1,\r\n  \"nombre\": \"Inmobiliaria XYZ\",\r\n  \"tipo\": \"API\",\r\n  \"url\": \"https://api.inmobiliariaxyz.com/propiedades\",\r\n  \"activo\": true,\r\n  \"ultima_actualizacion\": \"2023-09-15T14:30:00Z\",\r\n  \"numero_propiedades\": 1000,\r\n  \"error_rate\": 0.02,\r\n  \"api_key\": \"abc123xyz789\",\r\n  \"headers\": {\r\n    \"Authorization\": \"Bearer token123\",\r\n    \"Content-Type\": \"application/json\"\r\n  },\r\n  \"parametros\": {\r\n    \"limit\": \"100\",\r\n    \"offset\": \"0\"\r\n  },\r\n  \"selector_propiedades\": \".property-listing\",\r\n  \"transformacion\": \"JSON.parse(response).properties\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/data/fetching/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"fetching",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Fetching Status By JobID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/fetching/status/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"fetching",
+										"status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "scraping",
+					"item": [
+						{
+							"name": "Post Scrapping",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/scrapping/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrapping",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post by site ID",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/scrapping/123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrapping",
+										"123"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Scrapping Status by Job ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/scrapping/status/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrapping",
+										"status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "sources",
+					"item": [
+						{
+							"name": "Source Post",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Modify by ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Source Delete by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/data/sources/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"sources",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
