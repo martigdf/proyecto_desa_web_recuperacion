@@ -22,6 +22,12 @@ export class LoginPage {
     await this.authService.login(this.email, this.password);
     console.log('login success');
     // Redirect to home
-    await this.router.navigate(['/']);
+    console.log(this.authService.isAdmin())
+    if (this.authService.isAdmin()){
+      await this.router.navigate(['/admin-panel']);
+    } else {
+      await this.router.navigate(['/']);
+    }
+    
   }
 }
