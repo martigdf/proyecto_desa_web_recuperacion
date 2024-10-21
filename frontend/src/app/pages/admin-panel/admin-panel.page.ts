@@ -15,4 +15,7 @@ export class AdminPanelPage {
   goToUserList() {
     this.router.navigate(['admin-panel', 'users']);
   }
+  goToPropertyList() {
+    this.router.navigate(['/all-properties']);
+  }
 }
