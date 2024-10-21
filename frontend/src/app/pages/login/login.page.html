@@ -1,37 +1,14 @@
-<div class="relative h-screen bg-gray-50 overflow-hidden">
-  <div
-    class="absolute top-20 left-2 w-[500px] h-[500px] bg-[#D1208A80] rounded-full mix-blend-multiply filter blur-[150px] opacity-70 animate-blob pointer-events-none"
-  ></div>
-  <div
-    class="absolute top-20 right-32 w-[500px] h-[500px] bg-[#FFB20080] rounded-full mix-blend-multiply filter blur-[150px] opacity-70 animate-blob animation-delay-2000 pointer-events-none"
-  ></div>
-  <div
-    class="hidden xl:block absolute bottom-10 left-32 w-[500px] h-[500px] bg-[#FFB20080] rounded-full mix-blend-multiply filter blur-[150px] opacity-70 animate-blob animation-delay-4000 pointer-events-none"
-  ></div>
-  <div
-    class="absolute bottom-10 right-52 w-[500px] h-[500px] bg-[#CAEEF580] rounded-full mix-blend-multiply filter blur-[150px] opacity-70 animate-blob animation-delay-4000 pointer-events-none"
-  ></div>
-
+<div class="relative h-screen bg-gray-50 bg-[url('https://i.imgur.com/vbWMrvU.jpeg')] bg-cover bg-center overflow-hidden">
+  
   <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img
-        class="mx-auto h-12 w-auto"
-        src="https://i.imgur.com/7VadfzF.png"
-        alt="Your Company"
-      />
-      <h2
-        class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
-      >
-        Sign in to your account
-      </h2>
-    </div>
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md z-10 relative">
-      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form class="space-y-6" (ngSubmit)="this.onSubmitLogin()">
+      <div class="bg-transparent backdrop-blur-md border border-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+          Sign in to your account
+        </h2>
+        <form class="mt-8 space-y-6" (ngSubmit)="this.onSubmitLogin()">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700"
-              >Email address</label
-            >
+            <label for="email" class="block text-sm font-bold text-white">Email address</label>
             <div class="mt-1">
               <input
                 [(ngModel)]="this.email"
@@ -40,17 +17,13 @@
                 type="email"
                 autocomplete="email"
                 required=""
-                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label
-              for="password"
-              class="block text-sm font-medium text-gray-700"
-              >Password</label
-            >
+            <label for="password" class="block text-sm font-bold text-white">Password</label>
             <div class="mt-1">
               <input
                 [(ngModel)]="this.password"
@@ -59,7 +32,7 @@
                 type="password"
                 autocomplete="current-password"
                 required=""
-                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
           </div>
@@ -72,17 +45,11 @@
                 type="checkbox"
                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
               />
-              <label for="remember-me" class="ml-2 block text-sm text-gray-900"
-                >Remember me</label
-              >
+              <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
             </div>
 
             <div class="text-sm">
-              <a
-                href="#"
-                class="font-medium text-indigo-600 hover:text-indigo-500"
-                >Forgot your password?</a
-              >
+              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
             </div>
           </div>
 

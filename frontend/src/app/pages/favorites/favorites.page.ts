@@ -14,4 +14,7 @@ export class FavoritesPage {
   goToAllProperties() {
     this.router.navigate(['/all-properties']);
   }
+  goToTask() {
+    this.router.navigate(['/property-view'])
+  }
 }
