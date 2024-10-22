@@ -9,6 +9,7 @@ export const isAdminGuard: CanActivateFn = (route, state) => {
   if(authService.isAdmin()){
     return true;
   }
-  router.navigate(['/']);
+  window.alert('No tienes permisos para acceder a esta página');
+  router.navigate(['all-properties']);
   return false;
 };

@@ -6,8 +6,7 @@ import {AuthService} from './auth.service';
 })
 export class BackendApiService {
   readonly API_URL = 'http://localhost/backend/';
-  private authService: AuthService = inject(AuthService);
-  private token?: string = this.authService.getToken();
+  private token? = localStorage.getItem('token');
 
   private getHeaders(): HeadersInit {
     if(this.token == undefined || this.token == ''){
@@ -26,7 +25,10 @@ export class BackendApiService {
   // Metodo para hacer llamadas GET a la API
   async get<T = any>(url: string): Promise<T>{
     try {
-      const response = await fetch(`${this.API_URL}${url}`);
+      const response = await fetch(`${this.API_URL}${url}`, {
+        method: 'GET',
+        headers: this.getHeaders(),
+      });
       const data = await response.json();
       if (response.ok) {
         return data;
