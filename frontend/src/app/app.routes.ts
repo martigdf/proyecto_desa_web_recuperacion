@@ -7,6 +7,8 @@ import { HomePage } from './pages/home/home.page';
 import { PropertyViewPage } from './pages/property-view/property-view.page';
 import { PropertyComparePage } from './pages/property-compare/property-compare.page';
 import { AdminPanelPage } from './pages/admin-panel/admin-panel.page';
+import {isAdminGuard} from './guards/is-admin.guard';
+import {isValidUserGuard} from './guards/is-valid-user.guard';
 
 export const routes: Routes = [
   {
@@ -21,6 +23,8 @@ export const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesPage,
+    canActivate: [isValidUserGuard],
+
   },
   {
     path: 'all-properties',
@@ -41,6 +45,7 @@ export const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminPanelPage,
+    canActivate: [isAdminGuard],
     children: [
       {
         path: 'users',
