@@ -26,7 +26,7 @@ export class LoginPage {
     if (this.authService.isAdmin()){
       await this.router.navigate(['/admin-panel']);
     } else {
-      await this.router.navigate(['/']);
+      await this.router.navigate(['/all-properties']);
     }
     
   }
