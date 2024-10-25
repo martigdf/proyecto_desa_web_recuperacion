@@ -9,6 +9,7 @@ import { PropertyComparePage } from './pages/property-compare/property-compare.p
 import { AdminPanelPage } from './pages/admin-panel/admin-panel.page';
 import {isAdminGuard} from './guards/is-admin.guard';
 import {isValidUserGuard} from './guards/is-valid-user.guard';
+import { RegisterPage } from './pages/register/register.page';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
+  },
+  {
+    path: 'register',
+    component: RegisterPage,
   },
   {
     path: 'admin-panel',
