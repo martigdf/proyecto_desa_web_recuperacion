@@ -53,7 +53,7 @@ export class UsersPage implements OnInit {
     </td>
     <td class="p-4 border-b border-slate-600">
       <div class="flex items-center gap-3">
-        <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="${user.name}" class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
+        <img src="https://i.pinimg.com/564x/e7/b2/d1/e7b2d14bd707337b544140c2a3459ec0.jpg" alt="${user.name}" class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
         <div class="flex flex-col">
           <p class="text-sm font-semibold text-slate-300">${user.name} ${user.lastname}</p>
           <p class="text-sm text-slate-400">${user.email}</p>
