@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -17,7 +16,6 @@ export class RegisterPage {
   password: string = '';
   confirmPassword: string = '';
 
-  private authService: AuthService = inject(AuthService);
   private router = inject(Router);
 
   async onSubmitRegister() {
