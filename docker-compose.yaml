@@ -52,6 +52,7 @@ services:
         - PGHOST=${PGHOST}
       depends_on:
       - database-proyecto
+      - mongo
 
   proxy-proyecto:
     image: proxy
@@ -66,3 +67,11 @@ services:
       - data-source-proyecto
     environment:
       - FRONTEND_PORT=${FRONTEND_PORT}
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
