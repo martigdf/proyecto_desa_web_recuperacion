@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -15,34 +16,29 @@ export class RegisterPage {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  errorMessage: string = '';
 
+  private RegisterService: RegisterService = inject(RegisterService);
   private router = inject(Router);
-
+  
   async onSubmitRegister() {
+    this.errorMessage = '';
     console.log('Register');
     console.log('name', this.name);
     console.log('lastname', this.lastname);
     console.log('email:', this.email);
-    console.log('password', this.password);
-    console.log('confirmpassword', this.confirmPassword);
-    /*
-    try {
-      const result = await this.authService.register({
-        name: this.name,
-        lastname: this.lastname,
-        email: this.email,
-        password: this.password,
-        confirmPassword: this.confirmPassword
-      });
-
-      if (result.success) {
-        this.router.navigate(['/all-properties']);
-      } else {
-        console.error('Registration failed', result.message);
-      }
-    } catch (error) {
-      console.error('Error during registration', error);
+    
+    if (this.password !== this.confirmPassword) {
+      console.error('Contraseñas no coinciden');
+      return;
     }
-    */
+    try {
+      await this.RegisterService.register(this.name, this.lastname, this.email, this.password);
+      console.log('Registro exitoso');
+      await this.router.navigate(['/all-properties']);
+    } catch (error) {
+      this.errorMessage = 'Error en el registro. Intente nuevamente.';
+      console.error('Error en el registro:', error);
+    }
   }
 }
