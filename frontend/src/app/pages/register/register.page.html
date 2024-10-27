@@ -17,10 +17,13 @@
                 name="name"
                 type="text"
                 required=""
+                [ngClass]="{'border-red-500': validateRegister.get('name')?.invalid && validateRegister.get('name')?.touched}"
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
               <div *ngIf="validateRegister.get('name')?.invalid && validateRegister.get('name')?.touched">
-                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('name')?.errors?.['nameError']">{{ validateRegister.get('name')?.errors?.['nameError'] }}</small>
+                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('name')?.errors?.['nameError']">
+                  {{ validateRegister.get('name')?.errors?.['nameError'] }}
+                </small>
               </div>
             </div>
           </div>
@@ -35,10 +38,13 @@
                 name="lastname"
                 type="text"
                 required=""
+                [ngClass]="{'border-red-500': validateRegister.get('lastname')?.invalid && validateRegister.get('lastname')?.touched}"
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
               <div *ngIf="validateRegister.get('lastname')?.invalid && validateRegister.get('lastname')?.touched">
-                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('lastname')?.errors?.['lastnameError']">{{ validateRegister.get('lastname')?.errors?.['lastnameError'] }}</small>
+                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('lastname')?.errors?.['lastnameError']">
+                  {{ validateRegister.get('lastname')?.errors?.['lastnameError'] }}
+                </small>
               </div>
             </div>
           </div>
@@ -54,10 +60,13 @@
                 type="email"
                 autocomplete="email"
                 required=""
+                [ngClass]="{'border-red-500': validateRegister.get('email')?.invalid && validateRegister.get('email')?.touched}"
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
               <div *ngIf="validateRegister.get('email')?.invalid && validateRegister.get('email')?.touched">
-                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('email')?.errors?.['emailError']">{{ validateRegister.get('email')?.errors?.['emailError'] }}</small>
+                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('email')?.errors?.['emailError']">
+                  {{ validateRegister.get('email')?.errors?.['emailError'] }}
+                </small>
               </div>
             </div>
           </div>
@@ -72,10 +81,13 @@
                 name="password"
                 type="password"
                 required=""
+                [ngClass]="{'border-red-500': validateRegister.get('password')?.invalid && validateRegister.get('password')?.touched}"
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
               <div *ngIf="validateRegister.get('password')?.invalid && validateRegister.get('password')?.touched">
-                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('password')?.errors?.['passwordError']">{{ validateRegister.get('password')?.errors?.['passwordError'] }}</small>
+                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('password')?.errors?.['passwordError']">
+                  {{ validateRegister.get('password')?.errors?.['passwordError'] }}
+                </small>
               </div>
             </div>
           </div>
@@ -90,12 +102,15 @@
                 name="confirmPassword"
                 type="password"
                 required=""
+                [ngClass]="{'border-red-500': validateRegister.get('confirmPassword')?.invalid && validateRegister.get('confirmPassword')?.touched}"
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
               <div *ngIf="validateRegister.get('confirmPassword')?.invalid && validateRegister.get('confirmPassword')?.touched">
                 <small class="text-red-500 text-xs italic"> La contraseña confirmada es requerida.</small>
                 <br>
-                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('confirmPassword')?.errors?.['repeatPasswordError']">{{ validateRegister.get('confirmPassword')?.errors?.['repeatPasswordError'] }}</small>
+                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('confirmPassword')?.errors?.['repeatPasswordError']">
+                  {{ validateRegister.get('confirmPassword')?.errors?.['repeatPasswordError'] }}
+                </small>
               </div>
             </div>
           </div>

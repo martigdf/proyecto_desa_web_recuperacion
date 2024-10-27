@@ -5,6 +5,7 @@ import { NgIf, JsonPipe } from '@angular/common';
 import { RegisterService } from '../../services/register.service';
 import {FormGroup, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { RegisterValidationsDirective } from '../../directives/register-validations.directive';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ import { RegisterValidationsDirective } from '../../directives/register-validati
     FormsModule, 
     ReactiveFormsModule,
     NgIf,
+    NgClass,
     JsonPipe,
     RegisterValidationsDirective],
   templateUrl: './register.page.html',

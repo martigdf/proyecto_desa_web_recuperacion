@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { AbstractControl, ValidationErrors, Validator, NG_VALIDATORS, Validators, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, NG_VALIDATORS, Validators, ValidatorFn } from '@angular/forms';
 
 @Directive({
   selector: '[appRegisterValidations]',
@@ -12,7 +12,7 @@ import { AbstractControl, ValidationErrors, Validator, NG_VALIDATORS, Validators
     },
   ],
 })
-export class RegisterValidationsDirective extends Validators {
+export class RegisterValidationsDirective  {
   
   validate = (control: AbstractControl): ValidationErrors | null => {
     const errors: ValidationErrors = {};
