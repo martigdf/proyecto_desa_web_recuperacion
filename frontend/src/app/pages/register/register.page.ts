@@ -21,11 +21,7 @@ import { NgClass } from '@angular/common';
   styleUrl: './register.page.css'
 })
 export class RegisterPage {
-  name: string = '';
-  lastname: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+
 
   private RegisterService: RegisterService = inject(RegisterService);
   private router = inject(Router);
@@ -44,7 +40,8 @@ export class RegisterPage {
 
   async onSubmitRegister() {
     if (this.validateRegister.valid) {
-      await this.RegisterService.register(this.name, this.lastname, this.email, this.password);
+      const { name, lastname, email, password } = this.validateRegister.value;
+      await this.RegisterService.register(name, lastname, email, password);
       console.log('Registro exitoso');
       await this.router.navigate(['/all-properties']);
     } else {
