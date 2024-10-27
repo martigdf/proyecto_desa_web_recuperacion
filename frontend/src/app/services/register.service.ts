@@ -20,7 +20,8 @@ export class RegisterService {
       });
 
       if (!response.ok) {
-        throw new Error('Error en el registro');
+        const errorResponse = await response.json();
+        throw new Error( errorResponse||'Error en el registro');
       }
 
       const data = await response.json();
