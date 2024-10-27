@@ -48,4 +48,8 @@ export class RegisterPage {
       console.log('Formulario inválido');
     }
   }
+
+  onCancel() {
+    this.router.navigate(['/home']);
+  }
 }
