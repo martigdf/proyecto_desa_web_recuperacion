@@ -65,13 +65,16 @@ export class RegisterValidationsDirective  {
   static validatePassword(control: AbstractControl | null): ValidationErrors | null {
     if (!control) return null;
     const value = control.value;
-    if (value.length < 8) return { 'passwordError': 'La contraseña debe tener al menos 8 caracteres' };
-    if (value.length > 20) return { 'passwordError': 'La contraseña no puede tener más de 20 caracteres' };
-    if (!/[A-Z]/.test(value)) return { 'passwordError': 'La contraseña debe contener al menos una mayúscula' };
-    if (!/[a-z]/.test(value)) return { 'passwordError': 'La contraseña debe contener al menos una minúscula' };
-    if (!/[0-9]/.test(value)) return { 'passwordError': 'La contraseña debe contener al menos un número' };
-    if (!/[!@#$%^&*_-]/.test(value)) return { 'passwordError': 'La contraseña debe contener al menos un carácter especial (!@#$%^&*_-.)' };
-    return null;
+    const errors: ValidationErrors = {};
+
+    if (value.length < 8) errors['passwordErrorLength'] = 'La contraseña debe tener al menos 8 caracteres';
+    if (value.length > 20) errors['passwordErrorLength'] = 'La contraseña no puede tener más de 20 caracteres';
+    if (!/[A-Z]/.test(value)) errors['passwordErrorUppercase'] = 'La contraseña debe contener al menos una mayúscula';
+    if (!/[a-z]/.test(value)) errors['passwordErrorLowercase'] = 'La contraseña debe contener al menos una minúscula';
+    if (!/[0-9]/.test(value)) errors['passwordErrorNumber'] = 'La contraseña debe contener al menos un número';
+    if (!/[!@#$%^&*_-]/.test(value)) errors['passwordErrorSpecial'] = 'La contraseña debe contener al menos un carácter especial (!@#$%^&*_-.)';
+
+    return Object.keys(errors).length ? errors : null;
   }
 
   //Para validar la repetición de la contraseña

@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormsModule, Validators } from '@angular/forms';
+import { Component, inject} from '@angular/core';
+import { FormControl, FormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIf, JsonPipe } from '@angular/common';
+import { NgIf, JsonPipe, NgFor} from '@angular/common';
 import { RegisterService } from '../../services/register.service';
 import {FormGroup, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { RegisterValidationsDirective } from '../../directives/register-validations.directive';
@@ -14,6 +14,7 @@ import { NgClass } from '@angular/common';
     FormsModule, 
     ReactiveFormsModule,
     NgIf,
+    NgFor,
     NgClass,
     JsonPipe,
     RegisterValidationsDirective],
@@ -51,5 +52,14 @@ export class RegisterPage {
 
   onCancel() {
     this.router.navigate(['/home']);
+  }
+
+  getPasswordErrors(): string[] {
+    const control = this.validateRegister.get('password');
+    if (control && control.errors) {
+      return Object.keys(control.errors).map(key => control.errors![key]);
+    } else {
+      return [];
+    }
   }
 }

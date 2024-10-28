@@ -4,11 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RegisterService {
-  private apiUrl = 'http://localhost/backend/users'; 
+  private apiUrl = 'http://localhost/backend/users/register'; 
 
   // Método de registro
   async register(name: string, lastname: string, email: string, password: string): Promise<void> {
-    console.log("Datos de registro:", { name, lastname, email });
+    //asigna el rol usuario por defecto
+    const role = 'user';
+    console.log("Datos de registro:", { name, lastname, email, role });
+    // Verificar el contenido de la contraseña
+    console.log("Contraseña antes de enviar:", password);
     try {
       // Hacer llamada a la API para el registro
       const response = await fetch(this.apiUrl, {
@@ -16,12 +20,16 @@ export class RegisterService {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, lastname, email, password })
+        body: JSON.stringify({ name, lastname, email, password, role })
       });
+
+      // Imprimir la respuesta del servidor
+      const responseBody = await response.text();
+      console.log('Respuesta del servidor:', responseBody);
 
       if (!response.ok) {
         const errorResponse = await response.json();
-        throw new Error( errorResponse||'Error en el registro');
+        throw new Error( errorResponse.message ||'Error en el registro');
       }
 
       const data = await response.json();

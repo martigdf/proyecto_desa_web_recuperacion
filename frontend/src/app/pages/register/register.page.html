@@ -84,10 +84,10 @@
                 [ngClass]="{'border-red-500': validateRegister.get('password')?.invalid && validateRegister.get('password')?.touched}"
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
-              <div *ngIf="validateRegister.get('password')?.invalid && validateRegister.get('password')?.touched">
-                <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('password')?.errors?.['passwordError']">
-                  {{ validateRegister.get('password')?.errors?.['passwordError'] }}
-                </small>
+              <div *ngIf="validateRegister.get('password')?.errors && validateRegister.get('password')?.touched" style="max-height: 50px; overflow-y: auto;">
+                <div class="text-red-500 text-xs italic" *ngFor="let error of getPasswordErrors()">
+                  {{ error }}
+                </div>
               </div>
             </div>
           </div>
