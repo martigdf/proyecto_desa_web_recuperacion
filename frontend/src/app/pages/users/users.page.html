@@ -5,7 +5,7 @@
   >
     Volver
   </button>
-  <div class="max-w-[720px] mx-auto">
+  <div class="max-w-[800px] mx-auto">
     <div
       class="block mb-4 mx-auto border-b border-slate-600 pb-2 max-w-[360px]"
     ></div>
@@ -152,10 +152,37 @@
               </th>
             </tr>
           </thead>
-          <tbody id="user-container"></tbody>
+          <tbody>
+            <tr *ngFor="let user of userList">
+              <td class="p-4 border-b border-slate-600">
+                <p class="text-sm font-semibold text-slate-300">{{ user.id }}</p>
+              </td>
+              <td class="p-4 border-b border-slate-600">
+                <div class="flex items-center gap-3">
+                  <img src="https://i.pinimg.com/564x/e7/b2/d1/e7b2d14bd707337b544140c2a3459ec0.jpg" alt="{{ user.name }}" class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
+                  <div>
+                    <p class="text-sm font-semibold text-slate-300">{{ user.name }} {{ user.lastname }}</p>
+                    <p class="text-sm text-slate-400">{{ user.email }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="p-4 border-b border-slate-600">
+                <p class="text-sm font-semibold text-slate-300">{{ user.role }}</p>
+              </td>
+              <td class="p-4 border-b border-slate-600">
+                <p class="text-sm text-slate-400">{{ this.formatRegistrationDate(user.registration_date) }}</p>
+              </td>
+              <td class="p-4 border-b border-slate-600">
+                <button type="button" class="text-slate-300 hover:text-white">Editar</button>
+                <button type="button" (click)="openDeleteTab(user.id.toString())" class="text-red-500 hover:text-red-700 ml-2">Borrar</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div class="flex items-center justify-between p-3"></div>
     </div>
+
+    <app-confirmation-tab *ngIf="showConfirmationTab" (confirmed)="confirmDelete()" (canceled)="showConfirmationTab = false"></app-confirmation-tab>
   </div>
 </div>
