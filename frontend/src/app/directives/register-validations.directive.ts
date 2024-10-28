@@ -72,7 +72,7 @@ export class RegisterValidationsDirective  {
     if (!/[A-Z]/.test(value)) errors['passwordErrorUppercase'] = 'La contraseña debe contener al menos una mayúscula';
     if (!/[a-z]/.test(value)) errors['passwordErrorLowercase'] = 'La contraseña debe contener al menos una minúscula';
     if (!/[0-9]/.test(value)) errors['passwordErrorNumber'] = 'La contraseña debe contener al menos un número';
-    if (!/[!@#$%^&*_-]/.test(value)) errors['passwordErrorSpecial'] = 'La contraseña debe contener al menos un carácter especial (!@#$%^&*_-.)';
+    if (!/(?=.*[$@!%*?&])/.test(value)) errors['passwordErrorSpecial'] = 'La contraseña debe contener al menos un carácter especial ($@$!%*?&)';
 
     return Object.keys(errors).length ? errors : null;
   }

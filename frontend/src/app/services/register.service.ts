@@ -23,10 +23,6 @@ export class RegisterService {
         body: JSON.stringify({ name, lastname, email, password, role })
       });
 
-      // Imprimir la respuesta del servidor
-      const responseBody = await response.text();
-      console.log('Respuesta del servidor:', responseBody);
-
       if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error( errorResponse.message ||'Error en el registro');
