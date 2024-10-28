@@ -15,4 +15,8 @@ export class HomePage {
   Login() {
     this.router.navigate(['/login']);
   }
+
+  Register() {
+    this.router.navigate(['/register']);
+  }
 }
