@@ -38,7 +38,6 @@ export class UsersPage implements OnInit {
     try {
       await this._usersService.deleteUser(id);
       this.showConfirmationTab = false;
-      await this._usersService.updateUserList(); // Actualiza la lista después de eliminar
       this.userList = this._usersService.usersList; // Obtiene la lista actualizada
     } catch (error) {
       console.error('Error al eliminar el usuario:', error);

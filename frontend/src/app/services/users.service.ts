@@ -28,7 +28,7 @@ export class UsersService {
   async deleteUser(id: string): Promise<void> {
     try {
       await this._apiService.delete(`users/${id}`);
-      this.updateUserList();
+      this.userList.set(this.userList().filter(user => user.id !== parseInt(id)));
     } catch (error) {
       console.error('Error deleting user:', error);
       throw error;
