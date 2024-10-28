@@ -3,7 +3,7 @@ import path from 'path';
 import { connectToDatabase, getDatabase } from './mongodb.js';
 import jsonlines from 'jsonlines';
 
-const importJSONLToMongoDB = async (filePath) => {
+const importJSONLToMongoDB = async (filePath: any) => {
     await connectToDatabase();
     const db = getDatabase();
     const collection = db.collection('properties');
