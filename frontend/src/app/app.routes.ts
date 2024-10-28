@@ -54,5 +54,6 @@ export const routes: Routes = [
   {
     path: 'admin-panel/users',
     component: UsersPage,
+    canActivate: [isAdminGuard],
   },
 ];
