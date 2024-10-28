@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
-import { BackendApiService } from '../../services/backend-api.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ConfirmationTabComponent } from '../../components/confirmation-tab/confirmation-tab.component';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-users',
@@ -14,18 +14,15 @@ import { ConfirmationTabComponent } from '../../components/confirmation-tab/conf
 })
 export class UsersPage implements OnInit {
   private router: Router = inject(Router);
-  private apiService: BackendApiService = inject(BackendApiService);
+  private _usersService: UsersService = inject(UsersService);
   showConfirmationTab = false;
   idToDelete: string | null = null;
   public userList: User[] = [];
 
   async ngOnInit(): Promise<void> {
-    try {
-      this.userList = await this.apiService.get('admin/users');
-      console.log(this.userList);
-    } catch (error) {
-      console.error('Error fetching user list:', error);
-    }
+    this._usersService.updateUserList().then(() => {
+      this.userList = this._usersService.usersList;
+    });
   }
 
   formatRegistrationDate(dateString: string): string {
@@ -39,8 +36,10 @@ export class UsersPage implements OnInit {
 
   async deleteUser(id: string) {
     try {
-      await this.apiService.delete(`users/${id}`);
+      await this._usersService.deleteUser(id);
       this.showConfirmationTab = false;
+      await this._usersService.updateUserList(); // Actualiza la lista después de eliminar
+      this.userList = this._usersService.usersList; // Obtiene la lista actualizada
     } catch (error) {
       console.error('Error al eliminar el usuario:', error);
     }
