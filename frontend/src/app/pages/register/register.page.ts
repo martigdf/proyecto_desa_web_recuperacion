@@ -44,7 +44,7 @@ export class RegisterPage {
       const { name, lastname, email, password } = this.validateRegister.value;
       await this.RegisterService.register(name, lastname, email, password);
       console.log('Registro exitoso');
-      await this.router.navigate(['/all-properties']);
+      await this.router.navigate(['/login']);
     } else {
       console.log('Formulario inválido');
     }
