@@ -45,6 +45,6 @@ export class EditUserPage implements OnInit {
   onCanceled() {
     console.log('Edición cancelada');
     window.alert('Edición cancelada')
-    this.router.navigate(['']);
+    this.router.navigate(['admin-panel/users']);
   }
 }
