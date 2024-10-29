@@ -7,5 +7,6 @@ export interface Property {
     area: number,
     number_of_rooms: number,
     number_of_bathrooms: number,
-    contact_details: string
+    contact_details: string,
+    img_url: string
 }
