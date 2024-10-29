@@ -2,12 +2,13 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonItem, IonLabel, IonCheckbox, IonButton, IonContent } from "@ionic/angular/standalone";
 import { AuthGoogleService } from '../../services/auth-google.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [IonContent, IonButton, IonCheckbox, IonLabel, IonItem, IonCardContent, IonCardTitle, IonCard, IonCardHeader, FormsModule],
   templateUrl: './login.page.html',
   styleUrl: './login.page.css',
 })

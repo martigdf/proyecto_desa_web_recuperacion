@@ -25,7 +25,6 @@ export const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesPage,
-    canActivate: [isValidUserGuard],
   },
   {
     path: 'all-properties',
