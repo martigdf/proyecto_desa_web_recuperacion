@@ -46,7 +46,11 @@ export class UsersService {
 
   async updateUser(user: User): Promise<void> {
     try {
-      await this._apiService.put(`users/${user.id}`, user.toString());
+      console.log('user en updateUser:', user);
+      console.log('user.id en updateUser:', user.id);
+      console.log('json como cadena', JSON.stringify(user));
+      const sentUser = await this._apiService.put(`users/${user.id}`, JSON.stringify(user));
+      console.log('sentUser:', sentUser);
       this.userList.set(this.userList().map(u => u.id === user.id ? user : u));
     } catch (error) {
       console.error('Error updating user:', error);

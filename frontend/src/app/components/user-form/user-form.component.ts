@@ -51,15 +51,13 @@ export class UserFormComponent implements OnInit {
   onSubmit() {
     if (this.userForm.valid) {
       const user: User = this.userForm.value;
+      // Le agregamos el campo id
       if (this.user) {
         user.id = this.user.id;
-        this.usersService.updateUser(user).then(() => {
-          this.userUpdated.emit(user);
-        });
-        if (this.isAdmin()) {
-          this.router.navigate(['admin-panel/users']);
-        }
-        this.router.navigate(['']);
+      }
+      if (this.user) {
+        this.userUpdated.emit(user);  // Emitimos el evento
+        console.log('Usuario emitido:', user);
       }
     }
   }

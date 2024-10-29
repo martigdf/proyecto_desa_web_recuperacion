@@ -72,6 +72,8 @@ export class BackendApiService {
         throw new Error(data);
       }
     } catch (error) {
+      console.log('Error en la llamada PUT:', error);
+      console.log(this.getHeaders())
       throw error;
     }
   }
