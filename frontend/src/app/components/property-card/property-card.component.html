@@ -1,0 +1,17 @@
+<ion-card class="max-w-sm m-4 bg-white shadow-lg">
+  <ion-card-header>
+    <ion-card-title class="text-xl font-bold text-gray-800">{{ property.title }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p class="text-gray-600">{{ property.description }}</p>
+    <p class="font-semibold text-lg mt-2">Precio: ${{ property.price }}</p>
+    <p class="text-gray-600">Ubicación: {{ property.location }}</p>
+  </ion-card-content>
+  <!-- Colocar el botón aquí, al final del card -->
+  <div class="p-4">
+    <button class="w-full bg-customGreen text-white rounded px-4 py-2" (click)="goToTask()">
+      Detalles de la propiedad
+    </button>
+  </div>
+</ion-card>
+  
