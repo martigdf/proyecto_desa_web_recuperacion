@@ -1,8 +1,8 @@
 <header class="w-full h-16 flex items-center justify-around fixed top-0 left-0 z-50 bg-[#386150]">
     <nav class="navbar flex items-center w-full justify-between transition-width duration-200 ease">
-        <ul class="navbar-nav list-none p-0 m-0 flex flex-row">
+        <ul class="navbar-nav list-none p-0 m-0 flex flex-row ">
             <li style="align-items: center;" class="nav-item" id="logout-item">
-                <a href="#" class="nav-link flex items-center ml-4" (click)="logout()" style="display: flex; align-items: center;">
+                <a href="#" class="nav-link flex items-center ml-4 text-white" (click)="logout()" style="display: flex; align-items: center;">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6">
                         <path fill="currentColor" class="fa-primary" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
                     </svg>
@@ -11,22 +11,29 @@
             </li>
             <!-- Mostrar rutas -->
             <li *ngIf="currentRoute === '/all-properties' || currentRoute === '/favorites' || currentRoute === '/property-compare'" style="display: flex; align-items: center;">
-                <a class="nav-link flex items-center ml-4" href="/favorites">
+                <a class="nav-link flex items-center ml-4 text-white" href="/favorites">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/favorites' && isValidUser">Favorites</span>
                 </a>
-                <a class="nav-link flex items-center ml-4" href="/property-compare">
+                <a class="nav-link flex items-center ml-4 text-white" href="/property-compare">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/property-compare'">Comparar propiedades </span>
                 </a>
             </li>
             <li *ngIf="currentRoute === '/admin-panel' || currentRoute === '/admin-panel/users' || currentRoute === '/all-properties' " style="display: flex; align-items: center;">
-                <a class="nav-link flex items-center ml-4" href="/admin-panel/users">
+                <a class="nav-link flex items-center ml-4 text-white" href="/admin-panel/users">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/admin-panel/users' && isAdmin">Lista de usuarios registrados</span>
                 </a>
-                <a class="nav-link flex items-center ml-4" href="/all-properties">
+                <a class="nav-link flex items-center ml-4 text-white" href="/all-properties">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/all-properties'">Lista de propiedades </span>
                 </a>
             </li>
         </ul>
-        <div id="user-info"></div>
+        <div id="user-info">
+          <!-- Si hay un usuario logueado, mostramos sus datos -->
+          <div *ngIf="isValidUser" class="flex items-center">
+              <p class="text-white
+              text-sm
+              mr-4">{{ user.name }} {{ user.lastname }}</p>
+        </div>
+        </div>
     </nav>
 </header>
