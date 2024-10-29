@@ -6,12 +6,12 @@ import { RegisterService } from '../../services/register.service';
 import {FormGroup, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { RegisterValidationsDirective } from '../../directives/register-validations.directive';
 import { NgClass } from '@angular/common';
-import { IonContent, IonLabel } from "@ionic/angular/standalone";
+import { IonContent, IonLabel, IonCardContent, IonButton } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [IonLabel, IonContent, 
+  imports: [IonButton, IonCardContent, IonLabel, IonContent, 
     FormsModule, 
     ReactiveFormsModule,
     NgIf,
