@@ -1,14 +1,21 @@
-<div class="relative h-screen bg-gray-50 bg-[url('https://i.imgur.com/vbWMrvU.jpeg')] bg-cover bg-center overflow-hidden">
-  
+<div
+  class="relative h-screen bg-gray-50 bg-[url('https://i.imgur.com/vbWMrvU.jpeg')] bg-cover bg-center overflow-hidden"
+>
   <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md z-10 relative">
-      <div class="bg-transparent backdrop-blur-md border border-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+      <div
+        class="bg-transparent backdrop-blur-md border border-white py-8 px-4 shadow sm:rounded-lg sm:px-10"
+      >
+        <h2
+          class="mt-6 text-center text-3xl font-bold tracking-tight text-white"
+        >
           Sign in to your account
         </h2>
         <form class="mt-8 space-y-6" (ngSubmit)="this.onSubmitLogin()">
           <div>
-            <label for="email" class="block text-sm font-bold text-white">Email address</label>
+            <label for="email" class="block text-sm font-bold text-white"
+              >Email address</label
+            >
             <div class="mt-1">
               <input
                 [(ngModel)]="this.email"
@@ -16,14 +23,16 @@
                 name="email"
                 type="email"
                 autocomplete="email"
-                required=""
+                required
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label for="password" class="block text-sm font-bold text-white">Password</label>
+            <label for="password" class="block text-sm font-bold text-white"
+              >Password</label
+            >
             <div class="mt-1">
               <input
                 [(ngModel)]="this.password"
@@ -31,7 +40,7 @@
                 name="password"
                 type="password"
                 autocomplete="current-password"
-                required=""
+                required
                 class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
@@ -45,11 +54,16 @@
                 type="checkbox"
                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
               />
-              <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+              <label for="remember-me" class="ml-2 block text-sm text-gray-900"
+                >Remember me</label
+              >
             </div>
-
             <div class="text-sm">
-              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+              <a
+                href="#"
+                class="font-medium text-indigo-600 hover:text-indigo-500"
+                >Forgot your password?</a
+              >
             </div>
           </div>
 
@@ -60,6 +74,21 @@
             >
               Sign in
             </button>
+            <div class="mt-4 flex justify-center">
+              <button
+                type="button"
+                mat-raised-button
+                (click)="signInWithGoogle()"
+                class="flex items-center justify-center rounded-md border border-transparent bg-white py-2 px-4 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              >
+                <img
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                  alt="Google"
+                  class="h-5 w-5 mr-2"
+                />
+                Sign in with Google
+              </button>
+            </div>
           </div>
         </form>
       </div>
