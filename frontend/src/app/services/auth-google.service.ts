@@ -1,12 +1,16 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { googleAuthConfig } from './auth-google-config';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGoogleService {
   private oAuthService = inject(OAuthService);
+  private _authService = inject(AuthService);
+  private router = inject(Router);
   email = signal<string>('');
   private userLoggedIn = this.loadUserLoggedInState();
 
@@ -31,6 +35,9 @@ export class AuthGoogleService {
         }
       );
 
+      if (response.status === 404) {
+        throw new Error('User not found');
+      }
       // Verifica si la respuesta es exitosa
       if (!response.ok) {
         const errorText = await response.text();
@@ -58,7 +65,7 @@ export class AuthGoogleService {
         this.email.set(claims['email']);
         if (!this.userLoggedIn) {
           this.userLoggedIn = true;
-          this.saveUserLoggedInState(this.userLoggedIn); 
+          this.saveUserLoggedInState(this.userLoggedIn);
           this.postLogin(); // Solo se llama aquí si el usuario no había iniciado sesión antes
         }
       }
@@ -70,8 +77,23 @@ export class AuthGoogleService {
   }
 
   async postLogin() {
-    console.log(this.email());
-    await this.googleLogin(this.Email);
+    try {
+      console.log(this.email());
+      await this.googleLogin(this.Email);
+
+      if (this._authService.isAdmin()) {
+        this.router.navigate(['admin-panel']);
+      } else {
+        this.router.navigate(['all-properties']);
+      }
+    } catch (error: any) {
+      if (error.message === 'User not found') {
+        this.router.navigate(['/register'], {
+          queryParams: { email: this.Email },
+        });
+        console.error('Error durante el inicio de sesión:', error);
+      }
+    }
   }
 
   logout() {
