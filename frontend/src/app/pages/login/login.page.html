@@ -1,17 +1,24 @@
 <ion-content class="h-screen bg-gray-50 overflow-hidden">
-  
-  <div class="relative h-full bg-[url('https://kato-lawyer-souzoku.jp/wp-content/uploads/fudousan_201.jpg')] bg-cover bg-center">
+  <div
+    class="relative h-full bg-[url('https://kato-lawyer-souzoku.jp/wp-content/uploads/fudousan_201.jpg')] bg-cover bg-center"
+  >
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md z-10 relative">
-        <div class="bg-white backdrop-blur-md border border-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-
-          <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-[#557665]">
+        <div
+          class="bg-white backdrop-blur-md border border-white py-8 px-4 shadow sm:rounded-lg sm:px-10"
+        >
+          <h2
+            class="mt-6 text-center text-3xl font-bold tracking-tight text-[#557665]"
+          >
             Sign in to your account
           </h2>
           <form class="mt-8 space-y-6" (ngSubmit)="this.onSubmitLogin()">
-            
             <div>
-              <ion-label for="email" class="block text-sm font-bold text-[#557665]">Email address</ion-label>
+              <ion-label
+                for="email"
+                class="block text-sm font-bold text-[#557665]"
+                >Email address</ion-label
+              >
               <div class="mt-1">
                 <input
                   [(ngModel)]="this.email"
@@ -24,9 +31,13 @@
                 />
               </div>
             </div>
-            
+
             <div>
-              <ion-label for="password" class="block text-sm font-bold text-[#557665]">Password</ion-label>
+              <ion-label
+                for="password"
+                class="block text-sm font-bold text-[#557665]"
+                >Password</ion-label
+              >
               <div class="mt-1">
                 <input
                   [(ngModel)]="this.password"
@@ -48,13 +59,19 @@
                   type="checkbox"
                   class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                 />
-                <label for="remember_me" class="ml-2 block text-sm text-[#557665]">
+                <ion-label
+                  for="remember_me"
+                  class="ml-2 block text-sm text-[#557665]"
+                >
                   Remember me
-                </label>
+                </ion-label>
               </div>
 
               <div class="text-sm">
-                <a href="#" class="font-medium text-[#386150] hover:text-[#8ABFA3]">
+                <a
+                  href="#"
+                  class="font-medium text-[#386150] hover:text-[#8ABFA3]"
+                >
                   Forgot your password?
                 </a>
               </div>
@@ -68,21 +85,21 @@
                 Sign in
               </button>
               <div class="mt-4 flex justify-center">
-              <button
-                type="button"
-                mat-raised-button
-                (click)="signInWithGoogle()"
-                class="flex items-center justify-center rounded-md border border-transparent bg-white py-2 px-4 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-              >
-                <img
-                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                  alt="Google"
-                  class="h-5 w-5 mr-2"
-                />
-                Sign in with Google
-              </button>
+                <button
+                  type="button"
+                  mat-raised-button
+                  (click)="signInWithGoogle()"
+                  class="flex items-center justify-center rounded-md border border-transparent bg-white py-2 px-4 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                >
+                  <img
+                    src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                    alt="Google"
+                    class="h-5 w-5 mr-2"
+                  />
+                  Sign in with Google
+                </button>
+              </div>
             </div>
-          </div>
           </form>
         </div>
       </div>
