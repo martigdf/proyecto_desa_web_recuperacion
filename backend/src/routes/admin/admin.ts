@@ -28,7 +28,8 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 name,
                 lastname,
                 email,
-                role
+                role,
+                registration_date
                 from users`);
             if(res.rows.length === 0) {
                 reply.code(404).send({ message: "No hay usuarios registrados" });

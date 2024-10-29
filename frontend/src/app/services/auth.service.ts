@@ -8,11 +8,12 @@ export class AuthService {
 
   // Metodo para verificar si el usuario esta logueado
   isValidUser(): boolean{
-    return !!this.token;
+    return !!localStorage.getItem('token');
   }
   // Metodo para cerrar sesion
   logout(): void{
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   // Login
@@ -52,6 +53,10 @@ export class AuthService {
       return role === 'admin';
     }
     return false
+  }
+
+  getUser(){
+    return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   constructor() { }

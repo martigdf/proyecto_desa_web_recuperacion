@@ -1,0 +1,9 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-slate-800 p-6 rounded-xl shadow-lg max-w-md mx-auto">
+      <h3 class="text-lg font-semibold text-slate-100">¿Estás seguro de que deseas eliminar este usuario?</h3>
+      <div class="mt-4 flex justify-end">
+        <button (click)="confirm()" class="bg-red-500 text-white px-4 py-2 rounded mr-2 hover:bg-red-600 transition">Eliminar</button>
+        <button (click)="cancel()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 transition">Cancelar</button>
+      </div>
+    </div>
+  </div>

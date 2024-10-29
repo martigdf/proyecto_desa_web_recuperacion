@@ -7,6 +7,12 @@ import { HomePage } from './pages/home/home.page';
 import { PropertyViewPage } from './pages/property-view/property-view.page';
 import { PropertyComparePage } from './pages/property-compare/property-compare.page';
 import { AdminPanelPage } from './pages/admin-panel/admin-panel.page';
+import {isAdminGuard} from './guards/is-admin.guard';
+import {isValidUserGuard} from './guards/is-valid-user.guard';
+import { RegisterPage } from './pages/register/register.page';
+import {EditUserPage} from './pages/edit-user/edit-user.page';
+import {isAdminOrSelfGuard} from './guards/is-admin-or-self.guard';
+import { isAdminOrUserGuard } from './guards/is-admin-or-user.guard';
 
 export const routes: Routes = [
   {
@@ -27,7 +33,7 @@ export const routes: Routes = [
     component: AllPropertiesPage,
   },
   {
-    path: 'property-view',
+    path: 'property-view/:id',
     component: PropertyViewPage,
   },
   {
@@ -37,15 +43,25 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
+    canActivate: [isAdminOrUserGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterPage,
   },
   {
     path: 'admin-panel',
     component: AdminPanelPage,
-    children: [
-      {
-        path: 'users',
-        component: UsersPage,
-      },
-    ],
+    canActivate: [isAdminGuard],
   },
+  {
+    path: 'admin-panel/users',
+    component: UsersPage,
+    canActivate: [isAdminGuard],
+  },
+  {
+    path: 'edit-user/:userId',
+    component: EditUserPage,
+    canActivate: [isAdminOrSelfGuard],
+  }
 ];
