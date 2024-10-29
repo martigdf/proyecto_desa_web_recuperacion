@@ -1,0 +1,19 @@
+<p>layout works!</p>
+
+<div class="min-h-screen flex flex-col">
+    <!-- Encabezado general del sitio -->
+    <header class="w-full">
+      <app-navbar></app-navbar>
+    </header>
+  
+    <!-- Contenido específico de cada página -->
+    <main class="flex-grow mt-6">
+      <ng-content></ng-content>
+    </main>
+  
+    <!-- Pie de página general -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+      © 2024 Nuestra Aplicación Inmobiliaria
+    </footer>
+ </div>
+  
