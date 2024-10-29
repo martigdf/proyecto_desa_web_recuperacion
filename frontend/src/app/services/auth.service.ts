@@ -13,6 +13,7 @@ export class AuthService {
   // Metodo para cerrar sesion
   logout(): void{
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   // Login

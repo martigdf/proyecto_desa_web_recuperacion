@@ -12,7 +12,6 @@ export class AuthGoogleService {
   private _authService = inject(AuthService);
   private router = inject(Router);
   email = signal<string>('');
-  private userLoggedIn = this.loadUserLoggedInState();
 
   get Email() {
     return this.email();
@@ -63,9 +62,7 @@ export class AuthGoogleService {
       if (this.oAuthService.hasValidIdToken()) {
         const claims = this.oAuthService.getIdentityClaims();
         this.email.set(claims['email']);
-        if (!this.userLoggedIn) {
-          this.userLoggedIn = true;
-          this.saveUserLoggedInState(this.userLoggedIn);
+        if (!this._authService.isValidUser()) {
           this.postLogin(); // Solo se llama aquí si el usuario no había iniciado sesión antes
         }
       }
@@ -101,12 +98,4 @@ export class AuthGoogleService {
     this.oAuthService.logOut();
   }
 
-  private saveUserLoggedInState(state: boolean) {
-    localStorage.setItem('userLoggedIn', JSON.stringify(state));
-  }
-
-  private loadUserLoggedInState(): boolean {
-    const storedState = localStorage.getItem('userLoggedIn');
-    return storedState ? JSON.parse(storedState) : false;
-  }
 }
