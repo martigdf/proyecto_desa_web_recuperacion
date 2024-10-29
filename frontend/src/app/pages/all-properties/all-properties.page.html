@@ -1,10 +1,12 @@
 <p>all-properties works!</p>
-<button class="m-3 mt-4 px-4 py-2 bg-purple-500 text-white rounded" (click)="goToFavorites()">
-    Favoritos
-</button>
-<button class="m-3 mt-4 px-4 py-2 bg-purple-500 text-white rounded" (click)="goToTask()">
-    Detalles de la propiedad
-</button>
-<button class="m-3 mt-4 px-4 py-2 bg-purple-500 text-white rounded" (click)="goToCompare()">
-    Comparar propiedades
-</button>
+<app-layout>
+    <button class="m-3 mt-4 px-4 py-2" style="background-color: #8ABFA3; color: white; border-radius: 0.25rem;" (click)="goToFavorites()">
+        Favoritos
+    </button>
+    <button class="m-3 mt-4 px-4 py-2" style="background-color: #8ABFA3; color: white; border-radius: 0.25rem;" (click)="goToTask()">
+        Detalles de la propiedad
+    </button>
+    <button class="m-3 mt-4 px-4 py-2" style="background-color: #8ABFA3; color: white; border-radius: 0.25rem;" (click)="goToCompare()">
+        Comparar propiedades
+    </button>
+</app-layout>
