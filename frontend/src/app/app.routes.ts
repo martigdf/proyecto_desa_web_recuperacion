@@ -12,6 +12,7 @@ import {isValidUserGuard} from './guards/is-valid-user.guard';
 import { RegisterPage } from './pages/register/register.page';
 import {EditUserPage} from './pages/edit-user/edit-user.page';
 import {isAdminOrSelfGuard} from './guards/is-admin-or-self.guard';
+import { isAdminOrUserGuard } from './guards/is-admin-or-user.guard';
 
 export const routes: Routes = [
   {
@@ -26,7 +27,6 @@ export const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesPage,
-    canActivate: [isValidUserGuard],
   },
   {
     path: 'all-properties',
@@ -43,6 +43,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
+    canActivate: [isAdminOrUserGuard],
   },
   {
     path: 'register',
