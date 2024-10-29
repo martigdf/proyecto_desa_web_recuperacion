@@ -1,7 +1,7 @@
 <!-- Dejamos el espacio que ocupa el header y el footer para que el contenido se ajuste a la pantalla -->
 <div class="p-5"></div>
 <ion-content class="ion-padding ion-margin-top">
-      <ion-button class="ion-align-items-center ion-margin-top mt-4 px-4 py-2 text-white rounded" (click)="goToAdminPanel()" fill="solid">
+      <ion-button class="ion-align-items-center ion-margin-top mt-4 px-4 py-2 rounded" expand="full" (click)="goToAdminPanel()" color="tertiary">
         Volver al panel de administración
       </ion-button>
 
@@ -14,7 +14,8 @@
               </h3>
             </ion-col>
             <ion-col class="ion-text-end">
-                <ion-button fill="outline">
+                <ion-button fill="outline" (click)="createUser()">
+                  <ion-ripple-effect></ion-ripple-effect>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -58,7 +59,7 @@
               </svg>
             </p>
           </ion-col>
-          <ion-col size="3">
+          <ion-col size="2">
             <p
               class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
             >
@@ -80,7 +81,29 @@
               </svg>
             </p>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
+            <p
+              class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
+            >
+              Email
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                ></path>
+              </svg>
+            </p>
+          </ion-col>
+          <ion-col size="1">
             <p
               class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
             >
@@ -131,10 +154,13 @@
           <ion-col size="1">
             <p>{{ user.id }}</p>
           </ion-col>
-          <ion-col size="3">
+          <ion-col size="2">
             <p>{{ user.name }} {{ user.lastname }}</p>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
+            <p>{{ user.email }}</p>
+          </ion-col>
+          <ion-col size="1">
             <!--Si el usuario es administrador, lo mostramos como un botón con fondo verde-->
             @if(user.role === 'admin'){
               <ion-button fill="outline" color="success">

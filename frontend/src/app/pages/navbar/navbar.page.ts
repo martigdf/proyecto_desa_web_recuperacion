@@ -31,7 +31,7 @@ export class NavbarPage implements OnInit {
     // Verifica si el usuario está logueado
     this.isValidUser = this.authService.isValidUser();
     console.log('Usuario válido:', this.isValidUser);
-  
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Actualiza la ruta en cada cambio de navegación
@@ -47,7 +47,7 @@ export class NavbarPage implements OnInit {
     console.log('Verificando rutas:', filteredRoutes, 'Ruta actual:', this.currentRoute, 'Coincide:', isMatch);
     return isMatch;
   }
-  
+
   private _googleAuthService = inject(AuthGoogleService);
 
   logout() {
@@ -55,5 +55,8 @@ export class NavbarPage implements OnInit {
     this.authService.logout();
   }
 
-
+  // Si hay un usuario logueado, mostramos su nombre en la barra de navegación
+  get user() {
+    return this.authService.getUser();
+  }
 }
