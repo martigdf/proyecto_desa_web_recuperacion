@@ -33,7 +33,7 @@ export const routes: Routes = [
     component: AllPropertiesPage,
   },
   {
-    path: 'property-view',
+    path: 'property-view/:id',
     component: PropertyViewPage,
   },
   {

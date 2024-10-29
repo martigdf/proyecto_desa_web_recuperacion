@@ -1,13 +1,30 @@
-<p>all-properties works!</p>
-<div class="p-5"></div>
-<app-layout>
-    <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToFavorites()">
-        Favoritos
+<app-layout class="flex flex-col min-h-screen">
+  <div class="mt-4 flex-grow overflow-y-auto">
+    <button
+      class="m-3 px-4 py-2 bg-customGreen text-white rounded"
+      (click)="goToFavorites()"
+    >
+      Favoritos
     </button>
-    <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToTask()">
-        Detalles de la propiedad
+    <button
+      class="m-3 px-4 py-2 bg-customGreen text-white rounded"
+      (click)="goToCompare()"
+    >
+      Comparar propiedades
     </button>
-    <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToCompare()">
-        Comparar propiedades
-    </button>
+    <ion-grid class="px-2">
+      <ion-row>
+        <ion-col
+          size="12"
+          size-md="6"
+          size-lg="4"
+          *ngFor="let property of properties"
+        >
+          <div class="p-2">
+            <app-property-card [property]="property"></app-property-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </app-layout>
