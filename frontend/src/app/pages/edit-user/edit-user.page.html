@@ -1,0 +1,14 @@
+<div class="p-5"></div>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <app-user-form
+    (userUpdated)="onUserUpdated($event)"
+    (canceled)="onCanceled()">
+  </app-user-form>
+</ion-content>
+  <app-layout></app-layout>
