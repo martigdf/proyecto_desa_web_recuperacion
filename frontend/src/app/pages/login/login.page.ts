@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthGoogleService } from '../../services/auth-google.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginPage {
   email: string = '';
   password: string = '';
   private authService: AuthService = inject(AuthService);
+  private googleAuthService = inject(AuthGoogleService);
   private router = inject(Router);
 
   async onSubmitLogin() {
@@ -29,5 +31,9 @@ export class LoginPage {
       await this.router.navigate(['/all-properties']);
     }
     
+  }
+
+  signInWithGoogle() {
+    this.googleAuthService.login();
   }
 }
