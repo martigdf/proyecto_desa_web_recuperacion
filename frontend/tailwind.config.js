@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "./node_modules/@ionic/**/*.{js,ts,html}",
   ],
   darkMode: 'class',
   theme: {
