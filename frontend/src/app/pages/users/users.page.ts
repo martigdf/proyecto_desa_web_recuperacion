@@ -4,11 +4,12 @@ import { User } from '../../interfaces/user';
 import { NgFor, NgIf } from '@angular/common';
 import { ConfirmationTabComponent } from '../../components/confirmation-tab/confirmation-tab.component';
 import { UsersService } from '../../services/users.service';
+import { LayoutComponent } from "../../layout/layout.component";
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [NgFor, NgIf, ConfirmationTabComponent],
+  imports: [NgFor, NgIf, ConfirmationTabComponent, LayoutComponent],
   templateUrl: './users.page.html',
   styleUrl: './users.page.css',
 })
