@@ -41,6 +41,10 @@ export class NavbarPage implements OnInit {
     });
   }
 
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
+  }
+
   isActive(routes: string[]): boolean {
     const filteredRoutes = routes.filter(route => route !== this.currentRoute);
     const isMatch = filteredRoutes.some(route => this.currentRoute === route);

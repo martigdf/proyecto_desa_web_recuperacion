@@ -11,18 +11,18 @@
             </li>
             <!-- Mostrar rutas -->
             <li *ngIf="currentRoute === '/all-properties' || currentRoute === '/favorites' || currentRoute === '/property-compare'" style="display: flex; align-items: center;">
-                <a class="nav-link flex items-center ml-4" href="/favorites">
+                <a class="nav-link flex items-center ml-4" (click)="navigateTo('/favorites')" style="cursor: pointer;">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/favorites' && isValidUser">Favorites</span>
                 </a>
-                <a class="nav-link flex items-center ml-4" href="/property-compare">
+                <a class="nav-link flex items-center ml-4" (click)="navigateTo('/property-compare')" style="cursor: pointer;">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/property-compare'">Comparar propiedades </span>
                 </a>
             </li>
             <li *ngIf="currentRoute === '/admin-panel' || currentRoute === '/admin-panel/users' || currentRoute === '/all-properties' " style="display: flex; align-items: center;">
-                <a class="nav-link flex items-center ml-4" href="/admin-panel/users">
+                <a class="nav-link flex items-center ml-4" (click)="navigateTo('/admin-panel/users')" style="cursor: pointer;">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/admin-panel/users' && isAdmin">Lista de usuarios registrados</span>
                 </a>
-                <a class="nav-link flex items-center ml-4" href="/all-properties">
+                <a class="nav-link flex items-center ml-4" (click)="navigateTo('/all-properties')" style="cursor: pointer;">
                     <span class="link-text ml-2" *ngIf="currentRoute !== '/all-properties'">Lista de propiedades </span>
                 </a>
             </li>
