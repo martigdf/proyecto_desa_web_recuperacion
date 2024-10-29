@@ -10,6 +10,7 @@ import { AdminPanelPage } from './pages/admin-panel/admin-panel.page';
 import {isAdminGuard} from './guards/is-admin.guard';
 import {isValidUserGuard} from './guards/is-valid-user.guard';
 import { RegisterPage } from './pages/register/register.page';
+import { isAdminOrUserGuard } from './guards/is-admin-or-user.guard';
 
 export const routes: Routes = [
   {
@@ -24,7 +25,6 @@ export const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesPage,
-    canActivate: [isValidUserGuard],
   },
   {
     path: 'all-properties',
@@ -41,6 +41,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
+    canActivate: [isAdminOrUserGuard],
   },
   {
     path: 'register',

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { AuthGoogleService } from '../../services/auth-google.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { NgIf } from '@angular/common';
-
 
 
 @Component({
@@ -48,7 +48,10 @@ export class NavbarPage implements OnInit {
     return isMatch;
   }
   
+  private _googleAuthService = inject(AuthGoogleService);
+
   logout() {
+    this._googleAuthService.logout();
     this.authService.logout();
   }
 }
