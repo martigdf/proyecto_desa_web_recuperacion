@@ -11,6 +11,7 @@ import {isAdminGuard} from './guards/is-admin.guard';
 import {isValidUserGuard} from './guards/is-valid-user.guard';
 import { RegisterPage } from './pages/register/register.page';
 import {EditUserPage} from './pages/edit-user/edit-user.page';
+import {isAdminOrSelfGuard} from './guards/is-admin-or-self.guard';
 
 export const routes: Routes = [
   {
@@ -58,8 +59,8 @@ export const routes: Routes = [
     canActivate: [isAdminGuard],
   },
   {
-    path: 'admin-panel/edit-user/:id',
+    path: 'edit-user/:userId',
     component: EditUserPage,
-    canActivate: [isAdminGuard],
+    canActivate: [isAdminOrSelfGuard],
   }
 ];

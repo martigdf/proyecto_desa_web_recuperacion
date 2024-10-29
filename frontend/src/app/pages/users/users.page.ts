@@ -5,11 +5,12 @@ import {NgClass, NgFor, NgIf} from '@angular/common';
 import { ConfirmationTabComponent } from '../../components/confirmation-tab/confirmation-tab.component';
 import { UsersService } from '../../services/users.service';
 import {IonicModule} from '@ionic/angular';
+import {LayoutComponent} from '../../layout/layout.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [NgFor, NgIf, ConfirmationTabComponent, IonicModule, NgClass],
+  imports: [NgFor, NgIf, ConfirmationTabComponent, IonicModule, NgClass, LayoutComponent],
   templateUrl: './users.page.html',
   styleUrl: './users.page.css',
 })
@@ -56,7 +57,7 @@ export class UsersPage implements OnInit {
   }
 
   editUser(id: number) {
-    this.router.navigate(['/admin-panel/edit-user', id]);
+    this.router.navigate(['/edit-user', id]);
   }
 
   createUser() {

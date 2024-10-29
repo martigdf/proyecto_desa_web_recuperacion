@@ -15,4 +15,6 @@ export class NavbarPage {
   logout() {
     this.authService.logout();
   }
+
+
 }

@@ -34,4 +34,23 @@ export class UsersService {
       throw error;
     }
   }
+
+  async getUser(id: string): Promise<User> {
+    try {
+      return await this._apiService.get(`users/${id}`);
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      throw error;
+    }
+  }
+
+  async updateUser(user: User): Promise<void> {
+    try {
+      await this._apiService.put(`users/${user.id}`, user.toString());
+      this.userList.set(this.userList().map(u => u.id === user.id ? user : u));
+    } catch (error) {
+      console.error('Error updating user:', error);
+      throw error;
+    }
+  }
 }

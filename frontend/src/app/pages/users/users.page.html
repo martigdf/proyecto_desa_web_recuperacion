@@ -1,60 +1,161 @@
-<ion-content class="ion-padding">
-  <ion-button class="ion-margin-top" (click)="goToAdminPanel()" fill="solid" color="primary">
-    Volver
-  </ion-button>
+<!-- Dejamos el espacio que ocupa el header y el footer para que el contenido se ajuste a la pantalla -->
+<div class="p-5"></div>
+<ion-content class="ion-padding ion-margin-top">
+      <ion-button class="ion-align-items-center ion-margin-top mt-4 px-4 py-2 text-white rounded" (click)="goToAdminPanel()" fill="solid">
+        Volver al panel de administración
+      </ion-button>
 
-  <div class="ion-margin-top">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-list-header>Lista de Usuarios</ion-list-header>
-        </ion-col>
-        <ion-col class="ion-text-end">
-          <ion-button (click)="createUser()" fill="solid" color="primary">
-            <ion-icon name="add-outline"></ion-icon>
-            Crear usuario
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let user of userList">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{ user.name }} {{ user.lastname }}</ion-card-title>
-            <ion-card-subtitle>{{ user.email }}</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-row>
-              <ion-col size="6">
-                <p>ID: {{ user.id }}</p>
-                <!-- Si el rol es admin, lo mostramos en verde, sino en naranja, utilizando tailwind y ionic --->
-                @if (user.role === 'admin') {
-                  <p class="bg-green-200 text-green-800 rounded-full px-2">Rol: Admin</p>
-                } @else {
-                  <p class="bg-yellow-200 text-yellow-800 rounded-full px-2">Rol: User</p>
-                }
-              </ion-col>
-              <ion-col size="6" class="ion-text-end">
-                <p>Registro: {{ formatRegistrationDate(user.registration_date) }}</p>
-                <ion-button (click)="editUser(user.id)" fill="clear" color="primary">
-                  <ion-icon name="pencil-outline"></ion-icon>
+      <div class="ion-margin-top">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h3 class="text-lg font-semibold">
+                Lista de Usuarios
+              </h3>
+            </ion-col>
+            <ion-col class="ion-text-end">
+                <ion-button fill="outline">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    stroke-width="2"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
+                    ></path>
+                  </svg>
+                  Crear usuario
                 </ion-button>
-                <ion-button (click)="openDeleteTab(user.id.toString())" fill="clear" color="danger">
-                  <ion-icon name="trash-outline"></ion-icon>
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
 
-  <app-confirmation-tab *ngIf="showConfirmationTab" (confirmed)="confirmDelete()" (canceled)="showConfirmationTab = false"></app-confirmation-tab>
-</ion-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-between">
+          <ion-col size="1">
+            <p
+              class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
+            >
+              ID
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                ></path>
+              </svg>
+            </p>
+          </ion-col>
+          <ion-col size="3">
+            <p
+              class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
+            >
+              Usuario
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                ></path>
+              </svg>
+            </p>
+          </ion-col>
+          <ion-col size="2">
+            <p
+              class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
+            >
+              Rol
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                ></path>
+              </svg>
+            </p>
+          </ion-col>
+          <ion-col size="2">
+            <p
+              class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none"
+            >
+              Fecha de registro
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                ></path>
+              </svg>
+            </p>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+        </ion-row>
 
+        <ion-row *ngFor="let user of userList" class="ion-justify-content-between">
+          <ion-col size="1">
+            <p>{{ user.id }}</p>
+          </ion-col>
+          <ion-col size="3">
+            <p>{{ user.name }} {{ user.lastname }}</p>
+          </ion-col>
+          <ion-col size="2">
+            <!--Si el usuario es administrador, lo mostramos como un botón con fondo verde-->
+            @if(user.role === 'admin'){
+              <ion-button fill="outline" color="success">
+                {{ user.role }}
+              </ion-button>
+            } @else {
+              <ion-button fill="outline" color="tertiary">
+                {{ user.role }}
+              </ion-button>
+            }
+          </ion-col>
+          <ion-col size="2">
+            <p>{{ this.formatRegistrationDate(user.registration_date) }}</p>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button fill="outline" color="primary" (click)="editUser(user.id)">Editar</ion-button>
+            <ion-button fill="outline" color="danger" (click)="openDeleteTab(user.id.toString())">Borrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
+      <app-confirmation-tab *ngIf="showConfirmationTab" (confirmed)="confirmDelete()" (canceled)="showConfirmationTab = false"></app-confirmation-tab>
+    </ion-content>
+<app-layout></app-layout>
