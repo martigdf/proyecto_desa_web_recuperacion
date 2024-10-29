@@ -21,7 +21,7 @@
                   type="text"
                   required=""
                   [ngClass]="{'border-red-500': validateRegister.get('name')?.invalid && validateRegister.get('name')?.touched}"
-                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 />
                 <div *ngIf="validateRegister.get('name')?.invalid && validateRegister.get('name')?.touched">
                   <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('name')?.errors?.['nameError']">
@@ -42,7 +42,7 @@
                   type="text"
                   required=""
                   [ngClass]="{'border-red-500': validateRegister.get('lastname')?.invalid && validateRegister.get('lastname')?.touched}"
-                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 />
                 <div *ngIf="validateRegister.get('lastname')?.invalid && validateRegister.get('lastname')?.touched">
                   <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('lastname')?.errors?.['lastnameError']">
@@ -64,7 +64,7 @@
                   autocomplete="email"
                   required=""
                   [ngClass]="{'border-red-500': validateRegister.get('email')?.invalid && validateRegister.get('email')?.touched}"
-                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 />
                 <div *ngIf="validateRegister.get('email')?.invalid && validateRegister.get('email')?.touched">
                   <small class="text-red-500 text-xs italic" *ngIf="validateRegister.get('email')?.errors?.['emailError']">
@@ -85,7 +85,7 @@
                   type="password"
                   required=""
                   [ngClass]="{'border-red-500': validateRegister.get('password')?.invalid && validateRegister.get('password')?.touched}"
-                  class=" block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  class=" block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 />
                 <div class="h-[30px] overflow-hidden">
                   <div *ngIf="validateRegister.get('password')?.errors && validateRegister.get('password')?.touched" style="max-height: 50px; overflow-y: auto;">
@@ -108,7 +108,7 @@
                   type="password"
                   required=""
                   [ngClass]="{'border-red-500': validateRegister.get('confirmPassword')?.invalid && validateRegister.get('confirmPassword')?.touched}"
-                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  class="block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 />
                 <div *ngIf="validateRegister.get('confirmPassword')?.invalid && validateRegister.get('confirmPassword')?.touched">
                   <small class="text-red-500 text-xs italic"> La contraseña confirmada es requerida.</small>
