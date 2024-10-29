@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LayoutComponent } from "../../layout/layout.component";
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [],
+  imports: [LayoutComponent],
   templateUrl: './favorites.page.html',
   styleUrl: './favorites.page.css'
 })

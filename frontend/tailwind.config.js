@@ -6,6 +6,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        customGreen: '#8ABFA3',
+      },
       animation: {
         blob: "float 20s ease-in-out infinite both alternate",
       },
