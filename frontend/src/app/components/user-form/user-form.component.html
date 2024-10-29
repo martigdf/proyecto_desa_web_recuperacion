@@ -20,7 +20,7 @@
 
       <ion-item>
         <ion-label position="floating">Rol</ion-label>
-        <ion-select formControlName="role">
+        <ion-select formControlName="role" [disabled]="!isAdmin()">
           <ion-select-option value="admin">Admin</ion-select-option>
           <ion-select-option value="user">Usuario</ion-select-option>
         </ion-select>

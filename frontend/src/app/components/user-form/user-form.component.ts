@@ -1,17 +1,22 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../interfaces/user';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AlertController} from '@ionic/angular';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AlertController, IonicModule} from '@ionic/angular';
 import {UsersService} from '../../services/users.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
+  standalone: true,
   selector: 'app-user-form',
-  templateUrl: './user-form.page.html',
-  styleUrls: ['./user-form.page.scss'],
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.scss'],
+  imports: [
+    IonicModule,
+    ReactiveFormsModule
+  ]
 })
-export class UserFormPage  implements OnInit {
+export class UserFormComponent implements OnInit {
 
   @Input() user?: User;
   @Output() userUpdated = new EventEmitter<User>();
