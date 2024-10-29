@@ -18,6 +18,7 @@ export class NavbarPage implements OnInit {
   currentRoute: string = '';
   isAdmin: boolean = false;
   isValidUser: boolean = false;
+  isHomeRoute: boolean = false;
 
   ngOnInit(): void {
     // Asigna la ruta actual al cargar el componente
@@ -39,6 +40,9 @@ export class NavbarPage implements OnInit {
         console.log('Ruta actualizada:', this.currentRoute);
       }
     });
+
+    // Actualiza isHomeRoute
+    this.isHomeRoute = this.currentRoute === '/home';
   }
 
   navigateTo(route: string): void {
