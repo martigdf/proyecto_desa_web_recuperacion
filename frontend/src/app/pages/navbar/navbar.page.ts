@@ -59,7 +59,7 @@ export class NavbarPage implements OnInit {
   private _googleAuthService = inject(AuthGoogleService);
 
   logout() {
-    //this._googleAuthService.logout();
+    this._googleAuthService.logout();
     this.authService.logout();
   }
 

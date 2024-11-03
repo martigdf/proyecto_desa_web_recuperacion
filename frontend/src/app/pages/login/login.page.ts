@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { AuthGoogleService } from '../../services/auth-google.service';
   templateUrl: './login.page.html',
   styleUrl: './login.page.css',
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
   email: string = '';
   password: string = '';
   private authService: AuthService = inject(AuthService);
@@ -33,9 +33,12 @@ export class LoginPage {
     }
     
   }
-/*
+
+  async ngOnInit(): Promise<void> {
+    await this.googleAuthService.handleAuthCallback();
+  }
+
   signInWithGoogle() {
     this.googleAuthService.login();
   }
-    */
 }
