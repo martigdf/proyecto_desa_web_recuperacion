@@ -14,6 +14,9 @@ services:
       - PGUSER=${PGUSER}
       - PGPASSWORD=${PGPASSWORD}
       - PGHOST=${PGHOST}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
 
   frontend-proyecto:
     image: frontend
@@ -58,7 +61,10 @@ services:
     container_name: proxy-proyecto
     build: ./proxy
     ports:
-      - 80:80
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./certs:/etc/nginx/certs
     depends_on:
       - frontend-proyecto
       - backend-proyecto
@@ -66,3 +72,4 @@ services:
       - data-source-proyecto
     environment:
       - FRONTEND_PORT=${FRONTEND_PORT}
+      - FRONTEND_URL=${FRONTEND_URL}

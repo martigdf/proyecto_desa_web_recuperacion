@@ -33,8 +33,9 @@ export class LoginPage {
     }
     
   }
-
+/*
   signInWithGoogle() {
     this.googleAuthService.login();
   }
+    */
 }

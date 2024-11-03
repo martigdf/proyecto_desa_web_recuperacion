@@ -1,6 +1,4 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { googleAuthConfig } from './auth-google-config';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -8,8 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthGoogleService {
-  private oAuthService = inject(OAuthService);
-  private _authService = inject(AuthService);
+ /*  private _authService = inject(AuthService);
   private router = inject(Router);
   email = signal<string>('');
 
@@ -22,7 +19,7 @@ export class AuthGoogleService {
   }
 
   async googleLogin(email: string): Promise<void> {
-    try {
+   try {
       const response = await fetch(
         'http://localhost/backend/auth/login/google',
         {
@@ -68,6 +65,7 @@ export class AuthGoogleService {
       }
     });
   }
+ 
 
   login() {
     this.oAuthService.initImplicitFlow();
@@ -97,5 +95,5 @@ export class AuthGoogleService {
     this.oAuthService.revokeTokenAndLogout();
     this.oAuthService.logOut();
   }
-
+*/
 }
