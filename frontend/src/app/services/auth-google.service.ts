@@ -1,6 +1,4 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { googleAuthConfig } from './auth-google-config';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -8,94 +6,75 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthGoogleService {
-  private oAuthService = inject(OAuthService);
   private _authService = inject(AuthService);
   private router = inject(Router);
-  email = signal<string>('');
 
-  get Email() {
-    return this.email();
+  private getQueryParam(param: string): string | null {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(param);
   }
 
-  constructor() {
-    this.initConfiguration();
+  getEmail() {
+    return this.getQueryParam('email');
   }
 
-  async googleLogin(email: string): Promise<void> {
-    try {
-      const response = await fetch(
-        'http://localhost/backend/auth/login/google',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
-
-      if (response.status === 404) {
-        throw new Error('User not found');
-      }
-      // Verifica si la respuesta es exitosa
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error en la respuesta:', errorText);
-        throw new Error(`Error en el login: ${errorText}`);
-      }
-
-      const data = await response.json();
-
-      // Guardar token y setearlo en el local storage
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-    } catch (error) {
-      console.error('Error en googleLogin:', error);
-      throw error;
-    }
+  getFirstName() {
+    return this.getQueryParam('given_name');
   }
 
-  initConfiguration() {
-    this.oAuthService.configure(googleAuthConfig);
-    this.oAuthService.setupAutomaticSilentRefresh();
-    this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      if (this.oAuthService.hasValidIdToken()) {
-        const claims = this.oAuthService.getIdentityClaims();
-        this.email.set(claims['email']);
-        if (!this._authService.isValidUser()) {
-          this.postLogin(); // Solo se llama aquí si el usuario no había iniciado sesión antes
-        }
-      }
-    });
+  getLastName() {
+    return this.getQueryParam('family_name');
   }
 
   login() {
-    this.oAuthService.initImplicitFlow();
+    window.location.href = 'https://localhost/backend/auth/login/google';
   }
 
-  async postLogin() {
-    try {
-      console.log(this.email());
-      await this.googleLogin(this.Email);
+  async handleAuthCallback() {
+    const token = this.getQueryParam('token');
+    const email = this.getQueryParam('email');
+
+    if (token) {
+      // Guarda el token y los datos del usuario en el almacenamiento local
+      localStorage.setItem('token', token);
+
+      if (email) {
+        const user = await this.loginWithGoogle(email);
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
+        }
+      }
 
       if (this._authService.isAdmin()) {
-        this.router.navigate(['admin-panel']);
+        this.router.navigate(['/admin-panel']);
       } else {
-        this.router.navigate(['all-properties']);
-      }
-    } catch (error: any) {
-      if (error.message === 'User not found') {
-        this.router.navigate(['/register'], {
-          queryParams: { email: this.Email },
-        });
-        console.error('Error durante el inicio de sesión:', error);
+        this.router.navigate(['/all-properties']);
       }
     }
   }
 
-  logout() {
-    this.oAuthService.revokeTokenAndLogout();
-    this.oAuthService.logOut();
+  private async loginWithGoogle(email: string): Promise<any> {
+    const response = await fetch(
+      'https://localhost/backend/auth/login/google/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Error al iniciar sesión');
+    }
+
+    return response.json();
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
 }

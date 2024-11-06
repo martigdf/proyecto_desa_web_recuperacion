@@ -1,6 +1,24 @@
 server {
+
     listen 80;
+
     listen [::]:80;
+
+    server_name ${FRONTEND_URL};
+
+    return 301 https://$host$request_uri;
+
+}
+
+server {
+
+    listen       443 ssl;
+
+    server_name  ${FRONTEND_URL};
+
+    ssl_certificate /etc/nginx/certs/ucu.crt;
+
+    ssl_certificate_key /etc/nginx/certs/ucu.key;
 
     location / {
         proxy_pass http://frontend-proyecto:${FRONTEND_PORT};
