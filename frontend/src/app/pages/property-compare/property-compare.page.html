@@ -4,4 +4,7 @@
     <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToAllProperties()">
         Volver
     </button>
+    <div *ngFor="let property of compareList()">
+        <app-property-card [property]="property.property"></app-property-card>
+    </div>
 </app-layout>
