@@ -58,7 +58,7 @@ export class AllPropertiesPage {
       (filtros.minPrice == null || property.price >= filtros.minPrice) &&
       (filtros.maxPrice == null || property.price <= maxPriceLimit);
   
-      // Filtro de Habitaciones - Alternativa más robusta
+      // Filtro de Habitaciones
       const cumpleHabitaciones = 
       !filtros.habitaciones || 
       (filtros.habitaciones === '5+' && property.number_of_rooms >= 5) ||
@@ -74,7 +74,7 @@ export class AllPropertiesPage {
       (property.barrio && property.barrio.toLowerCase().includes(filtros.barrio.toLowerCase()));
 */
       // incluye la propiedad si cumple con todas las condiciones de filtro
-      return cumplePrecio && cumpleHabitaciones && cumpleDepartamento;
+      return cumplePrecio && cumpleHabitaciones && cumpleDepartamento /*&& cumpleBarrio*/;
     });
   }
 }
