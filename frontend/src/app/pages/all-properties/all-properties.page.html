@@ -1,21 +1,17 @@
 <app-layout class="flex flex-col min-h-screen">
-  <div class="flex h-screen">
+  <div class="flex h-auto">
     <!-- Sidebar -->
     <aside class="w-full lg:w-64">
       <app-filters (filtrosAplicados)="aplicarFiltros($event)"></app-filters>
     </aside>
-    <div class="mt-4 flex-grow overflow-y-auto">
-      <ion-grid class="px-2">
+    <div class="overflow-auto max-w-full max-h-[calc(100vh-4rem)]">
+      <ion-grid class="min-w-full mb-5">
         <ion-row>
           <ion-col
-            size="12"
-            size-md="6"
-            size-lg="4"
             *ngFor="let property of properties"
+            class="w-full sm:max-w-[500px] md:max-w-[300px] min-w-[300px] max-h-[400px] min-h-[300px]"
           >
-            <div class="p-2">
-              <app-property-card [property]="property"></app-property-card>
-            </div>
+            <app-property-card [property]="property"></app-property-card>
           </ion-col>
         </ion-row>
       </ion-grid>
