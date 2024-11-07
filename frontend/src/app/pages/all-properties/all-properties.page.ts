@@ -100,7 +100,6 @@ export class AllPropertiesPage {
     this.router.navigate(['/property-compare']);
   }
 
-
   aplicarFiltros(filtros: any): void {
     // no tiene filtros aplicados, restaura todas las propiedades
     if (!filtros || Object.keys(filtros).every(key => !filtros[key])) {
@@ -110,7 +109,7 @@ export class AllPropertiesPage {
   
     const maxPriceLimit = filtros.maxPrice === 10000 ? Math.max(...this.allProperties.map(p => p.price)) : filtros.maxPrice;
     this.properties = this.allProperties.filter(property => {
-          // Agrega estos console.log para verificar los valores
+
       console.log('Valor del filtro de habitaciones:', filtros.habitaciones);
       console.log('Número de habitaciones de la propiedad:', property.number_of_rooms);
       const cumplePrecio = 
@@ -132,7 +131,7 @@ export class AllPropertiesPage {
       !filtros.barrio || 
       (property.barrio && property.barrio.toLowerCase().includes(filtros.barrio.toLowerCase()));
 */
-      // Solo se incluye la propiedad si cumple con todas las condiciones de filtro
+      // incluye la propiedad si cumple con todas las condiciones de filtro
       return cumplePrecio && cumpleHabitaciones && cumpleDepartamento;
     });
   }

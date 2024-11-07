@@ -35,7 +35,7 @@ export class FiltersComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    // Emitimos cada vez que cambian los valores del formulario
+    // Emite cada vez que cambian los valores del formulario
     this.filtrosForm.valueChanges.subscribe((filtros) => {
       this.filtrosAplicados.emit(filtros);
     });
@@ -62,7 +62,7 @@ export class FiltersComponent  implements OnInit {
       departamento: '',
       barrio: ''
     });
-    // Emite un conjunto vacío o el valor del formulario después de resetearlo
+
     this.filtrosAplicados.emit({});
   }
 }
