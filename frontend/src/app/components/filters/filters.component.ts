@@ -41,10 +41,6 @@ export class FiltersComponent  implements OnInit {
     });
   }
 
-  aplicarFiltros(): void {
-    this.filtrosAplicados.emit(this.filtrosForm.value);
-  }
-
   // Actualiza el valor de habitaciones en el formulario
   updatePriceRange(event: any): void {
     const { lower, upper } = event.detail.value;
