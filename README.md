@@ -1,6 +1,6 @@
-# Proyecto sobre comparación de alquileres
+# Proyecto sobre comparación de alquileres: RentMatch
 
-## Grupo 5
+## Integrantes
 - Martina Guzmán
 - Nicolás Márquez
 - Ana Clara Sena

@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import { FormControl, FormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgIf, JsonPipe, NgFor} from '@angular/common';
@@ -7,6 +7,7 @@ import {FormGroup, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { RegisterValidationsDirective } from '../../directives/register-validations.directive';
 import { NgClass } from '@angular/common';
 import { IonContent, IonLabel, IonCardContent, IonButton } from "@ionic/angular/standalone";
+import { AuthGoogleService } from '../../services/auth-google.service';
 
 @Component({
   selector: 'app-register',
@@ -22,11 +23,10 @@ import { IonContent, IonLabel, IonCardContent, IonButton } from "@ionic/angular/
   templateUrl: './register.page.html',
   styleUrl: './register.page.css'
 })
-export class RegisterPage {
-
-
+export class RegisterPage implements OnInit {
   private RegisterService: RegisterService = inject(RegisterService);
   private router = inject(Router);
+  private googleAuthService = inject(AuthGoogleService);
   validateRegister: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -37,6 +37,13 @@ export class RegisterPage {
       email: new FormControl('', [RegisterValidationsDirective.validateEmail]),
       password: new FormControl('', [RegisterValidationsDirective.validatePassword]),
       confirmPassword: new FormControl('', [RegisterValidationsDirective.validateRepeatPassword]),
+    });
+  }
+  ngOnInit(): void {
+    this.validateRegister.patchValue({
+      email: this.googleAuthService.getEmail(),
+      name: this.googleAuthService.getFirstName() || '',  // Asigna un valor vacío si no existe
+      lastname: this.googleAuthService.getLastName() || ''
     });
   }
 
