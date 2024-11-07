@@ -1,14 +1,19 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { LayoutComponent } from "../../layout/layout.component";
+import { LayoutComponent } from '../../layout/layout.component';
 import { PropertyService } from '../../services/property.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { PropertyCardComponent } from '../../components/property-card/property-card.component';
 
 @Component({
   selector: 'app-property-compare',
   standalone: true,
-  imports: [LayoutComponent, NgFor, PropertyCardComponent],
+  imports: [
+    LayoutComponent,
+    NgFor,
+    NgIf,
+    PropertyCardComponent,
+  ],
   templateUrl: './property-compare.page.html',
   styleUrl: './property-compare.page.css',
 })

@@ -15,7 +15,7 @@ export class PropertyService {
       description:
         'Una hermosa casa frente al mar con acceso privado a la playa.',
       price: 300000,
-      location: 'Playa del Carmen',
+      location: 'Maldonado', // Departamento de Uruguay
       area: 200,
       number_of_rooms: 3,
       number_of_bathrooms: 2,
@@ -28,7 +28,7 @@ export class PropertyService {
       title: 'Apartamento en el centro',
       description: 'Moderno apartamento en el corazón de la ciudad.',
       price: 150000,
-      location: 'Ciudad de México',
+      location: 'Montevideo', // Departamento de Uruguay
       area: 80,
       number_of_rooms: 2,
       number_of_bathrooms: 1,
@@ -42,7 +42,7 @@ export class PropertyService {
       description:
         'Acogedora casa de campo rodeada de naturaleza y tranquilidad.',
       price: 900,
-      location: 'Tepoztlán',
+      location: 'Colonia', // Departamento de Uruguay
       area: 150,
       number_of_rooms: 4,
       number_of_bathrooms: 2,
@@ -56,7 +56,7 @@ export class PropertyService {
       description:
         'Acogedora casa de campo rodeada de naturaleza y tranquilidad.',
       price: 1000,
-      location: 'Montevideo',
+      location: 'Rocha', // Departamento de Uruguay
       area: 150,
       number_of_rooms: 7,
       number_of_bathrooms: 2,
@@ -70,7 +70,7 @@ export class PropertyService {
       description:
         'Acogedora casa de campo rodeada de naturaleza y tranquilidad.',
       price: 7000,
-      location: 'Salto',
+      location: 'Salto', // Departamento de Uruguay
       area: 150,
       number_of_rooms: 4,
       number_of_bathrooms: 2,
@@ -85,14 +85,23 @@ export class PropertyService {
   getCompareList = computed(() => this.compareList);
 
   addToCompare(property: Property) {
+    const maxCompareLimit = 4; // Establece el límite de propiedades en la lista de comparación
     this.compareList.update((compareList) => {
+      // Si ya hay 4 propiedades en la lista, no agrega más
+      if (compareList.length >= maxCompareLimit) {
+        return compareList;
+      }
+
+      // Verifica si la propiedad ya está en la lista
       const existingProperty = compareList.find(
         (prop) => prop.property.id === property.id
       );
+
+      // Si no está en la lista, agregarla
       if (!existingProperty) {
         return [...compareList, { property }];
       } else {
-        return compareList;
+        return compareList; // Si ya está en la lista, no hacer nada
       }
     });
   }
