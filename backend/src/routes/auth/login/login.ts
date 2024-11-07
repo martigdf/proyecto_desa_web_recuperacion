@@ -3,7 +3,7 @@ import { query } from "../../../services/database.js";
 import bcrypt from "bcryptjs";
 
 const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-  fastify.post("/login", {
+  fastify.post("/", {
     schema: {
       summary: "Hacer login",
       description: "Ruta para loguearse usando email y contraseña",
