@@ -27,6 +27,7 @@ export class PropertyCardComponent {
     if (this.authService.isValidUser()) {
       this.propertyService.addOrRemoveFavorite(this.property);
     } else {
+      this.router.navigate(['/login']);
       alert('Debes estar logueado para añadir propiedades a favoritos.');
     }
   }
