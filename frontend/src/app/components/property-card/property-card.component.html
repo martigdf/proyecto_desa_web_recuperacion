@@ -1,7 +1,7 @@
 <ion-card
-  class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full"
+  class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full group"
 >
-<div class="relative w-full group">
+<div class="relative w-full">
   <img
     [src]="property.img_url"
     alt="{{ property.title }}"
@@ -10,8 +10,16 @@
   <button 
     class="absolute top-4 right-4 bg-purple-400 text-white rounded px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity"
     (click)="addToCompareList(property)"
+    
   >
     Comparar
+  </button>
+  <!-- Botón de icono para Detalles -->
+  <button 
+    class="absolute top-16 right-4 bg-customGreen text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+    (click)="toggleFavorite()"
+  >
+    <ion-icon [name]="isFavorite() ? 'star' : 'star-outline'"></ion-icon>
   </button>
 </div>
   <ion-card-header>

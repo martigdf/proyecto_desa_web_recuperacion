@@ -1,11 +1,5 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import {
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonButton,
-} from '@ionic/angular/standalone';
+import { Component, inject, Input} from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { Property } from '../../interfaces/property';
 import { Router } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
@@ -13,7 +7,7 @@ import { PropertyService } from '../../services/property.service';
 @Component({
   selector: 'app-property-card',
   standalone: true,
-  imports: [IonButton, IonCardContent, IonCardTitle, IonCardHeader, IonCard],
+  imports: [IonicModule],
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.css'],
 })
@@ -25,6 +19,14 @@ export class PropertyCardComponent {
 
   addToCompareList(property: Property) {
     this.propertyService.addToCompare(property);
+  }
+
+  toggleFavorite() {
+    this.propertyService.addOrRemoveFavorite(this.property);
+  }
+
+  isFavorite(): boolean {
+    return this.propertyService.isFavorite(this.property.id);
   }
 
   goToTask() {
