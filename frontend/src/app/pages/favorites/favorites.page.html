@@ -9,11 +9,11 @@
     <!-- Favoritos-->
     <div *ngIf="favoriteList().length > 0; else noFavorites" 
       class="overflow-auto max-w-full max-h-[calc(100vh-8rem)] w-full pb-6">
-      <ion-grid class="min-w-full p-5">
-        <ion-row>
+      <ion-grid class="w-full p-5">
+        <ion-row class="flex flex-wrap gap-4 justify-center">
           <ion-col
-            *ngFor="let favorite of favoriteList()"
-            class="w-full sm:max-w-[500px] md:max-w-[300px] min-w-[300px] max-h-[400px] min-h-[300px]">
+          *ngFor="let favorite of favoriteList()"
+          class="w-full sm:w-[48%] md:w-[30%] lg:w-[23%] flex-grow-0 flex-shrink-0 min-w-[300px] max-w-[300px] max-h-[400px] min-h-[300px]">
             <app-property-card [property]="favorite.property"></app-property-card>
           </ion-col>
         </ion-row>
