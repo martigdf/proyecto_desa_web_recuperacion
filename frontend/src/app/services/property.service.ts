@@ -9,6 +9,7 @@ export class PropertyService {
   private compareList = signal<CompareItem[]>([]);
   private favoriteList = signal<CompareItem[]>([]);
 
+  constructor() {}
   private properties = signal<Property[]>([
     {
       id: 1,
@@ -124,12 +125,12 @@ export class PropertyService {
   }
 
   addOrRemoveFavorite(property: Property) {
-    const existingFavorite = this.favoriteList().findIndex(
-      (fav) => fav.property.id === property.id
-    );
-  
     this.favoriteList.update((favoriteList) => {
-      if (existingFavorite === -1) {
+      const existingFavorite = favoriteList.find(
+        (fav) => fav.property.id === property.id
+      );
+  
+      if (!existingFavorite) {
         // Si no está en favoritos lo añade
         return [...favoriteList, { property }];
       } else {
@@ -146,6 +147,4 @@ export class PropertyService {
   removeFromCompare(propertyId: number){
     this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
   }
-
-  constructor() {}
 }

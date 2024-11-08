@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { Property } from '../../interfaces/property';
 import { Router } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-property-card',
@@ -15,6 +16,7 @@ export class PropertyCardComponent {
   @Input() property!: Property;
   private router = inject(Router);
   private propertyService = inject(PropertyService);
+  private authService = inject(AuthService);
   constructor() {}
 
   addToCompareList(property: Property) {
@@ -22,7 +24,11 @@ export class PropertyCardComponent {
   }
 
   toggleFavorite() {
-    this.propertyService.addOrRemoveFavorite(this.property);
+    if (this.authService.isValidUser()) {
+      this.propertyService.addOrRemoveFavorite(this.property);
+    } else {
+      alert('Debes estar logueado para añadir propiedades a favoritos.');
+    }
   }
 
   isFavorite(): boolean {
