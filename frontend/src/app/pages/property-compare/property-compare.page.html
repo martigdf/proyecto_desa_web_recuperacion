@@ -7,7 +7,7 @@
   </button>
   <!-- Condición para mostrar la tabla solo si hay propiedades en la lista de comparación -->
   <div *ngIf="compareList().length > 0; else noCompareMessage">
-
+    <app-compare-table [itemList]="this.compareList()"></app-compare-table>
   </div>
 
   <!-- Mensaje cuando no hay propiedades seleccionadas -->

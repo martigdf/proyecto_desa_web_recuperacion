@@ -106,5 +106,9 @@ export class PropertyService {
     });
   }
 
+  removeFromCompare(propertyId: number){
+    this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
+  }
+
   constructor() {}
 }

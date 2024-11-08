@@ -4,16 +4,16 @@ import { LayoutComponent } from '../../layout/layout.component';
 import { PropertyService } from '../../services/property.service';
 import { NgFor, NgIf } from '@angular/common';
 import { PropertyCardComponent } from '../../components/property-card/property-card.component';
+import { CompareTableComponent } from "../../components/compare-table/compare-table.component";
 
 @Component({
   selector: 'app-property-compare',
   standalone: true,
   imports: [
     LayoutComponent,
-    NgFor,
     NgIf,
-    PropertyCardComponent,
-  ],
+    CompareTableComponent
+],
   templateUrl: './property-compare.page.html',
   styleUrl: './property-compare.page.css',
 })
