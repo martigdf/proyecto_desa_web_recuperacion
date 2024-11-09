@@ -4,7 +4,6 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonButton,
 } from '@ionic/angular/standalone';
 import { Property } from '../../interfaces/property';
 import { Router } from '@angular/router';
@@ -13,7 +12,7 @@ import { PropertyService } from '../../services/property.service';
 @Component({
   selector: 'app-property-card',
   standalone: true,
-  imports: [IonButton, IonCardContent, IonCardTitle, IonCardHeader, IonCard],
+  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCard],
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.css'],
 })

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LayoutComponent } from '../../layout/layout.component';
 import { PropertyCardComponent } from '../../components/property-card/property-card.component';
 import { Property } from '../../interfaces/property';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import {
   IonGrid,
   IonRow,

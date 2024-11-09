@@ -51,17 +51,16 @@
           'transition-all ease-out duration-300 transform opacity-100 scale-100': isCompareDropdownOpen,
           'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isCompareDropdownOpen
         }"
-        class="absolute left-0 w-52 p-4 bg-white rounded-md shadow-lg z-20 inline-flex items-start flex-col space-y-2"
-        style="top: 100%"
+        class="absolute top-full left-[-8rem] w-64 p-4 bg-white rounded-md shadow-lg z-20 inline-flex items-start flex-col"
       >
-        <div *ngFor="let item of compareCount()">
-          <div class="flex justify-between w-fit p-2 border-b">
+        <div *ngFor="let item of compareCount()" class="w-full">
+          <div class="flex flex-row p-2 border-b justify-between">
             <!-- Nombre de la propiedad a la izquierda -->
-            <p class="text-sm flex-1">{{ item.property.title }}</p>
+            <p class="text-sm">{{ item.property.title }}</p>
 
             <!-- Icono de cerrar a la derecha -->
             <button
-              class="text-red-500 hover:text-red-700 ml-4"
+              class="text-red-500 hover:text-red-700 "
               (click)="removeFromCompare(item.property.id)"
             >
               <ion-icon name="close-outline" class="text-xl"></ion-icon>
