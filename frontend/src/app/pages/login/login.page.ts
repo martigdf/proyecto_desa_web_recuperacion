@@ -2,14 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonItem, IonLabel, IonCheckbox, IonButton, IonContent } from "@ionic/angular/standalone";
+import { IonicModule } from '@ionic/angular';
 import { AuthGoogleService } from '../../services/auth-google.service';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [IonContent, IonButton, IonCheckbox, IonLabel, IonItem, IonCardContent, IonCardTitle, IonCard, IonCardHeader, FormsModule],
+  imports: [IonicModule,FormsModule],
   templateUrl: './login.page.html',
   styleUrl: './login.page.css',
 })
@@ -27,6 +27,7 @@ export class LoginPage implements OnInit{
     try{
       await this.authService.login(this.email, this.password);
       console.log('login success');
+      this.alertService.showSuccess('Inició sesión exitosamente');
       // Redirect to home
       console.log(this.authService.isAdmin())
       if (this.authService.isAdmin()){

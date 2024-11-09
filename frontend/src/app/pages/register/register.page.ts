@@ -6,20 +6,19 @@ import { RegisterService } from '../../services/register.service';
 import {FormGroup, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { RegisterValidationsDirective } from '../../directives/register-validations.directive';
 import { NgClass } from '@angular/common';
-import { IonContent, IonLabel, IonCardContent, IonButton } from "@ionic/angular/standalone";
 import { AuthGoogleService } from '../../services/auth-google.service';
+import { IonicModule } from '@ionic/angular';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [IonButton, IonCardContent, IonLabel, IonContent, 
+  imports: [IonicModule, 
     FormsModule, 
     ReactiveFormsModule,
     NgIf,
     NgFor,
-    NgClass,
-    JsonPipe,
-    RegisterValidationsDirective],
+    NgClass],
   templateUrl: './register.page.html',
   styleUrl: './register.page.css'
 })
@@ -27,6 +26,7 @@ export class RegisterPage implements OnInit {
   private RegisterService: RegisterService = inject(RegisterService);
   private router = inject(Router);
   private googleAuthService = inject(AuthGoogleService);
+  private alertService = inject(AlertService);
   validateRegister: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -51,9 +51,11 @@ export class RegisterPage implements OnInit {
     if (this.validateRegister.valid) {
       const { name, lastname, email, password } = this.validateRegister.value;
       await this.RegisterService.register(name, lastname, email, password);
+      this.alertService.showSuccess('Registrado exitosamente');
       console.log('Registro exitoso');
       await this.router.navigate(['/login']);
     } else {
+      this.alertService.showError('Debe completar todos los campos');
       console.log('Formulario inválido');
     }
   }

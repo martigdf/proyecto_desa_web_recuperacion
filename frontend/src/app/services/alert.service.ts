@@ -19,15 +19,15 @@ export class AlertService {
     await toast.present();
   }
 
-  // alertas de éxito
+  // mensaje de éxito
   async showSuccess(message: string) {
-    const alert = await this.toastController.create({
-      header: 'Success',
+    const toast = await this.toastController.create({
       message,
-      buttons: ['OK'],
-      cssClass: 'custom-alert'
+      duration: 3000,
+      color: 'bg-customGreen',
+      position: 'bottom',
     });
-    await alert.present();
+    await toast.present();
   }
 
 }
