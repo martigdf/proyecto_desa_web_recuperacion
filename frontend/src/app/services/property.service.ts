@@ -8,6 +8,7 @@ import { CompareItem } from '../interfaces/compare-item';
 export class PropertyService {
   private compareList = signal<CompareItem[]>([]);
 
+  constructor() {}
   private properties = signal<Property[]>([
     {
       id: 1,
@@ -78,6 +79,20 @@ export class PropertyService {
       img_url:
         'https://cdn.create.vista.com/api/media/small/664926284/stock-photo-modern-brick-house-large-windows-green-lawn-cottage-town', // Imagen de stock
     },
+    {
+      id: 6,
+      title: 'Casa de mikimouse',
+      description:
+        'Miska muska mikimouse.',
+      price: 0,
+      location: 'El medio de la nada',
+      area: 150,
+      number_of_rooms: 4,
+      number_of_bathrooms: 2,
+      contact_details: 'contacto3@example.com',
+      img_url:
+        'https://i.pinimg.com/736x/a2/d0/34/a2d0349b4d4c3dc993af1baf277f356e--mickey-mouse-clubhouse-song-lyrics.jpg', // Imagen de stock
+    },
   ]);
 
   getProperties = computed(() => this.properties);
@@ -105,10 +120,8 @@ export class PropertyService {
       }
     });
   }
-
+  
   removeFromCompare(propertyId: number){
     this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
   }
-
-  constructor() {}
 }

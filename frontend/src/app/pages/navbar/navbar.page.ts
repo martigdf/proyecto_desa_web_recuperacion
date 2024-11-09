@@ -4,7 +4,13 @@ import { AuthGoogleService } from '../../services/auth-google.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { chevronDownOutline, logOutOutline, homeOutline, closeOutline, starOutline } from 'ionicons/icons';
+import { chevronDownOutline, 
+  logOutOutline, 
+  homeOutline, 
+  closeOutline, 
+  starOutline, 
+  star,
+ } from 'ionicons/icons';
 import { IonIcon } from '@ionic/angular/standalone';
 import { PropertyService } from '../../services/property.service';
 
@@ -17,7 +23,7 @@ import { PropertyService } from '../../services/property.service';
 })
 export class NavbarPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
-    addIcons({ chevronDownOutline, logOutOutline, homeOutline, closeOutline, starOutline });
+    addIcons({ chevronDownOutline, logOutOutline, homeOutline, closeOutline, starOutline, star });
   }
 
   isDropdownOpen: boolean = false;
