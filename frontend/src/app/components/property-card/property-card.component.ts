@@ -4,6 +4,7 @@ import { Property } from '../../interfaces/property';
 import { Router } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
 import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-property-card',
@@ -17,6 +18,7 @@ export class PropertyCardComponent {
   private router = inject(Router);
   private propertyService = inject(PropertyService);
   private authService = inject(AuthService);
+  private alertService = inject(AlertService);
   constructor() {}
 
   addToCompareList(property: Property) {
@@ -27,8 +29,8 @@ export class PropertyCardComponent {
     if (this.authService.isValidUser()) {
       this.propertyService.addOrRemoveFavorite(this.property);
     } else {
+      this.alertService.showError('No puedes añadir a favoritos. Debe iniciar sesión');
       this.router.navigate(['/login']);
-      alert('Debes estar logueado para añadir propiedades a favoritos.');
     }
   }
 
