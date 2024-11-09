@@ -28,7 +28,7 @@
 
     <div class="flex items-center ml-auto relative">
       <button
-        class="m-3 p-3 text-white rounded-full relative"
+        class="m-3 p-3 text-white rounded-full relative hover:bg-[#2d4f40]"
         (click)="toggleCompareDropdown()"
         aria-haspopup="true"
       >
@@ -82,6 +82,17 @@
         >
           {{ user.name }} {{ user.lastname }}
           <ion-icon name="chevron-down-outline" class="ml-2"></ion-icon>
+        </button>
+      </div>
+      <div
+        class="hover:bg-[#2d4f40] h-full inline-flex items-center relative mt-2 md:mt-0"
+        *ngIf="!isValidUser"
+      >
+        <button
+          class="text-white text-base mr-4 ml-4 inline-flex items-center"
+          (click)="navigateTo('/login')"
+        >
+          Login
         </button>
       </div>
     </div>
