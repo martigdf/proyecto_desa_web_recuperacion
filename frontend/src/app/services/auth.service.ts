@@ -32,11 +32,8 @@ export class AuthService {
       });
       if (!response.ok) {
         const errorData = await response.json();
-        const errorMessage = errorData.message;
-        // elimina el token y usuario en caso de error
-        localStorage.removeItem('token');
+        // elimina usuario en caso de error
         localStorage.removeItem('user');
-        throw new Error(errorMessage);
       }
       const data = await response.json();
       // Guardar token y setearlo en el local storage
