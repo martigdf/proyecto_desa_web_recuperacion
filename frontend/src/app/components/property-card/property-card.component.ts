@@ -30,7 +30,6 @@ export class PropertyCardComponent {
       this.propertyService.addOrRemoveFavorite(this.property);
     } else {
       this.alertService.showError('No puedes añadir a favoritos. Debe iniciar sesión');
-      this.router.navigate(['/login']);
     }
   }
 
