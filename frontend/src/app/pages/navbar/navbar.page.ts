@@ -4,7 +4,13 @@ import { AuthGoogleService } from '../../services/auth-google.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { chevronDownOutline, logOutOutline, homeOutline, closeOutline, starOutline } from 'ionicons/icons';
+import {
+  chevronDownOutline,
+  logOutOutline,
+  homeOutline,
+  closeOutline,
+  starOutline,
+} from 'ionicons/icons';
 import { IonIcon } from '@ionic/angular/standalone';
 import { PropertyService } from '../../services/property.service';
 
@@ -16,10 +22,6 @@ import { PropertyService } from '../../services/property.service';
   styleUrl: './navbar.page.css',
 })
 export class NavbarPage implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {
-    addIcons({ chevronDownOutline, logOutOutline, homeOutline, closeOutline, starOutline });
-  }
-
   isDropdownOpen: boolean = false;
   isCompareDropdownOpen: boolean = false;
   currentRoute: string = '';
@@ -27,48 +29,67 @@ export class NavbarPage implements OnInit {
   isValidUser: boolean = false;
   isHomeRoute: boolean = false;
   private propertyService = inject(PropertyService);
+  private _googleAuthService = inject(AuthGoogleService);
 
   compareCount = this.propertyService.getCompareList();
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  toggleCompareDropdown() {
-    this.isCompareDropdownOpen = !this.isCompareDropdownOpen;
-  }
-
-  goToCompare() {
-    this.router.navigate(['/property-compare']);
-  }
-
-  removeFromCompare(propertyId: number) {
-    this.propertyService.removeFromCompare(propertyId);
+  constructor(private authService: AuthService, private router: Router) {
+    addIcons({
+      chevronDownOutline,
+      logOutOutline,
+      homeOutline,
+      closeOutline,
+      starOutline,
+    });
   }
 
   ngOnInit(): void {
-    // Asigna la ruta actual al cargar el componente
+    this.initializeRoute();
+    this.checkUserStatus();
+    this.subscribeToRouterEvents();
+    this.updateHomeRouteStatus();
+  }
+
+  private initializeRoute(): void {
     this.currentRoute = this.router.url;
     console.log('Ruta inicial:', this.currentRoute);
+  }
 
-    // Verifica si el usuario es admin
+  private checkUserStatus(): void {
     this.isAdmin = this.authService.isAdmin();
     console.log('Es admin:', this.isAdmin);
 
-    // Verifica si el usuario está logueado
     this.isValidUser = this.authService.isValidUser();
     console.log('Usuario válido:', this.isValidUser);
+  }
 
+  private subscribeToRouterEvents(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Actualiza la ruta en cada cambio de navegación
         this.currentRoute = event.url;
         console.log('Ruta actualizada:', this.currentRoute);
       }
     });
+  }
 
-    // Actualiza isHomeRoute
+  private updateHomeRouteStatus(): void {
     this.isHomeRoute = this.currentRoute === '/home';
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleCompareDropdown(): void {
+    this.isCompareDropdownOpen = !this.isCompareDropdownOpen;
+  }
+
+  goToCompare(): void {
+    this.router.navigate(['/property-compare']);
+  }
+
+  removeFromCompare(propertyId: number): void {
+    this.propertyService.removeFromCompare(propertyId);
   }
 
   navigateTo(route: string): void {
@@ -91,14 +112,21 @@ export class NavbarPage implements OnInit {
     return isMatch;
   }
 
-  private _googleAuthService = inject(AuthGoogleService);
-
-  logout() {
+  logout(): void {
     this._googleAuthService.logout();
     this.authService.logout();
   }
 
-  // Si hay un usuario logueado, mostramos su nombre en la barra de navegación
+  get showAdminPanel(): boolean {
+    return ['/admin-panel', '/admin-panel/users', '/all-properties'].includes(
+      this.currentRoute
+    );
+  }
+
+  get showAdminPanelLink(): boolean {
+    return this.currentRoute !== '/admin-panel' && this.isAdmin;
+  }
+
   get user() {
     return this.authService.getUser();
   }
