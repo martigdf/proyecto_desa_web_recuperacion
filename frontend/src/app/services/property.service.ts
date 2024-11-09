@@ -7,7 +7,6 @@ import { CompareItem } from '../interfaces/compare-item';
 })
 export class PropertyService {
   private compareList = signal<CompareItem[]>([]);
-  private favoriteList = signal<CompareItem[]>([]);
 
   constructor() {}
   private properties = signal<Property[]>([
@@ -100,8 +99,6 @@ export class PropertyService {
 
   getCompareList = computed(() => this.compareList);
 
-  getFavoriteList = computed(() => this.favoriteList);
-
   addToCompare(property: Property) {
     const maxCompareLimit = 4; // Establece el límite de propiedades en la lista de comparación
     this.compareList.update((compareList) => {
@@ -122,26 +119,6 @@ export class PropertyService {
         return compareList; // Si ya está en la lista, no hacer nada
       }
     });
-  }
-
-  addOrRemoveFavorite(property: Property) {
-    this.favoriteList.update((favoriteList) => {
-      const existingFavorite = favoriteList.find(
-        (fav) => fav.property.id === property.id
-      );
-  
-      if (!existingFavorite) {
-        // Si no está en favoritos lo añade
-        return [...favoriteList, { property }];
-      } else {
-        // Si ya está en favoritos lo elimina
-        return favoriteList.filter((fav) => fav.property.id !== property.id);
-      }
-    });
-  }  
-
-  isFavorite(propertyId: number): boolean {
-    return this.favoriteList().some((fav) => fav.property.id === propertyId);
   }
   
   removeFromCompare(propertyId: number){

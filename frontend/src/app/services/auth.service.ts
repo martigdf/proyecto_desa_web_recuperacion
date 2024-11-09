@@ -64,5 +64,10 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
+  getUserId(): number{
+    const user = this.getUser();
+    return user.id || 0
+  }
+
   constructor() { }
 }

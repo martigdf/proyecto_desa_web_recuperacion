@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { Property } from '../../interfaces/property';
 import { Router } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
+import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
 
@@ -19,6 +20,7 @@ export class PropertyCardComponent {
   private propertyService = inject(PropertyService);
   private authService = inject(AuthService);
   private alertService = inject(AlertService);
+  private favoritesService = inject(FavoritesService);
   constructor() {}
 
   addToCompareList(property: Property) {
@@ -27,14 +29,14 @@ export class PropertyCardComponent {
 
   toggleFavorite() {
     if (this.authService.isValidUser()) {
-      this.propertyService.addOrRemoveFavorite(this.property);
+      this.favoritesService.addOrRemoveFavorite(this.property);
     } else {
       this.alertService.showError('No puedes añadir a favoritos. Debe iniciar sesión');
     }
   }
 
   isFavorite(): boolean {
-    return this.propertyService.isFavorite(this.property.id);
+    return this.favoritesService.isFavorite(this.property.id);
   }
 
   goToTask() {
