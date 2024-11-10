@@ -315,6 +315,7 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.status(501).send({ message: "Error al crear el favorito" });
                 return;
             }
+            reply.code(201).send({message: "Favorito creado"});
             const favorite = res.rows[0];
             return favorite;
         }
