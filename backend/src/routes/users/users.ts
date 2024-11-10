@@ -11,6 +11,7 @@ import {
 } from "../../types/schemas/user/userSchema.js";
 import bcrypt from 'bcryptjs';
 import {FavoriteIdSchema, FavoritePostSchema, FavoriteSchema} from "../../types/schemas/favorite/favoriteSchema.js";
+import { Type } from "@sinclair/typebox";
 
 
 const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
@@ -194,19 +195,20 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
     });
 
 
-    fastify.get('/:id/favorites/:id', {
+    fastify.get('/:id/favorites/:id_favorite', {
         schema: {
             description: "Obtener un favorito",
             summary: "Obtener un favorito de un usuario específico",
             tags: ['favorites'],
+            params: Type.Intersect([UserIdSchema, FavoriteIdSchema]),
             response: {
-                200:{
+                200: {
                     description: 'Un favorito',
                     type: 'object',
                     properties: FavoriteSchema.properties
                 },
-                501: {
-                    description: "Not implemented",
+                404: {
+                    description: "Favorito no encontrado",
                     type: "object",
                     properties: {
                         message: { type: "string" }
@@ -216,15 +218,29 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            const { id, id_favorite } = request.params as { id: string; id_favorite: string };
+            const res = await query(`select id,
+                userId,
+                propertyId
+            from favorites
+            where userId = ${id} and id = ${id_favorite}`);
+            if (res.rows.length === 0) {
+                reply.status(404).send({ message: "Favorito no encontrado" });
+                return;
+            }
+            
+            const favorite = res.rows[0];
+            return favorite;
         }
     });
+    
 
     fastify.get('/:id/favorites', {
         schema: {
             description: "Obtener favoritos",
             summary: "Obtener los favoritos de un usuario específico",
             tags: ['favorites'],
+            params: FavoriteIdSchema,
             response: {
                 200:{
                     description: 'Listado de favoritos',
