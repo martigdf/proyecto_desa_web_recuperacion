@@ -12,7 +12,7 @@ const options : SwaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost/backend',
+                url: 'https://localhost/backend',
                 description: 'Development server'
             }
         ],

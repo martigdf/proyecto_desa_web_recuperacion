@@ -3,20 +3,16 @@
 >
   <nav
     class="flex items-center w-full h-full justify-between transition-all duration-200 ease"
+    aria-label="Main Navigation"
   >
     <ul class="navbar-nav flex space-x-4 p-0 m-0">
-      <li
-        *ngIf="currentRoute === '/admin-panel' || currentRoute === '/admin-panel/users' || currentRoute === '/all-properties'"
-        class="flex items-center"
-      >
+      <li *ngIf="showAdminPanel" class="flex items-center">
         <button
           class="nav-link text-white flex items-center"
           (click)="navigateTo('/admin-panel')"
           [ngClass]="{'ml-4': currentRoute !== '/admin-panel'}"
         >
-          <span *ngIf="currentRoute !== '/admin-panel' && isAdmin" class="ml-2"
-            >Admin Panel</span
-          >
+          <span *ngIf="showAdminPanelLink" class="ml-2">Admin Panel</span>
         </button>
         <button
           class="nav-link text-white flex items-center"
@@ -32,11 +28,14 @@
 
     <div class="flex items-center ml-auto relative">
       <button
-        class="m-3 p-3 text-white rounded-full relative"
+        class="m-3 p-3 text-white rounded-full relative hover:bg-[#2d4f40]"
         (click)="toggleCompareDropdown()"
+        aria-haspopup="true"
       >
         <span class="text-sm">
-          <ion-icon name="home-outline" />/<ion-icon name="home-outline" />
+          <ion-icon name="home-outline"></ion-icon>/<ion-icon
+            name="home-outline"
+          ></ion-icon>
         </span>
         <span
           *ngIf="compareCount().length > 0"
@@ -47,28 +46,21 @@
       </button>
 
       <div
-        [ngClass]="{
-          'transition-all ease-out duration-300 transform opacity-100 scale-100': isCompareDropdownOpen,
-          'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isCompareDropdownOpen
-        }"
-        class="absolute left-0 w-52 p-4 bg-white rounded-md shadow-lg z-20 inline-flex items-start flex-col space-y-2"
-        style="top: 100%"
+        [ngClass]="{'transition-all ease-out duration-300 transform opacity-100 scale-100': isCompareDropdownOpen, 'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isCompareDropdownOpen}"
+        class="absolute top-full left-[-8rem] w-64 p-4 bg-white rounded-md shadow-lg z-20 inline-flex items-start flex-col"
+        role="menu"
       >
-        <div *ngFor="let item of compareCount()">
-          <div class="flex justify-between w-fit p-2 border-b">
-            <!-- Nombre de la propiedad a la izquierda -->
-            <p class="text-sm flex-1">{{ item.property.title }}</p>
-
-            <!-- Icono de cerrar a la derecha -->
+        <div *ngFor="let item of compareCount()" class="w-full">
+          <div class="flex flex-row p-2 border-b justify-between">
+            <p class="text-sm">{{ item.property.title }}</p>
             <button
-              class="text-red-500 hover:text-red-700 ml-4"
+              class="text-red-500 hover:text-red-700"
               (click)="removeFromCompare(item.property.id)"
             >
               <ion-icon name="close-outline" class="text-xl"></ion-icon>
             </button>
           </div>
         </div>
-
         <button
           class="mt-3 w-full text-center text-white bg-[#386150] hover:bg-[#2d4f40] rounded-md p-2"
           (click)="navigateTo('/property-compare')"
@@ -78,7 +70,6 @@
       </div>
     </div>
 
-    <!-- Información del usuario -->
     <div
       id="user-info"
       class="hover:bg-[#2d4f40] h-full inline-flex items-center relative mt-2 md:mt-0"
@@ -87,23 +78,31 @@
         <button
           class="text-white text-base mr-4 ml-4 inline-flex items-center"
           (click)="toggleDropdown()"
+          aria-haspopup="true"
         >
           {{ user.name }} {{ user.lastname }}
           <ion-icon name="chevron-down-outline" class="ml-2"></ion-icon>
         </button>
       </div>
+      <div
+        class="hover:bg-[#2d4f40] h-full inline-flex items-center relative mt-2 md:mt-0"
+        *ngIf="!isValidUser"
+      >
+        <button
+          class="text-white text-base mr-4 ml-4 inline-flex items-center"
+          (click)="navigateTo('/login')"
+        >
+          Login
+        </button>
+      </div>
     </div>
 
-    <!-- Dropdown de usuario -->
     <div
-      [ngClass]="{
-        'transition-all ease-out duration-300 transform opacity-100 scale-100': isDropdownOpen,
-        'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isDropdownOpen
-      }"
+      [ngClass]="{'transition-all ease-out duration-300 transform opacity-100 scale-100': isDropdownOpen, 'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isDropdownOpen}"
       class="absolute w-auto p-4 bg-white rounded-md shadow-lg z-30 inline-flex items-center flex-col space-y-2"
+      role="menu"
       style="top: 100%; right: 0"
     >
-      <!-- Favorites button inside the user dropdown -->
       <button
         *ngIf="currentRoute !== '/favorites' && isValidUser"
         class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
@@ -112,7 +111,6 @@
         <span class="ml-2">Favorites</span>
         <ion-icon name="star-outline"></ion-icon>
       </button>
-
       <button
         class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
         (click)="logout()"
