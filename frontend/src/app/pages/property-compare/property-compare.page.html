@@ -1,4 +1,4 @@
-<app-layout>
+<app-layout class="min-h-screen flex flex-col">
   <button
     class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded"
     (click)="goToAllProperties()"
@@ -6,7 +6,7 @@
     Volver
   </button>
   <!-- Condición para mostrar la tabla solo si hay propiedades en la lista de comparación -->
-  <div *ngIf="compareList().length > 0; else noCompareMessage">
+  <div *ngIf="compareList().length > 0; else noCompareMessage" class="overflow-auto max-w-full max-h-[calc(100vh-4rem)]">
     <app-compare-table [itemList]="this.compareList()"></app-compare-table>
   </div>
 

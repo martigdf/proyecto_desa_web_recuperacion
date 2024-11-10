@@ -1,5 +1,9 @@
-import { Component, inject, Input} from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent, IonIcon } from '@ionic/angular/standalone';
 import { Property } from '../../interfaces/property';
 import { Router } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
@@ -10,7 +14,7 @@ import { AlertService } from '../../services/alert.service';
 @Component({
   selector: 'app-property-card',
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonIcon, IonCardContent, IonCardTitle, IonCardHeader, IonCard],
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.css'],
 })

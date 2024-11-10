@@ -1,4 +1,4 @@
-<ion-grid class="max-w-screen-md ml-4">
+<ion-grid class="max-w-screen-md ml-4 mb-5">
   <!-- Fila de encabezado de la tabla -->
   <ion-row class="font-semibold text-sm text-left border-b">
     <ion-col size="3" class="px-4 py-2 border-r">Propiedad</ion-col>
@@ -10,20 +10,79 @@
 
   <!-- Fila de datos de las propiedades -->
   <ion-row *ngFor="let compareItem of itemList" class="border-b">
-    <ion-col size="3" class="px-4 py-2 text-sm"
-      >{{ compareItem.property.title }}</ion-col
-    >
+    <ion-col size="3" class="px-4 py-2 text-sm">
+      <!-- Imagen de la propiedad (si disponible) -->
+      <ion-img
+        [src]="compareItem.property.img_url"
+        class="property-img"
+      ></ion-img>
+      {{ compareItem.property.title }}
+    </ion-col>
     <ion-col size="2" class="px-4 py-2 text-sm"
       >${{ compareItem.property.price }}</ion-col
     >
-    <ion-col size="2" class="px-4 py-2 text-sm"
-      >{{ compareItem.property.location }}</ion-col
-    >
-    <ion-col size="2" class="px-4 py-2 text-sm"
-      >{{ compareItem.property.number_of_rooms }}</ion-col
-    >
-    <ion-col size="2" class="px-4 py-2 text-sm"
-      >{{ compareItem.property.number_of_bathrooms }}</ion-col
-    >
+    <ion-col size="2" class="px-4 py-2 text-sm">{{
+      compareItem.property.location
+    }}</ion-col>
+    <ion-col size="2" class="px-4 py-2 text-sm">{{
+      compareItem.property.number_of_rooms
+    }}</ion-col>
+    <ion-col size="2" class="px-4 py-2 text-sm">{{
+      compareItem.property.number_of_bathrooms
+    }}</ion-col>
+
+    <!-- Botones de acción (Eliminar, Detalles, Favoritos) -->
+    <ion-col size="1" class="px-4 py-2 text-sm">
+      <ion-button
+        fill="clear"
+        color="danger"
+        (click)="removeProperty(compareItem)"
+      >
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+      <ion-button
+        fill="clear"
+        color="primary"
+        (click)="viewDetails(compareItem)"
+      >
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-col>
   </ion-row>
 </ion-grid>
+
+<!-- Si el número de propiedades es bajo, mostrar tarjetas con diseño de lista -->
+<ion-list *ngIf="itemList.length < 3">
+  <ion-card *ngFor="let compareItem of itemList" class="property-card">
+    <ion-card-header>
+      <ion-img [src]="compareItem.property.img_url"></ion-img>
+      <ion-card-title>{{ compareItem.property.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Precio:</strong> ${{ compareItem.property.price }}</p>
+      <p><strong>Ubicación:</strong> {{ compareItem.property.location }}</p>
+      <p>
+        <strong>Habitaciones:</strong>
+        {{ compareItem.property.number_of_rooms }}
+      </p>
+      <p>
+        <strong>Baños:</strong> {{ compareItem.property.number_of_bathrooms }}
+      </p>
+      <!-- Botones de acción en las tarjetas -->
+      <ion-button
+        expand="block"
+        color="danger"
+        (click)="removeProperty(compareItem)"
+      >
+        Eliminar
+      </ion-button>
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="viewDetails(compareItem)"
+      >
+        Ver Detalles
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-list>

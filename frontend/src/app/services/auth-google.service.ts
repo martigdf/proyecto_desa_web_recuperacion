@@ -75,6 +75,6 @@ export class AuthGoogleService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 }
