@@ -218,12 +218,12 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            const { id, id_favorite } = request.params as { id: string; id_favorite: string };
+            const { id, id_favorite } = request.params as { id: number; id_favorite: number };
             const res = await query(`select id,
-                userId,
-                propertyId
+                user_id,
+                property_id
             from favorites
-            where userId = ${id} and id = ${id_favorite}`);
+            where user_id = ${id} and id = ${id_favorite}`);
             if (res.rows.length === 0) {
                 reply.status(404).send({ message: "Favorito no encontrado" });
                 return;
