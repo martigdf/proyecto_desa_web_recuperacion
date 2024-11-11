@@ -97,6 +97,12 @@ export class PropertyService {
 
   getProperties = computed(() => this.properties);
 
+  getPropertyById(id: number) {
+    return computed(() =>
+      this.properties().find((property) => property.id === id)
+    );
+  }
+
   getCompareList = computed(() => this.compareList);
 
   addToCompare(property: Property) {

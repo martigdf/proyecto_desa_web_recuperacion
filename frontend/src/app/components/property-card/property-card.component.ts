@@ -35,7 +35,7 @@ export class PropertyCardComponent {
     if (this.authService.isValidUser()) {
       this.favoritesService.addOrRemoveFavorite(this.property);
     } else {
-      this.alertService.showError('No puedes añadir a favoritos. Debe iniciar sesión');
+      this.alertService.showError('Para añadir a favoritos primero debes iniciar sesión');
     }
   }
 

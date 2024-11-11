@@ -11,6 +11,7 @@ import {
   closeOutline,
   starOutline,
   star,
+  menuOutline,
 } from 'ionicons/icons';
 import { IonIcon } from '@ionic/angular/standalone';
 import { PropertyService } from '../../services/property.service';
@@ -23,6 +24,7 @@ import { PropertyService } from '../../services/property.service';
   styleUrl: './navbar.page.css',
 })
 export class NavbarPage implements OnInit {
+  isMobileMenuOpen = false;
   isDropdownOpen: boolean = false;
   isCompareDropdownOpen: boolean = false;
   currentRoute: string = '';
@@ -42,6 +44,7 @@ export class NavbarPage implements OnInit {
       closeOutline,
       starOutline,
       star,
+      menuOutline
     });
   }
 
@@ -80,10 +83,16 @@ export class NavbarPage implements OnInit {
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
+    this.isCompareDropdownOpen = false;
   }
 
   toggleCompareDropdown(): void {
     this.isCompareDropdownOpen = !this.isCompareDropdownOpen;
+    this.isDropdownOpen = false;
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
   goToCompare(): void {
@@ -96,6 +105,9 @@ export class NavbarPage implements OnInit {
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
+    this.isMobileMenuOpen = false;
+    this.isDropdownOpen = false;
+    this.isCompareDropdownOpen = false;
   }
 
   isActive(routes: string[]): boolean {
@@ -120,13 +132,21 @@ export class NavbarPage implements OnInit {
   }
 
   get showAdminPanel(): boolean {
-    return ['/admin-panel', '/admin-panel/users', '/all-properties', '/admin-panel/properties'].includes(
+    return ['/admin-panel/users', '/all-properties', '/admin-panel/properties'].includes(
       this.currentRoute
     );
   }
 
   get showAdminPanelLink(): boolean {
     return this.currentRoute !== '/admin-panel' && this.isAdmin;
+  }
+
+  get showHomeLink(): boolean {
+    return this.currentRoute !== '/home';
+  }
+
+  get routeIsNotLoginOrRegister(): boolean {
+    return !['/login', '/register'].includes(this.currentRoute);
   }
 
   get user() {

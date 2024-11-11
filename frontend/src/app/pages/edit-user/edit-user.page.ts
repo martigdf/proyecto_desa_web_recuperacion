@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
-import {LayoutComponent} from '../../layout/layout.component';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,7 +16,6 @@ import {LayoutComponent} from '../../layout/layout.component';
     UserFormComponent,
     IonicModule,
     CommonModule,
-    LayoutComponent
   ]
 })
 export class EditUserPage implements OnInit {
