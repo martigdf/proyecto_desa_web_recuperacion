@@ -124,4 +124,10 @@ export class PropertyService {
   removeFromCompare(propertyId: number){
     this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
   }
+
+  removeProperty(propertyId: number) {
+    this.properties.update((properties) =>
+      properties.filter((property) => property.id !== propertyId)
+    );
+  }
 }

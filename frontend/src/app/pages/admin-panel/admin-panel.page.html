@@ -11,11 +11,23 @@
     </button>
 
     <button
-      class="flex items-center justify-center w-48 h-48 bg-purple-500 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-4"
+      class="flex items-center justify-center w-48 h-48 bg-purple-500 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-4 p-4"
       (click)="goToPropertyList()"
     >
-      <ion-icon name="home" class="text-4xl mr-2"></ion-icon>
+      <ion-icon name="home" class="text-4xl"></ion-icon>
       <span class="text-lg">Lista de propiedades</span>
     </button>
+
+    <button
+      class="flex items-center justify-center w-48 h-48 bg-purple-500 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-4 p-4"
+      (click)="goToPropertyListAdmin()"
+    >
+      <div class="flex items-center space-x-1 text-3xl">
+        <ion-icon name="home" ></ion-icon>
+        <ion-icon name="cog" ></ion-icon>
+      </div>
+      <span class="text-lg ml-1">Propiedades Administradas</span>
+    </button>
+  
   </div>
 </app-layout>
