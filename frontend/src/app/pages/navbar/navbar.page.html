@@ -42,10 +42,19 @@
             (click)="navigateTo('/all-properties')"
             [ngClass]="{'ml-4': currentRoute !== '/all-properties'}"
           >
-            <span *ngIf="currentRoute !== '/all-properties'" class="ml-2"
-              >Lista de propiedades</span
-            >
+            <span *ngIf="currentRoute !== '/all-properties'" class="ml-2">Lista de propiedades</span>
           </button>
+        </li>
+        <li>
+          <button
+            class="nav-link text-white flex items-center"
+            (click)="navigateTo('/admin-panel/properties')"
+            [ngClass]="{'ml-4': currentRoute !== '/admin-panel/properties'}"
+          >
+            <span *ngIf="currentRoute !== '/admin-panel/properties'" class="ml-2"
+              >Propiedades Administradas</span
+            >
+        </button>
         </li>
       </ng-container>
     </ul>

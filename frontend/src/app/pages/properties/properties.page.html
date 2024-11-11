@@ -1,5 +1,3 @@
-<app-layout>
-  <div *ngIf="propertiesList().length > 0;" class="overflow-auto max-w-full max-h-[calc(100vh-4rem)]">
-    <app-properties-table [itemList]="this.propertiesList()"></app-properties-table>
-  </div>
-</app-layout>
+<div *ngIf="propertiesList().length > 0;" class="overflow-y-auto max-w-full max-h-[calc(100vh-7rem)] px-4">
+  <app-properties-table [itemList]="this.propertiesList()"></app-properties-table>
+</div>

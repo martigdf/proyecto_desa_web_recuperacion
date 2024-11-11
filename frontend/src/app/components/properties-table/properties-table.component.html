@@ -9,8 +9,9 @@
     <ion-col size="1.5" class="px-2 py-2">Acciones</ion-col>
   </ion-row>
 
-  <!-- Filas de datos de las propiedades -->
-  <ion-row *ngFor="let property of propertiesList()" class="text-center border-b hover:bg-gray-50 items-center">
+  <ion-row 
+    *ngFor="let property of propertiesList()"
+    class="text-center border-b hover:bg-gray-50 items-center">
     <ion-col size="3" class="px-2 py-2 text-xs flex items-center">
       <ion-img [src]="property.img_url" class="w-16 h-16 rounded mr-2"></ion-img>
       <div>{{ property.title }}</div>
@@ -19,14 +20,18 @@
     <ion-col size="2" class="px-2 py-2 text-xs">{{ property.location }}</ion-col>
     <ion-col size="2" class="px-2 py-2 text-xs">{{ property.number_of_rooms }}</ion-col>
     <ion-col size="1.5" class="px-2 py-2 text-xs">{{ property.number_of_bathrooms }}</ion-col>
-
-    <!-- Botones de acción (Eliminar, Detalles) -->
-    <ion-col size="1.5" class="px-2 py-2 text-xs flex space-x-1">
-      <ion-button fill="clear" color="danger" class="p-1">
-        <ion-icon name="trash" class="text-base"></ion-icon>
+    
+    <ion-col size="1.5" class="px-2 py-2 text-xs flex flex-row space-x-1">
+      <ion-button 
+        (click)="removeProperty(property)" 
+        color="danger" fill="clear" size="small">
+        <ion-icon name="trash"></ion-icon>
       </ion-button>
-      <ion-button fill="clear" color="primary" class="p-1">
-        <ion-icon name="eye" class="text-base"></ion-icon>
+      <ion-button 
+        (click)="goToviewProperty(property)" 
+        color="primary" 
+        fill="clear" size="small">
+        <ion-icon name="eye"></ion-icon>
       </ion-button>
     </ion-col>
   </ion-row>
