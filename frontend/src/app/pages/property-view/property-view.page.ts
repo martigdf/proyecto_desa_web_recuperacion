@@ -1,6 +1,5 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LayoutComponent } from '../../layout/layout.component';
 import {
   IonCard,
   IonCardHeader,
@@ -32,7 +31,6 @@ import { AlertService } from '../../services/alert.service';
     IonCardTitle,
     IonCardHeader,
     IonCard,
-    LayoutComponent,
   ],
   templateUrl: './property-view.page.html',
   styleUrl: './property-view.page.css',

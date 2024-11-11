@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { LayoutComponent } from '../../layout/layout.component';
+
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { home, person } from 'ionicons/icons';
@@ -8,7 +8,7 @@ import { home, person } from 'ionicons/icons';
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [IonIcon, LayoutComponent],
+  imports: [IonIcon],
   templateUrl: './admin-panel.page.html',
   styleUrl: './admin-panel.page.css',
 })

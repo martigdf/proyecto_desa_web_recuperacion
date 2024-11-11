@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import {LayoutComponent} from '../../layout/layout.component';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [IonicModule,
-    LayoutComponent
   ],
   templateUrl: './home.page.html',
   styleUrl: './home.page.css'

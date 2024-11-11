@@ -6,7 +6,6 @@ import {
   IonImg,
   IonButton,
   IonIcon,
-  IonList,
   IonCard,
   IonCardHeader,
   IonCardContent,
@@ -17,7 +16,11 @@ import { NgFor } from '@angular/common';
 import { PropertyService } from '../../services/property.service';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { eye, trash } from 'ionicons/icons';
+import { eye, star, starOutline, trash } from 'ionicons/icons';
+import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { Property } from '../../interfaces/property';
 
 @Component({
   selector: 'app-compare-table',
@@ -27,7 +30,6 @@ import { eye, trash } from 'ionicons/icons';
     IonCardContent,
     IonCardHeader,
     IonCard,
-    IonList,
     IonIcon,
     IonButton,
     IonImg,
@@ -40,20 +42,36 @@ import { eye, trash } from 'ionicons/icons';
   styleUrls: ['./compare-table.component.scss'],
 })
 export class CompareTableComponent {
-
   @Input() itemList!: CompareItem[];
   private propertyService = inject(PropertyService);
   private router = inject(Router);
+  private authService = inject(AuthService);
+  private alertService = inject(AlertService);
+  private favoritesService = inject(FavoritesService);
 
   constructor() {
-    addIcons({trash, eye})
+    addIcons({ trash, eye, starOutline, star });
   }
 
   removeProperty(item: CompareItem) {
-      this.propertyService.removeFromCompare(item.property.id);
-    }
+    this.propertyService.removeFromCompare(item.property.id);
+  }
 
   viewDetails(item: CompareItem) {
-      this.router.navigate([`/property-view/${item.property.id}`])
+    this.router.navigate([`/property-view/${item.property.id}`]);
+  }
+
+  toggleFavorite(property: Property) {
+    if (this.authService.isValidUser()) {
+      this.favoritesService.addOrRemoveFavorite(property);
+    } else {
+      this.alertService.showError(
+        'Para añadir a favoritos primero debes iniciar sesión'
+      );
     }
+  }
+
+  isFavorite(property: Property): boolean {
+    return this.favoritesService.isFavorite(property.id);
+  }
 }

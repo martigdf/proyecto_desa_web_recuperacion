@@ -1,16 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
-import {NgClass, NgFor, NgIf} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
 import { ConfirmationTabComponent } from '../../components/confirmation-tab/confirmation-tab.component';
 import { UsersService } from '../../services/users.service';
 import {IonicModule} from '@ionic/angular';
-import {LayoutComponent} from '../../layout/layout.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [NgFor, NgIf, ConfirmationTabComponent, IonicModule, LayoutComponent],
+  imports: [NgFor, NgIf, ConfirmationTabComponent, IonicModule],
   templateUrl: './users.page.html',
   styleUrl: './users.page.css',
 })
