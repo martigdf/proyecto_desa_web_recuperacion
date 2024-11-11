@@ -10,7 +10,7 @@ import {LayoutComponent} from '../../layout/layout.component';
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [NgFor, NgIf, ConfirmationTabComponent, IonicModule, NgClass, LayoutComponent],
+  imports: [NgFor, NgIf, ConfirmationTabComponent, IonicModule, LayoutComponent],
   templateUrl: './users.page.html',
   styleUrl: './users.page.css',
 })
