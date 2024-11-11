@@ -46,9 +46,9 @@ export class AuthGoogleService {
       }
 
       if (this._authService.isAdmin()) {
-        this.router.navigate(['/admin-panel']);
+        location.href = '/admin-panel';
       } else {
-        this.router.navigate(['/all-properties']);
+        location.href = '/all-properties';
       }
     }
   }
@@ -75,6 +75,6 @@ export class AuthGoogleService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.router.navigate(['/home']);
+    location.href = '/home';
   }
 }

@@ -9,7 +9,7 @@ import { AlertService } from '../../services/alert.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [IonicModule,FormsModule],
+  imports: [IonicModule, FormsModule],
   templateUrl: './login.page.html',
   styleUrl: './login.page.css',
 })
@@ -31,9 +31,9 @@ export class LoginPage implements OnInit{
       // Redirect to home
       console.log(this.authService.isAdmin())
       if (this.authService.isAdmin()){
-        await this.router.navigate(['/admin-panel']);
+        location.href = '/admin-panel';
       } else {
-        await this.router.navigate(['/all-properties']);
+        location.href = '/all-properties';
       }
     } catch (error) {
       this.alertService.showError('Error al iniciar sesión. Email o contraseña incorrectos.');

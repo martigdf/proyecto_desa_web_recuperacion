@@ -1,68 +1,73 @@
-<app-layout class="mt-4">
-    <main class="container mx-auto px-4 mt-10 text-center">
-      <section>
-        <h2 class="text-3xl font-semibold text-gray-700 mb-6">
-          Tu mejor opción para encontrar alquileres
-        </h2>
-        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
-          RentMatch te ayuda a encontrar la propiedad ideal para alquilar, desde
-          apartamentos en Montevideo hasta casas en la playa. Explora las
-          opciones en nuestra plataforma y encuentra el lugar perfecto para ti.
-        </p>
+<div class="p-5"></div>
+  <main
+    class="container mx-auto px-4 mt-10 text-center"
+  >
+    <section>
+      <h2 class="text-3xl font-semibold text-gray-700 mb-6">
+        Tu mejor opción para encontrar alquileres
+      </h2>
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+        RentMatch te ayuda a encontrar la propiedad ideal para alquilar, desde
+        apartamentos en Montevideo hasta casas en la playa. Explora las opciones
+        en nuestra plataforma y encuentra el lugar perfecto para ti.
+      </p>
 
-        <div class="flex justify-center space-x-4">
-          <button
-            class="m-3 mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-xl font-semibold text-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
-            (click)="Login()"
-          >
-            Login
-          </button>
-          <button
-            class="m-3 mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-xl font-semibold text-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
-            (click)="Register()"
-          >
-            Register
-          </button>
-          <button
-            class="m-3 mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-xl font-semibold text-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
-            (click)="View()"
-          >
-            Ver propiedades
-          </button>
-        </div>
-      </section>
-      <section class="mt-12 flex justify-center space-x-10">
-        <ion-card
-          class="w-60 rounded-lg shadow-lg p-3 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+      <div
+        class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 m-3 mt-4"
+      >
+        <button
+          class="px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-xl font-semibold text-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+          (click)="Login()"
         >
-          <ion-card-header>
-            <ion-card-title class="text-lg font-bold text-green-600"
-              >Fácil de Usar</ion-card-title
-            >
-          </ion-card-header>
-          <ion-card-content>
-            <p class="text-gray-600 text-sm">
-              Nuestra interfaz intuitiva te permite buscar y comparar
-              propiedades sin complicaciones.
-            </p>
-          </ion-card-content>
-        </ion-card>
+          Login
+        </button>
+        <button
+          class="px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-xl font-semibold text-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+          (click)="Register()"
+        >
+          Register
+        </button>
+        <button
+          class="px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full shadow-xl font-semibold text-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+          (click)="View()"
+        >
+          Ver propiedades
+        </button>
+      </div>
+    </section>
+    <section
+      class="mt-12 flex flex-col sm:flex-row justify-center space-y-10 sm:space-y-0 sm:space-x-10"
+    >
+      <ion-card
+        class="w-full sm:w-60 rounded-lg shadow-lg p-3 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+      >
+        <ion-card-header>
+          <ion-card-title class="text-lg font-bold text-green-600"
+            >Fácil de Usar</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content>
+          <p class="text-gray-600 text-sm">
+            Nuestra interfaz intuitiva te permite buscar y comparar propiedades
+            sin complicaciones.
+          </p>
+        </ion-card-content>
+      </ion-card>
 
-        <ion-card
-          class="w-60 rounded-lg shadow-lg p-3 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
-        >
-          <ion-card-header>
-            <ion-card-title class="text-lg font-bold text-green-600"
-              >Propiedades Verificadas</ion-card-title
-            >
-          </ion-card-header>
-          <ion-card-content>
-            <p class="text-gray-600 text-sm">
-              Solo listamos propiedades verificadas para ofrecerte opciones
-              confiables y de calidad.
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </section>
-    </main>
-</app-layout>
+      <ion-card
+        class="w-full sm:w-60 rounded-lg shadow-lg p-3 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+      >
+        <ion-card-header>
+          <ion-card-title class="text-lg font-bold text-green-600"
+            >Propiedades Verificadas</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content>
+          <p class="text-gray-600 text-sm">
+            Solo listamos propiedades verificadas para ofrecerte opciones
+            confiables y de calidad.
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </section>
+  </main>
