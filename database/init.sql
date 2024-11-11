@@ -62,16 +62,6 @@ CREATE TABLE IF NOT EXISTS data_source (
     url VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS search_criteria (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL,
-    location VARCHAR(100),
-    price_range_min NUMERIC(10, 2),
-    price_range_max NUMERIC(10, 2),
-    number_of_rooms INT,
-    property_type VARCHAR(50),
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
 
 insert into users (name, lastname, email, password, role)
     values('Nicolás', 'Márquez', 'nicomars270@gmail.com', crypt('27DEenero2003_', gen_salt('bf')), 'admin'),
