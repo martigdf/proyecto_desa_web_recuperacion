@@ -4,13 +4,15 @@
     <app-navbar></app-navbar>
   </header>
 
-  <!-- Contenido específico de cada página -->
-  <main class="flex-grow mt-16">
-    <ng-content></ng-content>
-  </main>
+  <div class="flex-grow">
+    <!-- Contenido específico de cada página -->
+    <main class="mt-14">
+      <ng-content></ng-content>
+    </main>
+  </div>
 
   <!-- Pie de página general -->
-  <footer class="bg-gray-800 text-white text-center p-4 mt-auto">
-    © 2024 Nuestra Aplicación Inmobiliaria
+  <footer class="bg-gray-800 text-white text-center p-4">
+    © 2024 RentMatch
   </footer>
 </div>

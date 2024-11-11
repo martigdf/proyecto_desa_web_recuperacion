@@ -30,6 +30,11 @@ export class AuthService {
         },
         body: JSON.stringify({email, password})
       });
+      if (!response.ok) {
+        const errorData = await response.json();
+        // elimina usuario en caso de error
+        localStorage.removeItem('user');
+      }
       const data = await response.json();
       // Guardar token y setearlo en el local storage
       localStorage.setItem('token', data.token);
@@ -57,6 +62,11 @@ export class AuthService {
 
   getUser(){
     return JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
+  getUserId(): number{
+    const user = this.getUser();
+    return user.id || 0
   }
 
   constructor() { }

@@ -1,0 +1,65 @@
+<ion-grid class="max-w-screen-md">
+  <ion-row class="justify-center">
+    <!-- Tarjetas de propiedades -->
+    <ion-col
+      size="12"
+      size-md="6"
+      *ngFor="let compareItem of itemList; let i = index"
+      class="p-0"
+    >
+      <ion-card class="h-full w-full max-w-xs m-0">
+        <ion-card-header>
+          <div class="absolute top-4 left-0 right-0 flex justify-between px-4">
+            <button
+              class=" bg-opacity-50 text-amber-400 rounded-full p-2"
+              (click)="toggleFavorite(compareItem.property)"
+            >
+              <ion-icon
+                [name]="
+                  isFavorite(compareItem.property) ? 'star' : 'star-outline'
+                "
+                class="text-2xl"
+              ></ion-icon>
+            </button>
+          </div>
+          <ion-img
+            [src]="compareItem.property.img_url"
+            class="h-24 w-full object-cover"
+          ></ion-img>
+          <ion-card-title class="text-base font-semibold">{{
+            compareItem.property.title
+          }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="text-sm">
+          <p><strong>Precio:</strong> ${{ compareItem.property.price }}</p>
+          <p><strong>Ubicación:</strong> {{ compareItem.property.location }}</p>
+          <p>
+            <strong>Habitaciones:</strong>
+            {{ compareItem.property.number_of_rooms }}
+          </p>
+          <p>
+            <strong>Baños:</strong>
+            {{ compareItem.property.number_of_bathrooms }}
+          </p>
+          <!-- Botones de acción en las tarjetas -->
+          <ion-button
+            fill="clear"
+            color="danger"
+            (click)="removeProperty(compareItem)"
+            class="text-sm"
+          >
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            color="primary"
+            (click)="viewDetails(compareItem)"
+            class="text-sm"
+          >
+            <ion-icon name="eye"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

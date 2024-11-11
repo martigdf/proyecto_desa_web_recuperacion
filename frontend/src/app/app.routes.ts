@@ -13,6 +13,7 @@ import { RegisterPage } from './pages/register/register.page';
 import {EditUserPage} from './pages/edit-user/edit-user.page';
 import {isAdminOrSelfGuard} from './guards/is-admin-or-self.guard';
 import { isAdminOrUserGuard } from './guards/is-admin-or-user.guard';
+import { PropertiesPage } from './pages/properties/properties.page';
 
 export const routes: Routes = [
   {
@@ -57,6 +58,11 @@ export const routes: Routes = [
   {
     path: 'admin-panel/users',
     component: UsersPage,
+    canActivate: [isAdminGuard],
+  },
+  {
+    path: 'admin-panel/properties',
+    component: PropertiesPage,
     canActivate: [isAdminGuard],
   },
   {

@@ -1,7 +1,69 @@
-<div class="p-5"></div>
-<h1> Property view works! </h1>
-<app-layout>
-    <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToAllProperties()">
-        Volver
-    </button>
-</app-layout>
+ <div class="p-4 overflow-auto max-w-full max-h-[calc(100vh-4rem)]">
+    <ion-card class="bg-card rounded-lg p-4 mb-4">
+      <ion-card-header class="flex flex-row">
+        <ion-card-title class="text-2xl font-bold mb-2 flex-1"
+          >{{property?.title}}</ion-card-title
+        >
+        <button
+          class="ml-2 text-amber-400 rounded-full p-2 bg-transparent self-center"
+          (click)="toggleFavorite()"
+        >
+          <ion-icon
+            [name]="isFavorite() ? 'star' : 'star-outline'"
+            class="text-2xl"
+          ></ion-icon>
+        </button>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="text-lg mb-2">{{property?.description}}</p>
+        <ul class="text-base">
+          <li class="flex items-center">
+            Numero de habitaciones
+            <ion-icon name="bed-outline" class="ml-2 text-red-500"></ion-icon>:
+            {{property?.number_of_rooms}}
+          </li>
+          <li class="flex items-center">
+            Numero de baños
+            <ion-icon name="water-outline" class="ml-2 text-blue-500"></ion-icon
+            >: {{property?.number_of_bathrooms}}
+          </li>
+          <li class="flex items-center">
+            Area del terreno:
+            <ion-icon
+              name="resize-outline"
+              class="ml-2 text-green-500"
+            ></ion-icon>
+            {{property?.area}} m<sup>2</sup>
+          </li>
+        </ul>
+        <div class="grid grid-cols-3 gap-2 mb-4 border-b border-t items-center">
+          <img
+            src="{{property?.img_url}}"
+            alt="Property Image 1"
+            class="rounded-lg h-[90%]"
+          />
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="bg-card rounded-lg p-4 mb-4">
+      <ion-card-header>
+        <ion-card-title class="text-lg font-bold mb-2"
+          >Contacto del vendedor</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <p class="text-base">Por dudas y concertar una visita, contacta a:</p>
+        <ul class="text-base">
+          <li>Email: {{property?.contact_details}}</li>
+          <li>
+            <a
+              href="#"
+              class="bg-primary text-primary-foreground rounded-lg p-2 block text-center hover:bg-primary/80"
+              >Ver publicacion original</a
+            >
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+  </div>

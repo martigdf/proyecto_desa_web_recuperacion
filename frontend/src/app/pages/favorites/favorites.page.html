@@ -1,9 +1,26 @@
-<div class="p-5"></div>
-<app-layout>
-    <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToTask()">
-        Detalles de la propiedad
-    </button>
-    <button class="m-3 mt-4 px-4 py-2 bg-customGreen text-white rounded" (click)="goToAllProperties()">
-        Volver
-    </button>
-</app-layout>
+  <div class="p-4">
+  </div>
+  <div class="flex h-auto">
+    <!-- Favoritos-->
+    <div *ngIf="favoriteList.length > 0; else noFavorites" 
+      class="overflow-auto max-w-full max-h-[calc(100vh-8rem)] w-full pb-6">
+      <ion-grid class="w-full p-5">
+        <ion-row class="flex flex-wrap gap-4 justify-start">
+          <ion-col
+            *ngFor="let favorite of favoriteList"
+            class=" flex-grow-0 flex-shrink-0 w-full sm:max-w-[500px] md:max-w-[300px] min-w-[300px] max-h-[400px] min-h-[300px]">
+            <app-property-card [property]="favorite"></app-property-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <!-- No hay favoritos -->
+  <ng-template #noFavorites>
+    <div class="flex flex-col items-center justify-center text-center mx-auto 
+      my-8 p-6 bg-white rounded-lg shadow-lg max-w-md">
+      <ion-icon name="star-outline" class="text-6xl text-gray-600 mb-4"></ion-icon>
+      <p class="text-gray-700 text-lg font-semibold mb-2">No tienes propiedades en favoritos</p>
+      <p class="text-gray-500">Explora nuestras propiedades y agrega tus favoritas para verlas aquí.</p>
+    </div>
+  </ng-template>

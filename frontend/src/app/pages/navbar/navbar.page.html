@@ -1,39 +1,232 @@
-<header class="w-full h-16 flex items-center justify-around fixed top-0 left-0 z-50 bg-[#386150]">
-    <nav class="navbar flex items-center w-full justify-between transition-width duration-200 ease">
-        <ul class="navbar-nav list-none p-0 m-0 flex flex-row ">
-            <li *ngIf="!isHomeRoute" style="align-items: center;" class="nav-item" id="logout-item">
-                <a href="#" class="nav-link flex items-center ml-4 text-white" (click)="logout()" style="display: flex; align-items: center;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6">
-                        <path fill="currentColor" class="fa-primary" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
-                    </svg>
-                    <span class="link-text ml-2" style="margin-left: 8px;">Logout</span>
-                </a>
-            </li>
-            <!-- Mostrar rutas -->
-            <li *ngIf="currentRoute === '/all-properties' || currentRoute === '/favorites' || currentRoute === '/property-compare'" style="display: flex; align-items: center;">
-                <a class="nav-link flex items-center ml-4 text-white" (click)="navigateTo('/favorites')" style="cursor: pointer;">
-                    <span class="link-text ml-2" *ngIf="currentRoute !== '/favorites' && isValidUser">Favorites</span>
-                </a>
-                <a class="nav-link flex items-center ml-4 text-white" (click)="navigateTo('/property-compare')" style="cursor: pointer;">
-                    <span class="link-text ml-2" *ngIf="currentRoute !== '/property-compare'">Comparar propiedades </span>
-                </a>
-            </li>
-            <li *ngIf="currentRoute === '/admin-panel' || currentRoute === '/admin-panel/users' || currentRoute === '/all-properties' " style="display: flex; align-items: center;">
-                <a class="nav-link flex items-center ml-4 text-white" (click)="navigateTo('/admin-panel/users')" style="cursor: pointer;">
-                    <span class="link-text ml-2" *ngIf="currentRoute !== '/admin-panel/users' && isAdmin">Lista de usuarios registrados</span>
-                </a>
-                <a class="nav-link flex items-center ml-4 text-white" (click)="navigateTo('/all-properties')" style="cursor: pointer;">
-                    <span class="link-text ml-2" *ngIf="currentRoute !== '/all-properties'">Lista de propiedades </span>
-                </a>
-            </li>
-        </ul>
-        <div id="user-info">
-          <!-- Si hay un usuario logueado, mostramos sus datos -->
-          <div *ngIf="isValidUser" class="flex items-center">
-              <p class="text-white
-              text-sm
-              mr-4">{{ user.name }} {{ user.lastname }}</p>
-        </div>
-        </div>
-    </nav>
-</header>
+<div
+  class="w-full h-14 flex items-center justify-between fixed top-0 left-0 z-50 bg-[#386150]"
+>
+  <nav
+    class="flex items-center w-full h-full justify-between transition-all duration-200 ease m-0 p-0"
+    aria-label="Main Navigation"
+  >
+    <!-- Mobile menu button -->
+    <div class="md:hidden flex items-center">
+      <button
+        class="text-white p-2 rounded-md focus:outline-none"
+        (click)="toggleMobileMenu()"
+      >
+        <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
+      </button>
+    </div>
+
+    <ul class="navbar-nav hidden md:flex space-x-4 p-0 m-0">
+      <!-- Left section for navigation buttons -->
+      <li *ngIf="currentRoute !== '/home'">
+        <button
+          class="nav-link text-white flex items-center"
+          (click)="navigateTo('/home')"
+          [ngClass]="{'ml-4': currentRoute !== '/home'}"
+        >
+          <span class="ml-2">Inicio</span>
+        </button>
+      </li>
+      <ng-container *ngIf="routeIsNotLoginOrRegister">
+        <li *ngIf="showAdminPanel" class="flex items-center">
+          <button
+            class="nav-link text-white flex items-center"
+            (click)="navigateTo('/admin-panel')"
+            [ngClass]="{'ml-4': currentRoute !== '/admin-panel'}"
+          >
+            <span *ngIf="showAdminPanelLink" class="ml-2">Admin Panel</span>
+          </button>
+        </li>
+        <li>
+          <button
+            class="nav-link text-white flex items-center"
+            (click)="navigateTo('/all-properties')"
+            [ngClass]="{'ml-4': currentRoute !== '/all-properties'}"
+          >
+            <span *ngIf="currentRoute !== '/all-properties'" class="ml-2">Lista de propiedades</span>
+          </button>
+        </li>
+        <li>
+          <button
+            class="nav-link text-white flex items-center"
+            (click)="navigateTo('/admin-panel/properties')"
+            [ngClass]="{'ml-4': currentRoute !== '/admin-panel/properties'}"
+          >
+            <span *ngIf="currentRoute !== '/admin-panel/properties'" class="ml-2"
+              >Propiedades Administradas</span
+            >
+        </button>
+        </li>
+      </ng-container>
+    </ul>
+
+    <!-- Right section for dropdown buttons -->
+    <ul class="navbar-nav hidden md:flex space-x-4 p-0 m-0 ml-auto">
+      <ng-container *ngIf="routeIsNotLoginOrRegister">
+        <li>
+          <div class="flex items-center ml-auto relative"></div>
+          <button
+            class="m-3 p-3 text-white rounded-full relative hover:bg-[#2d4f40]"
+            (click)="toggleCompareDropdown()"
+            aria-haspopup="true"
+          >
+            <span class="text-sm">
+              <ion-icon name="home-outline"></ion-icon>/<ion-icon
+                name="home-outline"
+              ></ion-icon>
+            </span>
+            <span
+              *ngIf="compareCount().length > 0"
+              class="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-2"
+            >
+              {{ compareCount().length }}
+            </span>
+          </button>
+
+          <div
+            [ngClass]="{'transition-all ease-out duration-300 transform opacity-100 scale-100': isCompareDropdownOpen, 'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isCompareDropdownOpen}"
+            class="absolute top-full left-[-8rem] w-64 p-4 bg-white rounded-md shadow-lg z-20 inline-flex items-start flex-col md:left-auto md:right-0"
+            role="menu"
+          >
+            <div *ngFor="let item of compareCount()" class="w-full">
+              <div class="flex flex-row p-2 border-b justify-between">
+                <p class="text-sm">{{ item.property.title }}</p>
+                <button
+                  class="text-red-500 hover:text-red-700"
+                  (click)="removeFromCompare(item.property.id)"
+                >
+                  <ion-icon name="close-outline" class="text-xl"></ion-icon>
+                </button>
+              </div>
+            </div>
+            <button
+              class="mt-3 w-full text-center text-white bg-[#386150] hover:bg-[#2d4f40] rounded-md p-2"
+              (click)="navigateTo('/property-compare')"
+            >
+              Comparar propiedades
+            </button>
+          </div>
+        </li>
+        <li>
+          <div
+            id="user-info"
+            class="h-full inline-flex items-center relative mt-2 md:mt-0"
+          >
+            <div *ngIf="isValidUser" class="inline-flex items-center relative">
+              <button
+                class="text-white text-base mr-4 ml-4 inline-flex items-center hover:bg-[#2d4f40] p-2 rounded"
+                (click)="toggleDropdown()"
+                aria-haspopup="true"
+              >
+                {{ user.name }} {{ user.lastname }}
+                <ion-icon name="chevron-down-outline" class="ml-2"></ion-icon>
+              </button>
+            </div>
+            <div
+              class="h-full inline-flex items-center relative mt-2 md:mt-0"
+              *ngIf="!isValidUser"
+            >
+              <button
+                class="text-white text-base mr-4 ml-4 inline-flex items-center hover:bg-[#2d4f40] p-2 rounded"
+                (click)="navigateTo('/login')"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+
+          <div
+            [ngClass]="{'transition-all ease-out duration-300 transform opacity-100 scale-100': isDropdownOpen, 'transition-all ease-in duration-75 transform opacity-0 scale-95 pointer-events-none': !isDropdownOpen}"
+            class="absolute w-auto p-4 bg-white rounded-md shadow-lg z-30 inline-flex items-center flex-col space-y-2"
+            role="menu"
+            style="top: 100%; right: 0"
+          >
+            <button
+              *ngIf="currentRoute !== '/favorites' && isValidUser"
+              class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
+              (click)="navigateTo('/favorites')"
+            >
+              <span class="ml-2">Favorites</span>
+              <ion-icon name="star-outline"></ion-icon>
+            </button>
+            <button
+              class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
+              (click)="logout()"
+            >
+              <span class="ml-2">Logout</span>
+              <ion-icon name="log-out-outline" class="ml-2"></ion-icon>
+            </button>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+
+    <!-- Mobile menu -->
+    <div
+      [ngClass]="{'block': isMobileMenuOpen, 'hidden': !isMobileMenuOpen}"
+      class="md:hidden absolute top-full left-0 w-full bg-[#386150] z-40"
+    >
+      <ul class="flex flex-col space-y-4 p-4">
+        <li *ngIf="currentRoute !== '/home'">
+          <button
+            class="nav-link text-white flex items-center"
+            (click)="navigateTo('/home')"
+          >
+            <span class="ml-2">Inicio</span>
+          </button>
+        </li>
+        <ng-container *ngIf="routeIsNotLoginOrRegister">
+          <li *ngIf="showAdminPanel" class="flex items-center">
+            <button
+              class="nav-link text-white flex items-center"
+              (click)="navigateTo('/admin-panel')"
+            >
+              <span *ngIf="showAdminPanelLink" class="ml-2">Admin Panel</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="nav-link text-white flex items-center"
+              (click)="navigateTo('/all-properties')"
+            >
+              <span class="ml-2">Lista de propiedades</span>
+            </button>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="routeIsNotLoginOrRegister">
+          <li>
+            <button
+              class="nav-link text-white flex items-center"
+              (click)="navigateTo('/favorites')"
+            >
+              <span class="ml-2">Favorites</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="nav-link text-white flex items-center"
+              (click)="logout()"
+            >
+              <span class="ml-2">Logout</span>
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="md:hidden flex items-center">
+      <button
+        class="text-white p-2 rounded-md focus:outline-none"
+        (click)="toggleCompareDropdown()"
+      >
+        <ion-icon name="home-outline"></ion-icon>/<ion-icon
+          name="home-outline"
+        ></ion-icon>
+        <span
+          *ngIf="compareCount().length > 0"
+          class="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-2"
+        >
+          {{ compareCount().length }}
+        </span>
+      </button>
+    </div>
+  </nav>
+</div>
