@@ -132,7 +132,7 @@ export class NavbarPage implements OnInit {
   }
 
   get showAdminPanel(): boolean {
-    return ['/admin-panel/users', '/all-properties'].includes(
+    return ['/admin-panel/users', '/all-properties', '/admin-panel/properties'].includes(
       this.currentRoute
     );
   }

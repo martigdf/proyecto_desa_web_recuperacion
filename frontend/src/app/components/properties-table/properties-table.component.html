@@ -1,0 +1,40 @@
+<ion-grid class="max-w-5xl border rounded-lg shadow-lg my-4">
+  <!-- Encabezado de la tabla -->
+  <ion-row class="font-semibold text-sm text-center border-b bg-gray-100">
+    <ion-col size="3" class="px-2 py-2 border-r">Propiedad</ion-col>
+    <ion-col size="2" class="px-2 py-2 border-r">Precio</ion-col>
+    <ion-col size="2" class="px-2 py-2 border-r">Ubicación</ion-col>
+    <ion-col size="2" class="px-2 py-2 border-r">Habitaciones</ion-col>
+    <ion-col size="1.5" class="px-2 py-2 border-r">Baños</ion-col>
+    <ion-col size="1.5" class="px-2 py-2">Acciones</ion-col>
+  </ion-row>
+
+  <ion-row 
+    *ngFor="let property of propertiesList()"
+    class="text-center border-b hover:bg-gray-50 items-center">
+    <ion-col size="3" class="px-2 py-2 text-xs">
+      <div class="flex flex-col">
+        <span> ID: {{ property.id }}</span> 
+        <span>{{ property.title }}</span>
+      </div>
+    </ion-col>
+    <ion-col size="2" class="px-2 py-2 text-xs">${{ property.price }}</ion-col>
+    <ion-col size="2" class="px-2 py-2 text-xs">{{ property.location }}</ion-col>
+    <ion-col size="2" class="px-2 py-2 text-xs">{{ property.number_of_rooms }}</ion-col>
+    <ion-col size="1.5" class="px-2 py-2 text-xs">{{ property.number_of_bathrooms }}</ion-col>
+    
+    <ion-col size="1.5" class="px-2 py-2 text-xs flex flex-row space-x-1">
+      <ion-button 
+        (click)="removeProperty(property)" 
+        color="danger" fill="clear" size="small">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+      <ion-button 
+        (click)="goToviewProperty(property)" 
+        color="primary" 
+        fill="clear" size="small">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

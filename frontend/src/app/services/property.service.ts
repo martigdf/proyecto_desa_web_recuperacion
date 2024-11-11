@@ -92,7 +92,7 @@ export class PropertyService {
       contact_details: 'contacto3@example.com',
       img_url:
         'https://i.pinimg.com/736x/a2/d0/34/a2d0349b4d4c3dc993af1baf277f356e--mickey-mouse-clubhouse-song-lyrics.jpg', // Imagen de stock
-    },
+    }
   ]);
 
   getProperties = computed(() => this.properties);
@@ -129,5 +129,11 @@ export class PropertyService {
   
   removeFromCompare(propertyId: number){
     this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
+  }
+
+  removeProperty(propertyId: number) {
+    this.properties.update((properties) =>
+      properties.filter((property) => property.id !== propertyId)
+    );
   }
 }

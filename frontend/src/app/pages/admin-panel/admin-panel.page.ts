@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { home, person } from 'ionicons/icons';
+import { home, person, cog } from 'ionicons/icons';
 
 @Component({
   selector: 'app-admin-panel',
@@ -16,7 +16,7 @@ export class AdminPanelPage {
   private router: Router = inject(Router);
 
   constructor() {
-    addIcons({ person, home });
+    addIcons({ person, home, cog });
   }
 
   goToUserList() {
@@ -24,5 +24,8 @@ export class AdminPanelPage {
   }
   goToPropertyList() {
     this.router.navigate(['/all-properties']);
+  }
+  goToPropertyListAdmin() {
+    this.router.navigate(['admin-panel', 'properties']);
   }
 }
