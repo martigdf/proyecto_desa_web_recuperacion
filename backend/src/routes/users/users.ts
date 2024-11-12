@@ -10,7 +10,8 @@ import {
     UserSchema
 } from "../../types/schemas/user/userSchema.js";
 import bcrypt from 'bcryptjs';
-import {FavoriteIdSchema, FavoritePostSchema, FavoriteSchema} from "../../types/schemas/favorite/favoriteSchema.js";
+import {FavoriteIdSchema, FavoritePostSchema, FavoriteSchema, FavoritePostType} from "../../types/schemas/favorite/favoriteSchema.js";
+import { Type } from "@sinclair/typebox";
 
 
 const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
@@ -194,19 +195,20 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
     });
 
 
-    fastify.get('/:id/favorites/:id', {
+    fastify.get('/:id/favorites/:id_favorite', {
         schema: {
             description: "Obtener un favorito",
             summary: "Obtener un favorito de un usuario específico",
             tags: ['favorites'],
+            params: Type.Intersect([UserIdSchema, FavoriteIdSchema]),
             response: {
-                200:{
+                200: {
                     description: 'Un favorito',
                     type: 'object',
                     properties: FavoriteSchema.properties
                 },
-                501: {
-                    description: "Not implemented",
+                404: {
+                    description: "Favorito del usuario no encontrado",
                     type: "object",
                     properties: {
                         message: { type: "string" }
@@ -216,15 +218,30 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            const { id, id_favorite } = request.params as { id: string; id_favorite: string };
+            const res = await query(
+                `SELECT id_favorite, user_id, property_id
+                FROM favorites
+                WHERE user_id = $1 and id_favorite = $2`,
+                [id, id_favorite]
+            );
+            if (res.rows.length === 0) {
+                reply.status(404).send({ message: "Favorito del usuario no encontrado" });
+                return;
+            }
+            
+            const favorite = res.rows[0];
+            return favorite;
         }
     });
+    
 
     fastify.get('/:id/favorites', {
         schema: {
             description: "Obtener favoritos",
             summary: "Obtener los favoritos de un usuario específico",
             tags: ['favorites'],
+            params: UserIdSchema,
             response: {
                 200:{
                     description: 'Listado de favoritos',
@@ -235,7 +252,7 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                     }
                 },
                 501: {
-                    description: "Not implemented",
+                    description: "Favoritos del usuario no encontrados",
                     type: "object",
                     properties: {
                         message: { type: "string" }
@@ -245,11 +262,23 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            const { id } = request.params as { id: string };
+            const res = await query(
+                `SELECT id_favorite, user_id, property_id
+                FROM favorites
+                WHERE user_id = $1`,
+                [id]
+            );
+            if (res.rows.length === 0) {
+                reply.status(501).send({ message: "Favoritos del usuario no encontrados" });
+                return;
+            }
+            const favorites = res.rows[0];
+            return favorites;
         }
     });
 
-    fastify.post('/:id/favorites', {
+    fastify.post('/favorites', {
         schema: {
             description: "Crear un favorito",
             summary: "Crear un favorito para un usuario",
@@ -262,7 +291,7 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                     properties: FavoriteSchema.properties
                 },
                 501: {
-                    description: "Not implemented",
+                    description: "Error al crear el favorito",
                     type: "object",
                     properties: {
                         message: { type: "string" }
@@ -272,22 +301,38 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            const favoritePost = request.body as FavoritePostType;
+            const userId = favoritePost.userId;
+            const propertyId = favoritePost.propertyId;
+            const res = await query(
+                `INSERT INTO favorites
+                (user_id, property_id)
+                VALUES ($1, $2)
+                RETURNING id_favorite;`,
+                [userId, propertyId]
+            );
+            if (res.rows.length === 0) {
+                reply.status(501).send({ message: "Error al crear el favorito" });
+                return;
+            }
+            reply.code(201).send({message: "Favorito creado"});
+            const favorite = res.rows[0];
+            return favorite;
         }
     });
 
-    fastify.delete('/:id/favorites/:id', {
+    fastify.delete('/:id/favorites/:id_favorite', {
         schema: {
             description: "Eliminar un favorito",
             summary: "Eliminar un favorito de un usuario",
             tags: ['favorites'],
-            params: FavoriteIdSchema,
+            params: Type.Intersect([UserIdSchema, FavoriteIdSchema]),
             response: {
                 204: {
                     description: 'Favorito eliminado'
                 },
                 501: {
-                    description: "Not implemented",
+                    description: "Favorito no encontrado",
                     type: "object",
                     properties: {
                         message: { type: "string" }
@@ -297,7 +342,16 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifySelfOrAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            const { id, id_favorite } = request.params as { id: string; id_favorite: string };
+            const res = await query(
+                `DELETE FROM favorites WHERE user_id= $1 and id_favorite = $2`,
+                [id, id_favorite]
+            );
+            if (res.rowCount === 0) {
+                reply.status(501).send({ message: "Favorito no encontrado" });
+                return;
+            }
+            reply.code(204).send({message: "Favorito eliminado"});
         }
     });
 }
