@@ -55,7 +55,7 @@ services:
         - PGHOST=${PGHOST}
       depends_on:
       - database-proyecto
-      - mongo
+      - mongodb
 
   proxy-proyecto:
     image: proxy
@@ -75,10 +75,13 @@ services:
       - FRONTEND_PORT=${FRONTEND_PORT}
       - FRONTEND_URL=${FRONTEND_URL}
 
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    build:
-      context: ./mongo
+  mongodb:
+    container_name: docker-mongo
     ports:
-      - "27017:27017"
+      - "2717:27017"
+    image: mongo:latest
+    environment:
+      - MONGODB_USER="root"
+      - MONGODB_PASS="maverick"
+    volumes:
+      - ./mongodb-data:/data/db
