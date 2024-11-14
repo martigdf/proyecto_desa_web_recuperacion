@@ -1,7 +1,7 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
 // import {query} from "../../services/database.js";
-import { ParamsSchema, CreateDataSourceSchema, UpdateDataSourceSchema, DataSourceSchema } from "../../types/schemas/data-source.js";
+import { ParamsSchema, CreateDataSourceSchema, UpdateDataSourceSchema, DataSourceSchema } from "../../types/schemas/property.js";
 
 // Definición del plugin de ruta
 const sourceRoute: FastifyPluginAsync = async (

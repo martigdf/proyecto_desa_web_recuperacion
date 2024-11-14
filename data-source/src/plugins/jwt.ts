@@ -2,7 +2,7 @@ import jwt, { FastifyJWTOptions } from "@fastify/jwt";
 import fp from "fastify-plugin";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { authenticateFunction } from '../types/fastify.js';
-import {query} from '../services/database.js';
+import {query} from '../services/postgresDatabase.js';
 
 const jwtOptions: FastifyJWTOptions = {
     secret: 'man-supersecret'

@@ -81,7 +81,10 @@ services:
       - "2717:27017"
     image: mongo:latest
     environment:
-      - MONGODB_USER="root"
-      - MONGODB_PASS="maverick"
+      - MONGODB_USER="admin"
+      - MONGODB_PASS="admin"
     volumes:
       - ./mongodb-data:/data/db
+
+volumes:
+    mongodb-data:
