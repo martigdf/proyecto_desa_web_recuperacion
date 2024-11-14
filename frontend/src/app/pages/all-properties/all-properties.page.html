@@ -2,7 +2,7 @@
   <!-- Sidebar -->
   <ion-menu 
     contentId="main-content"  
-    id="filterMenu" 
+    menuId="filterMenu" 
     side="start" 
     class="w-full lg:w-64">
     <app-filters 
@@ -12,21 +12,24 @@
   </ion-menu>
 
   <ion-router-outlet id="main-content">
-    <div class="overflow-auto max-w-full max-h-[calc(100vh-4rem)] pt-24">
+    <div 
+      class="overflow-auto max-w-full max-h-[calc(100vh-4rem)] pt-24">
       <!-- Botón de filtro mobile -->
-      <div class="lg:hidden w-full p-8 bg-white mt-7">
-        <ion-menu-button 
-          (click)="openFilterMenu()" 
-          slot="start">
-        </ion-menu-button>
-        <ion-button 
-          (click)="openFilterMenu()"
-          slot="start">
-          Abrir Filtros
-        </ion-button>
+      <div 
+        class="lg:hidden p-2 mt-7 flex justify-center">
+        <ion-menu-toggle 
+          menu="filterMenu">
+          <ion-button>
+            <ion-icon 
+              name="filter-outline" 
+              class="mr-2">
+            </ion-icon>
+              Filtros
+          </ion-button>
+        </ion-menu-toggle>
       </div>
-        
-      <ion-grid class="min-w-full mb-5">
+      <ion-grid 
+        class="min-w-full mb-5">
         <ion-row>
           <ion-col
             *ngFor="let property of properties"

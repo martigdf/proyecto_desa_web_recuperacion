@@ -6,6 +6,8 @@ import { NgFor } from '@angular/common';
 import { FiltersComponent } from '../../components/filters/filters.component';
 import { PropertyService } from '../../services/property.service';
 import { IonicModule, MenuController} from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { filterOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-all-properties',
@@ -24,6 +26,10 @@ export class AllPropertiesPage {
   private propertyService = inject(PropertyService);
   private router: Router = inject(Router);
   private menu: MenuController = inject(MenuController);
+
+  constructor() { 
+    addIcons({ filterOutline});
+  }
 
   allProperties = this.propertyService.getProperties();
 
