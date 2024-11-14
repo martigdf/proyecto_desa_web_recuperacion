@@ -1,10 +1,31 @@
+<ion-split-pane contentId="main-content" when="lg" class="h-screen">
+  <!-- Sidebar -->
+  <ion-menu 
+    contentId="main-content"  
+    id="filterMenu" 
+    side="start" 
+    class="w-full lg:w-64">
+    <app-filters 
+      (filtrosAplicados)="aplicarFiltros($event)"
+    > 
+    </app-filters>
+  </ion-menu>
 
-  <div class="flex h-auto">
-    <!-- Sidebar -->
-    <aside class="w-full lg:w-64">
-      <app-filters (filtrosAplicados)="aplicarFiltros($event)"></app-filters>
-    </aside>
-    <div class="overflow-auto max-w-full max-h-[calc(100vh-4rem)]">
+  <ion-router-outlet id="main-content">
+    <div class="overflow-auto max-w-full max-h-[calc(100vh-4rem)] pt-24">
+      <!-- Botón de filtro mobile -->
+      <div class="lg:hidden w-full p-8 bg-white mt-7">
+        <ion-menu-button 
+          (click)="openFilterMenu()" 
+          slot="start">
+        </ion-menu-button>
+        <ion-button 
+          (click)="openFilterMenu()"
+          slot="start">
+          Abrir Filtros
+        </ion-button>
+      </div>
+        
       <ion-grid class="min-w-full mb-5">
         <ion-row>
           <ion-col
@@ -16,5 +37,5 @@
         </ion-row>
       </ion-grid>
     </div>
-  </div>
-
+  </ion-router-outlet>
+</ion-split-pane>
