@@ -85,6 +85,3 @@ services:
       - MONGODB_PASS="admin"
     volumes:
       - ./mongodb-data:/data/db
-
-volumes:
-    mongodb-data:
