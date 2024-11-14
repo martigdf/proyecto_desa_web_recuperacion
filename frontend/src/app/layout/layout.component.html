@@ -4,12 +4,10 @@
     <app-navbar></app-navbar>
   </header>
 
-  <div class="flex-grow">
-    <!-- Contenido específico de cada página -->
-    <main class="mt-14">
-      <ng-content></ng-content>
-    </main>
-  </div>
+  <!-- Contenido específico de cada página -->
+  <main class="mt-14 flex-grow">
+    <ng-content></ng-content>
+  </main>
 
   <!-- Pie de página general -->
   <footer class="bg-gray-800 text-white text-center p-4">

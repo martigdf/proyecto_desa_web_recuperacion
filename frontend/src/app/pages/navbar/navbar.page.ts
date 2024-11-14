@@ -13,6 +13,9 @@ import {
   star,
   menuOutline,
   home,
+  personCircleOutline,
+  logInOutline,
+  personAddOutline,
 } from 'ionicons/icons';
 import { IonIcon } from '@ionic/angular/standalone';
 import { PropertyService } from '../../services/property.service';
@@ -48,6 +51,9 @@ export class NavbarPage implements OnInit {
       starOutline,
       star,
       menuOutline,
+      personCircleOutline,
+      logInOutline,
+      personAddOutline
     });
   }
 

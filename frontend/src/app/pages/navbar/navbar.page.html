@@ -93,10 +93,11 @@
               *ngIf="!isValidUser"
             >
               <button
-                class="text-white text-base mr-4 ml-4 inline-flex items-center hover:bg-[#2d4f40] p-2 rounded"
-                (click)="navigateTo('/login')"
+                class="text-white p-2 rounded-full focus:outline-none hover:bg-[#2d4f40] mr-4"
+                (click)="toggleMenu('dropdown')"
+                aria-haspopup="true"
               >
-                Login
+                <ion-icon name="person-circle-outline" class="text-2xl"></ion-icon>
               </button>
             </div>
           </div>
@@ -162,7 +163,12 @@
         (click)="toggleMenu('dropdown')"
         aria-haspopup="true"
       >
-        {{ userInitials }}
+        <ng-container *ngIf="isValidUser; else notLoggedIn">
+          {{ userInitials }}
+        </ng-container>
+        <ng-template #notLoggedIn>
+          <ion-icon name="person-circle-outline" class="text-2xl"></ion-icon>
+        </ng-template>
       </button>
     </div>
     <!-- Compare dropdown -->
@@ -196,8 +202,9 @@
       role="menu"
       style="top: 100%; right: 0"
     >
+      <ng-container *ngIf="isValidUser; else notLoggedInDropdown">
       <button
-        *ngIf="currentRoute !== '/favorites' && isValidUser"
+        *ngIf="currentRoute !== '/favorites'"
         class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
         (click)="navigateTo('/favorites')"
       >
@@ -211,6 +218,23 @@
         <span class="ml-2">Logout</span>
         <ion-icon name="log-out-outline" class="ml-2"></ion-icon>
       </button>
+      </ng-container>
+      <ng-template #notLoggedInDropdown>
+      <button
+        class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
+        (click)="navigateTo('/login')"
+      >
+        <span class="ml-2">Login</span>
+        <ion-icon name="log-in-outline" class="ml-2"></ion-icon>
+      </button>
+      <button
+        class="text-[#2d4f40] text-base block px-4 py-2 items-center w-full hover:bg-customGreen hover:text-white hover:rounded-md"
+        (click)="navigateTo('/register')"
+      >
+        <span class="ml-2">Register</span>
+        <ion-icon name="person-add-outline" class="ml-2"></ion-icon>
+      </button>
+      </ng-template>
     </div>
   </nav>
 </div>
