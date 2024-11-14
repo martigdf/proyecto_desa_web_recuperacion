@@ -12,6 +12,7 @@ import {
   starOutline,
   star,
   menuOutline,
+  home,
 } from 'ionicons/icons';
 import { IonIcon } from '@ionic/angular/standalone';
 import { PropertyService } from '../../services/property.service';
@@ -31,6 +32,7 @@ export class NavbarPage implements OnInit {
   isAdmin: boolean = false;
   isValidUser: boolean = false;
   isHomeRoute: boolean = false;
+  userInitials!: string;
   private propertyService = inject(PropertyService);
   private _googleAuthService = inject(AuthGoogleService);
 
@@ -41,10 +43,11 @@ export class NavbarPage implements OnInit {
       chevronDownOutline,
       logOutOutline,
       homeOutline,
+      home,
       closeOutline,
       starOutline,
       star,
-      menuOutline
+      menuOutline,
     });
   }
 
@@ -53,6 +56,7 @@ export class NavbarPage implements OnInit {
     this.checkUserStatus();
     this.subscribeToRouterEvents();
     this.updateHomeRouteStatus();
+    this.setUserInitials();
   }
 
   private initializeRoute(): void {
@@ -81,18 +85,10 @@ export class NavbarPage implements OnInit {
     this.isHomeRoute = this.currentRoute === '/home';
   }
 
-  toggleDropdown(): void {
-    this.isDropdownOpen = !this.isDropdownOpen;
-    this.isCompareDropdownOpen = false;
-  }
-
-  toggleCompareDropdown(): void {
-    this.isCompareDropdownOpen = !this.isCompareDropdownOpen;
-    this.isDropdownOpen = false;
-  }
-
-  toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  toggleMenu(menuType: 'dropdown' | 'compareDropdown' | 'mobileMenu'): void {
+    this.isDropdownOpen = menuType === 'dropdown' ? !this.isDropdownOpen : false;
+    this.isCompareDropdownOpen = menuType === 'compareDropdown' ? !this.isCompareDropdownOpen : false;
+    this.isMobileMenuOpen = menuType === 'mobileMenu' ? !this.isMobileMenuOpen : false;
   }
 
   goToCompare(): void {
@@ -111,19 +107,7 @@ export class NavbarPage implements OnInit {
   }
 
   isActive(routes: string[]): boolean {
-    const filteredRoutes = routes.filter(
-      (route) => route !== this.currentRoute
-    );
-    const isMatch = filteredRoutes.some((route) => this.currentRoute === route);
-    console.log(
-      'Verificando rutas:',
-      filteredRoutes,
-      'Ruta actual:',
-      this.currentRoute,
-      'Coincide:',
-      isMatch
-    );
-    return isMatch;
+    return routes.includes(this.currentRoute);
   }
 
   logout(): void {
@@ -131,18 +115,8 @@ export class NavbarPage implements OnInit {
     this.authService.logout();
   }
 
-  get showAdminPanel(): boolean {
-    return ['/admin-panel/users', '/all-properties', '/admin-panel/properties'].includes(
-      this.currentRoute
-    );
-  }
-
   get showAdminPanelLink(): boolean {
     return this.currentRoute !== '/admin-panel' && this.isAdmin;
-  }
-
-  get showHomeLink(): boolean {
-    return this.currentRoute !== '/home';
   }
 
   get routeIsNotLoginOrRegister(): boolean {
@@ -151,5 +125,15 @@ export class NavbarPage implements OnInit {
 
   get user() {
     return this.authService.getUser();
+  }
+
+  setUserInitials(): void {
+    const user = this.user;
+    if (user && user.name && user.lastname) {
+      const username = `${user.name} ${user.lastname}`;
+      this.userInitials = username.split(' ').map(n => n[0]).join('').toUpperCase();
+    } else {
+      this.userInitials = '';
+    }
   }
 }
