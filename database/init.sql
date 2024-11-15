@@ -31,7 +31,7 @@ CREATE table if not exists properties (
 );
 
 CREATE TABLE IF NOT EXISTS favorites (
-    id SERIAL PRIMARY KEY,
+    id_favorite SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,

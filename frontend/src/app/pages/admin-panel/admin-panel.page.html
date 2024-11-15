@@ -1,33 +1,46 @@
-
-  <!-- Contenedor principal -->
-  <div class="flex justify-center items-center min-h-screen py-8">
-    <!-- Botones centrados -->
-    <button
-      class="flex items-center justify-center w-48 h-48 bg-purple-500 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-4"
-      (click)="goToUserList()"
+<!-- Contenedor principal -->
+<ion-grid
+  class="border rounded-lg shadow-lg my-4 overflow-y-auto min-h-[calc(100vh-8rem)]"
+>
+  <ion-col>
+    <ion-row
+      class="justify-center flex-wrap md:flex-nowrap flex-col md:flex-row items-center"
     >
-      <ion-icon name="person" class="text-4xl mr-2"></ion-icon>
-      <span class="text-lg">Lista de usuarios</span>
-    </button>
-
-    <button
-      class="flex items-center justify-center w-48 h-48 bg-purple-500 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-4 p-4"
-      (click)="goToPropertyList()"
-    >
-      <ion-icon name="home" class="text-4xl"></ion-icon>
-      <span class="text-lg">Lista de propiedades</span>
-    </button>
-
-    <button
-      class="flex items-center justify-center w-48 h-48 bg-purple-500 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-4 p-4"
-      (click)="goToPropertyListAdmin()"
-    >
-      <div class="flex items-center space-x-1 text-3xl">
-        <ion-icon name="home" ></ion-icon>
-        <ion-icon name="cog" ></ion-icon>
-      </div>
-      <span class="text-lg ml-1">Propiedades Administradas</span>
-    </button>
-  
-  </div>
-
+      <ion-button
+        expand="block"
+        color="tertiary"
+        class="w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-2 sm:mx-4 mb-4 md:mb-0"
+        (click)="goToUserList()"
+      >
+        <ion-icon
+          slot="start"
+          name="person"
+          class="text-2xl sm:text-4xl mr-1 sm:mr-2"
+        ></ion-icon>
+        <span class="text-sm sm:text-lg">Administrar usuarios</span>
+      </ion-button>
+      <ion-button
+        expand="block"
+        color="tertiary"
+        class="w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80 text-white rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mx-2 sm:mx-4 mb-4 md:mb-0"
+        (click)="goToPropertyListAdmin()"
+      >
+        <div class="flex flex-col items-center">
+          <div class="flex">
+            <ion-icon
+              slot="start"
+              name="home"
+              class="text-xl sm:text-3xl mr-1"
+            ></ion-icon>
+            <ion-icon
+              slot="start"
+              name="cog"
+              class="text-xl sm:text-3xl mr-1"
+            ></ion-icon>
+          </div>
+          <span class="text-xs sm:text-sm mt-2">Administrar propiedades</span>
+        </div>
+      </ion-button>
+    </ion-row>
+  </ion-col>
+</ion-grid>
