@@ -1,15 +1,18 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Property } from '../interfaces/property';
 import { CompareItem } from '../interfaces/compare-item';
+import {BackendApiService} from './backend-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PropertyService {
   private compareList = signal<CompareItem[]>([]);
+  private backendApiService = inject(BackendApiService);
 
-  constructor() {}
-  private properties = signal<Property[]>([
+  constructor() {
+  }
+  /*private properties = signal<Property[]>([
     {
       id: 1,
       title: 'Casa en la playa',
@@ -93,7 +96,18 @@ export class PropertyService {
       img_url:
         'https://i.pinimg.com/736x/a2/d0/34/a2d0349b4d4c3dc993af1baf277f356e--mickey-mouse-clubhouse-song-lyrics.jpg', // Imagen de stock
     }
-  ]);
+  ]);*/
+
+  private properties = signal<Property[]>([]);
+
+  // Hace una llamada a la API para obtener las propiedades
+  async fetchProperties() {
+    console.log('Fetching properties');
+    const properties = await this.backendApiService.get<Property[]>('properties');
+    this.properties.set(properties);
+    console.log('Properties fetched:', properties);
+    console.log('Properties signal:', this.properties());
+  }
 
   getProperties = computed(() => this.properties);
 
@@ -126,7 +140,7 @@ export class PropertyService {
       }
     });
   }
-  
+
   removeFromCompare(propertyId: number){
     this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
   }

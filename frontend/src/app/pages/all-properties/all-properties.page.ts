@@ -27,8 +27,11 @@ export class AllPropertiesPage {
   private router: Router = inject(Router);
   private menu: MenuController = inject(MenuController);
 
-  constructor() { 
+  constructor() {
     addIcons({ filterOutline});
+    this.propertyService.fetchProperties()
+    console.log('allProperties:', this.allProperties);
+    console.log('properties:', this.properties);
   }
 
   allProperties = this.propertyService.getProperties();
@@ -39,7 +42,7 @@ export class AllPropertiesPage {
   goToFavorites() {
     this.router.navigate(['/favorites']);
   }
-  
+
   openFilterMenu() {
     this.menu.open('filterMenu');
     console.log('Menu opened');
@@ -78,8 +81,8 @@ export class AllPropertiesPage {
         !filtros.departamento || property.location === filtros.departamento;
       /*
       // Filtro de Barrio
-      const cumpleBarrio = 
-      !filtros.barrio || 
+      const cumpleBarrio =
+      !filtros.barrio ||
       (property.barrio && property.barrio.toLowerCase().includes(filtros.barrio.toLowerCase()));
 */
       // incluye la propiedad si cumple con todas las condiciones de filtro
