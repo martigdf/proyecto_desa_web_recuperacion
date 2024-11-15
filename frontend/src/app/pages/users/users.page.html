@@ -1,16 +1,18 @@
 <!-- Dejamos el espacio que ocupa el header y el footer para que el contenido se ajuste a la pantalla -->
 <div class="p-5"></div>
 
-<ion-button
-  class="ion-align-items-center ion-margin-top mt-4 px-4 py-2 rounded"
-  expand="full"
-  (click)="goToAdminPanel()"
-  color="tertiary"
->
-  Volver al panel de administración
-</ion-button>
+<ion-col 
+  class="ion-text-end md:ion-text-end flex justify-center">
+  <ion-button
+    class="px-4 rounded-md w-50 h-4"
+    (click)="goToAdminPanel()"
+    color="tertiary"
+  >
+    Volver al panel de administración
+  </ion-button>
+</ion-col>
 
-<ion-col class="ion-text-end">
+<ion-col class="ion-text-end md:ion-text-end flex justify-center">
   <ion-button fill="outline" (click)="createUser()">
     <ion-ripple-effect></ion-ripple-effect>
     <svg
@@ -30,11 +32,18 @@
 </ion-col>
 
 
-<ion-grid class="max-w-5xl mx-auto border border-gray-300 rounded-lg shadow-lg my-4 bg-white overflow-auto max-h-[calc(100vh-15rem)]">
-  <ion-row class="font-semibold text-sm text-center border-b bg-gray-100 hidden md:flex">
+<ion-grid 
+  class="max-w-5xl mx-auto border border-gray-300 rounded-lg shadow-lg 
+    my-4 bg-white overflow-auto max-h-[calc(100vh-14rem)]"
+  >
+  <ion-row 
+    class="font-semibold text-sm text-center 
+    border-b bg-gray-100 hidden md:flex"
+  >
     <ion-col size="1.2">
       <p
-        class="flex items-center justify-center gap-2 font-sans text-sm font-normal leading-none"
+        class="flex items-center justify-center 
+        gap-2 font-sans text-sm font-normal leading-none"
       >
         ID
         <svg
@@ -56,7 +65,8 @@
     </ion-col>
     <ion-col size="1.8">
       <p
-        class="flex items-center justify-center gap-2 font-sans text-sm font-normal leading-none"
+        class="flex items-center justify-center 
+        gap-2 font-sans text-sm font-normal leading-none"
       >
         Usuario
         <svg
@@ -76,9 +86,10 @@
         </svg>
       </p>
     </ion-col>
-    <ion-col size="3">
+    <ion-col size="2.5">
       <p
-        class="flex items-center justify-center gap-2 font-sans text-sm font-normal leading-none"
+        class="flex items-center justify-center 
+        gap-2 font-sans text-sm font-normal leading-none"
       >
         Email
         <svg
@@ -98,9 +109,10 @@
         </svg>
       </p>
     </ion-col>
-    <ion-col size="2.2">
+    <ion-col size="2">
       <p
-        class="flex items-center justify-center gap-2 font-sans text-sm font-normal leading-none"
+        class="flex items-center justify-center 
+        gap-2 font-sans text-sm font-normal leading-none"
       >
         Rol
         <svg
@@ -120,9 +132,10 @@
         </svg>
       </p>
     </ion-col>
-    <ion-col size="2">
+    <ion-col size="1.8">
       <p
-        class="flex items-center justify-center gap-2 font-sans text-sm font-normal leading-none"
+        class="flex items-center justify-center 
+        gap-2 font-sans text-sm font-normal leading-none"
       >
         Fecha de registro
         <svg
@@ -142,45 +155,88 @@
         </svg>
       </p>
     </ion-col>
-    <ion-col size="4"></ion-col>
+    <ion-col size="3"></ion-col>
   </ion-row>
 
   <ion-row 
     *ngFor="let user of userList" 
-    class="text-center border-b hover:bg-gray-50 items-center flex flex-wrap md:flex-nowrap max-h-[calc(100vh-15rem)]">
-    <ion-col size="12" size-md="1" class="px-2 py-2 text-xs flex md:block">
-      <span class="font-semibold md:hidden">ID:</span>{{ user.id }}
+    class="text-center border-b hover:bg-gray-50 items-center 
+      flex flex-wrap md:flex-nowrap max-h-[calc(100vh-15rem)]">
+    <ion-col 
+      size="12" 
+      size-md="1" 
+      class="px-2 py-2 text-xs flex md:block">
+      <span 
+        class="font-semibold md:hidden">
+        ID:
+      </span>{{ user.id }}
     </ion-col>
-    <ion-col size="12" size-md="2" class="px-2 py-2 text-xs flex md:block">
-      <span class="font-semibold md:hidden"></span>{{ user.name }} {{ user.lastname }}
+    <ion-col 
+      size="12" 
+      size-md="2" 
+      class="px-2 py-2 text-xs flex md:block">
+      <span 
+        class="font-semibold md:hidden">
+      </span>{{ user.name }} {{ user.lastname }}
     </ion-col>
-    <ion-col size="12" size-md="3" class="px-2 py-2 text-xs flex md:block">
-      <span class="font-semibold md:hidden">Email:</span>{{ user.email }}
+    <ion-col 
+      size="12" 
+      size-md="2.5" 
+      class="px-2 py-2 text-xs flex md:block">
+      <span 
+        class="font-semibold md:hidden">
+        Email:
+      </span>{{ user.email }}
     </ion-col>
-    <ion-col size="12" size-md="2" class="px-2 py-2 text-xs flex md:block">
+    <ion-col 
+      size="12" 
+      size-md="1.8" 
+      class="px-2 py-2 text-xs flex md:block">
       <span class="font-semibold md:hidden">Rol:</span>
       <!--Si el usuario es administrador, lo mostramos como un botón con fondo verde-->
       @if(user.role === 'admin'){
-      <ion-button fill="outline" size="small" color="success" class="w-20 md:w-auto"> {{ user.role }} </ion-button>
+      <ion-button 
+        fill="outline" 
+        size="small" 
+        color="success" 
+        class="w-20 md:w-auto"> 
+        {{ user.role }} </ion-button>
       } @else {
-      <ion-button fill="outline" size="small" color="tertiary" class="w-20 md:w-auto"> {{ user.role }} </ion-button>
+      <ion-button 
+        fill="outline" 
+        size="small" 
+        color="tertiary" 
+        class="w-20 md:w-auto"> 
+      {{ user.role }} </ion-button>
       }
     </ion-col>
-    <ion-col size="12" size-md="2" class="px-2 py-2 text-xs flex md:block">
-      <span class="font-semibold md:hidden">Fecha de registro:</span>
+    <ion-col 
+      size="12" 
+      size-md="1.8" 
+      class="px-2 py-2 text-xs flex md:block">
+      <span class="font-semibold md:hidden">
+        Fecha de registro:
+      </span>
       {{ this.formatRegistrationDate(user.registration_date) }}
     </ion-col>
-    <ion-col size="12" size-md="2" class="px-2 py-2 flex justify-center space-x-1 md:space-x-2">
-      <ion-button fill="outline" color="primary" size="small" (click)="editUser(user.id)"
-        >Editar</ion-button
-      >
+    <ion-col 
+      size="12" 
+      size-md="3" 
+      class="px-2 py-2 flex justify-center space-x-1 md:space-x-2">
+      <ion-button 
+        fill="outline" 
+        color="primary" 
+        size="small" 
+        (click)="editUser(user.id)"
+        >Editar
+      </ion-button>
       <ion-button
         fill="outline"
         color="danger"
         size="small"
         (click)="openDeleteTab(user.id.toString())"
-        >Borrar</ion-button
-      >
+      >Borrar
+      </ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>
