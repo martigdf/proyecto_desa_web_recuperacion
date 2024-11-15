@@ -16,11 +16,12 @@ Este proyecto es una plataforma de comparación de alquileres desarrollada como 
 ## Stack Tecnológico
 - Backend: Node.js con Fastify
 - Base de datos: PostgreSQL
+- Frontend: Angular18
 - Documentación de API: Swagger
 - Containerización: Docker
 
 ## Documentación de la API
-La documentación de la API se genera automáticamente usando Swagger. Puedes acceder a ella en http://localhost/data/docs para la extracción de datos, o http://localhost/backend/docs para las demás funcionalidades cuando los servicios estén en ejecución.
+La documentación de la API se genera automáticamente usando Swagger. Puedes acceder a ella en https://localhost/data/docs para la extracción de datos, o https://localhost/backend/docs para las demás funcionalidades cuando los servicios estén en ejecución.
 
 ### Autenticación
 - Todas las rutas que requieren autenticación están claramente identificadas en la documentación de Swagger.
