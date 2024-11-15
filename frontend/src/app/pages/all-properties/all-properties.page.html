@@ -1,43 +1,43 @@
 <ion-split-pane contentId="main-content" when="lg" class="h-screen">
   <!-- Sidebar -->
-  <ion-menu 
-    contentId="main-content"  
-    menuId="filterMenu" 
-    side="start" 
+  <ion-menu
+    contentId="main-content"
+    menuId="filterMenu"
+    side="start"
     class="w-full lg:w-64">
-    <app-filters 
+    <app-filters
       (filtrosAplicados)="aplicarFiltros($event)"
-    > 
+    >
     </app-filters>
   </ion-menu>
 
   <ion-router-outlet id="main-content">
-    <div 
+    <div
       class="overflow-auto max-w-full max-h-[calc(100vh-4rem)] pt-24">
       <!-- Botón de filtro mobile -->
-      <div 
+      <div
         class="lg:hidden p-2 mt-7 flex justify-center">
-        <ion-menu-toggle 
+        <ion-menu-toggle
           menu="filterMenu">
-          <ion-button 
-            shape="round" 
-            fill="outline" 
+          <ion-button
+            shape="round"
+            fill="outline"
             color="medium"
           >
-            <ion-icon 
-              name="filter-outline" 
+            <ion-icon
+              name="filter-outline"
               class="mr-2">
             </ion-icon>
               Filtros
           </ion-button>
         </ion-menu-toggle>
       </div>
-      <ion-grid 
+      <ion-grid
         class="min-w-full mb-5">
         <ion-row>
           <ion-col
-            *ngFor="let property of properties"
-            class="w-full sm:max-w-[500px] md:max-w-[300px] 
+            *ngFor="let property of this.properties"
+            class="w-full sm:max-w-[500px] md:max-w-[300px]
             min-w-[300px] max-h-[400px] min-h-[300px]"
           >
             <app-property-card [property]="property"></app-property-card>

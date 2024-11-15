@@ -109,6 +109,11 @@ export class PropertyService {
     console.log('Properties signal:', this.properties());
   }
 
+  get getAllProperties() {
+    // Devolvemos un array con las propiedades
+    return computed(() => this.properties());
+  }
+
   getProperties = computed(() => this.properties);
 
   getPropertyById(id: number) {

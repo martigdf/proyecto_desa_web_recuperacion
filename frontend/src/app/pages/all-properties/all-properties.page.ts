@@ -29,15 +29,24 @@ export class AllPropertiesPage {
 
   constructor() {
     addIcons({ filterOutline});
-    this.propertyService.fetchProperties()
-    console.log('allProperties:', this.allProperties);
-    console.log('properties:', this.properties);
+    //this.propertyService.fetchProperties();
+    //this.writeProperties()
+  }
+
+  async ngOnInit() {
+    console.log('OnInit');
+    await this.propertyService.fetchProperties();
+    this.writeProperties();
   }
 
   allProperties = this.propertyService.getProperties();
+  writeProperties(): void {
+    console.log('Propiedades en el properties:', this.properties);
+  }
+  //allProperties = this.propertyService.getAllProperties();
 
   // Lista filtrada de propiedades
-  properties: Property[] = [...this.allProperties()];
+  properties: Property[] = this.allProperties();
 
   goToFavorites() {
     this.router.navigate(['/favorites']);
