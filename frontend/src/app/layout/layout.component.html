@@ -1,16 +1,12 @@
-<div class="min-h-screen flex flex-col">
+<div class="h-screen flex flex-col">
   <!-- Encabezado general del sitio -->
   <header class="w-full">
     <app-navbar></app-navbar>
   </header>
 
   <!-- Contenido específico de cada página -->
-  <main class="mt-14 flex-grow">
+  <main class="flex-grow">
     <ng-content></ng-content>
   </main>
 
-  <!-- Pie de página general, siempre está abajo fiexeado -->
-  <footer class="w-full bg-gray-800 text-white text-center py-4">
-    © 2024 RentMatch
-  </footer>
 </div>
