@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Property } from '../interfaces/property';
 import { AuthService } from './auth.service';
-//import { BackendApiService } from './backend-api.service';
+import { BackendApiService } from './backend-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class FavoritesService {
   private favoriteLists: { [user_id: number]: Property[] } = {};
 
   constructor(
-    private authService: AuthService
-    /*private backendApiService: BackendApiService*/) {
+    private authService: AuthService,
+    private backendApi: BackendApiService) {
     this.loadFavoritesFromStorage(); 
   }
 
