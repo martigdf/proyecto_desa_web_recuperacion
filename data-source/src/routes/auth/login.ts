@@ -1,5 +1,5 @@
 import { FastifyPluginAsync } from "fastify";
-import { query } from '../../services/database.js';
+import { query } from '../../services/postgresDatabase.js';
 import bcrypt from 'bcryptjs';
 
 const authRoute: FastifyPluginAsync = async (fastify, opts): Promise<void> => {

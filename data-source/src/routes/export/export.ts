@@ -1,5 +1,6 @@
 import { FastifyPluginAsync, FastifyPluginOptions } from "fastify";
 import { FastifyInstance } from "fastify/types/instance.js";
+import { connectToDatabase, getDatabase} from "../../services/mongodb.js";
 
 const exportRoute: FastifyPluginAsync = async (
     fastify: FastifyInstance,
@@ -27,7 +28,14 @@ const exportRoute: FastifyPluginAsync = async (
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            try {
+                await connectToDatabase();
+                const db = getDatabase();
+                const collections = await db.listCollections().toArray();
+                reply.send(collections.map((collection : any) => collection.name));
+            } catch (error) {
+                reply.status(500).send(error);
+            }
         }
     });
 
