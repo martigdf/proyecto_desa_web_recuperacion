@@ -1,13 +1,10 @@
-<div class="p-5"></div>
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Editar Usuario</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <app-user-form
-    (userUpdated)="onUserUpdated($event)"
-    (canceled)="onCanceled()">
-  </app-user-form>
-</ion-content>
+<div class="h-screen mt-14 pb-14">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Editar Usuario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <app-user-form (userUpdated)="onUserUpdated($event)" (canceled)="onCanceled()">
+  </app-user-form>  
+</div>
