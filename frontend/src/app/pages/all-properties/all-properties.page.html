@@ -19,7 +19,11 @@
         class="lg:hidden p-2 mt-7 flex justify-center">
         <ion-menu-toggle 
           menu="filterMenu">
-          <ion-button>
+          <ion-button 
+            shape="round" 
+            fill="outline" 
+            color="medium"
+          >
             <ion-icon 
               name="filter-outline" 
               class="mr-2">
@@ -33,7 +37,8 @@
         <ion-row>
           <ion-col
             *ngFor="let property of properties"
-            class="w-full sm:max-w-[500px] md:max-w-[300px] min-w-[300px] max-h-[400px] min-h-[300px]"
+            class="w-full sm:max-w-[500px] md:max-w-[300px] 
+            min-w-[300px] max-h-[400px] min-h-[300px]"
           >
             <app-property-card [property]="property"></app-property-card>
           </ion-col>
