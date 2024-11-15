@@ -1,6 +1,6 @@
-import { MongoClient, Db, Collection } from 'mongodb';
+import { MongoClient, Db, Collection, Document } from 'mongodb';
 import { DB_CONFIG } from '../config/dbConfig.js';
-import { PropertyDocument } from '../types/schemas/property.js';
+import {PropertyData} from '../types/schemas/property.js';
 
 export class DatabaseService {
     private static instance: DatabaseService;
@@ -42,7 +42,7 @@ export class DatabaseService {
         ]);
     }
 
-    getCollection<T = PropertyDocument>(name: string): Collection<T> {
+    getCollection<T extends Document = PropertyData>(name: string): Collection<T> {
         if (!this.db) throw new Error('Database not connected');
         return this.db.collection<T>(name);
     }

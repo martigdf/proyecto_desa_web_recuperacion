@@ -21,7 +21,6 @@ CREATE table if not exists properties (
        El primero es el número total de dígitos que puede almacenar el número
        El segundo es la cantidad de digitos que pueden haber despues de la coma
     */
-    surface_area NUMERIC(10, 2) NOT NULL,
     location varchar(100) not null,
     number_of_rooms int not null,
     number_of_bathrooms int not null,
@@ -71,4 +70,35 @@ insert into users (name, lastname, email, password, role)
           ('Martin', 'Martinez', 'mm@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user'),
           ('Jose', 'Gutierrez', 'jg@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user')
 
-
+insert into properties (title, description, price, location, number_of_rooms, number_of_bathrooms, main_img_url, contact_data, property_type)
+    values('Casa en el bosque', 'Casa en el bosque con vista al lago', 100000, 'Bosque de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la ciudad', 'Departamento en la ciudad con vista al río', 50000, 'Ciudad de la luna', 2, 1, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la playa', 'Casa en la playa con vista al mar', 200000, 'Playa de la luna', 4, 3, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la montaña', 'Departamento en la montaña con vista al valle', 70000, 'Montaña de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la ciudad', 'Casa en la ciudad con vista al río', 150000, 'Ciudad de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la playa', 'Departamento en la playa con vista al mar', 80000, 'Playa de la luna', 2, 1, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la montaña', 'Casa en la montaña con vista al valle', 250000, 'Montaña de la luna', 4, 3, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la ciudad', 'Departamento en la ciudad con vista al río', 90000, 'Ciudad de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la playa', 'Casa en la playa con vista al mar', 300000, 'Playa de la luna', 4, 3, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la montaña', 'Departamento en la montaña con vista al valle', 100000, 'Montaña de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la ciudad', 'Casa en la ciudad con vista al río', 200000, 'Ciudad de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la playa', 'Departamento en la playa con vista al mar', 110000, 'Playa de la luna', 2, 1, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la montaña', 'Casa en la montaña con vista al valle', 350000, 'Montaña de la luna', 4, 3, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la ciudad', 'Departamento en la ciudad con vista al río', 120000, 'Ciudad de la luna', 3, 2, 'https://www.google.com', '
+    123456789', 'Departamento'),
+          ('Casa en la playa', 'Casa en la playa con vista al mar', 400000, 'Playa de la luna', 4, 3, 'https://www.google.com', '
+    123456789', 'Casa'),
+          ('Departamento en la montaña', 'Departamento en la montaña con vista al valle', 130000, 'Montaña de la luna', 3, 2, 'https://www.google.com', '   123456789', 'Departamento');

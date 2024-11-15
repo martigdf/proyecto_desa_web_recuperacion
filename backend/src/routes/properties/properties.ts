@@ -6,6 +6,7 @@ import {
     PropertyGetQuerySchema
     // PropertyPostType
 } from "../../types/schemas/property/propertySchema.js";
+import {query} from "../../services/database.js";
 
 const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance, 
     opts: FastifyPluginOptions): Promise<void> => {
@@ -37,23 +38,22 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             }
         },
         handler: async function (request, reply) {
-            /* const res = await query(`SELECT
+            const res = await query(`SELECT
                 id,
                 title,
                 description,
                 price,
                 location,
                 area,
-                number_of_rooms,
-                number_of_bathrooms,
+                number_rooms,
+                number_bathrooms,
                 contact_details
                 FROM properties`);
             if (res.rows.length === 0) {
                 reply.code(404).send({ message: "No hay propiedades registradas" });
                 return;
             }
-            return res.rows;*/
-            reply.status(501).send({ message: "Not implemented" });
+            return res.rows;
         }
     });
 
@@ -86,7 +86,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
             }
         },
         handler: async function (request, reply) {
-            /*const { id } = request.params as { id: string };
+            const { id } = request.params as { id: string };
             const res = await query(`SELECT
                 id,
                 title,
@@ -102,8 +102,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.code(404).send({ message: "Propiedad no encontrada" });
                 return;
             }
-            return res.rows[0];*/
-            reply.status(501).send({ message: "Not implemented" });
+            return res.rows[0];
+            //reply.status(501).send({ message: "Not implemented" });
         }
     });
 
@@ -139,7 +139,7 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            /*const { id } = request.params as { id: string };
+            const { id } = request.params as { id: string };
             const res = await query(`DELETE FROM properties WHERE id = ${id} RETURNING id`);
             
             if (res.rowCount === 0) {
@@ -147,8 +147,8 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
 
-            reply.code(200).send({ message: "Propiedad eliminada exitosamente" });*/
-            reply.status(501).send({ message: "Not implemented" });
+            reply.code(200).send({ message: "Propiedad eliminada exitosamente" });
+            //reply.status(501).send({ message: "Not implemented" });
         }
     });
 

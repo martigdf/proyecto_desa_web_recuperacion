@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import { PropertyDetail } from '../types/schemas/property.js';
 
 export async function scrapePropertyDetails(propertyUrl: string): Promise<PropertyDetail | null> {
@@ -26,3 +26,5 @@ export async function scrapePropertyDetails(propertyUrl: string): Promise<Proper
         return null;
     }
 }
+
+export default scrapePropertyDetails;

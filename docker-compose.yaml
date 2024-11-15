@@ -76,7 +76,7 @@ services:
       - FRONTEND_URL=${FRONTEND_URL}
 
   mongodb:
-    container_name: docker-mongo
+    container_name: mongodb
     ports:
       - "2717:27017"
     image: mongo:latest

@@ -8,7 +8,13 @@ export class PropertyService {
 
     constructor() {
         const dbService = DatabaseService.getInstance();
-        this.collection = dbService.getCollection(DB_CONFIG.collections.properties);
+        if (!dbService) {
+            throw new Error('DatabaseService instance is not initialized');
+        }
+        if (!dbService['db']) {
+            throw new Error('Database not connected');
+        }
+        this.collection = dbService.getCollection<PropertyDocument>(DB_CONFIG.collections.properties);
     }
 
     async upsertProperty(property: DetailedProperty): Promise<void> {
@@ -34,7 +40,6 @@ export class PropertyService {
     }
 
     private extractPropertyId(url: string): string {
-        // Extrae el ID de la propiedad de la URL
         const match = url.match(/idprop=(\d+)/);
         if (!match) throw new Error(`Could not extract property ID from URL: ${url}`);
         return match[1];

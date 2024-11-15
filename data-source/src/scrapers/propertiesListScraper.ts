@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import { PropertyListing } from '../types/schemas/property.js';
 
 export async function scrapeAllProperties(baseUrl: string): Promise<PropertyListing[]> {
@@ -8,7 +8,7 @@ export async function scrapeAllProperties(baseUrl: string): Promise<PropertyList
         const $ = cheerio.load(response.data);
         const properties: PropertyListing[] = [];
 
-        $('.items1__text').each((_, element) => {
+        $('.items1__text').each((_, element: any) => {
             const $element = $(element);
             const propertyUrl = $element.find('h2 a').attr('href') || '';
             const title = $element.find('h2 a').text().trim();
@@ -36,3 +36,5 @@ export async function scrapeAllProperties(baseUrl: string): Promise<PropertyList
         return [];
     }
 }
+
+export default scrapeAllProperties;
