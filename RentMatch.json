@@ -175,8 +175,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/users/register",
-									"protocol": "http",
+									"raw": "https://localhost/backend/users/register",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -197,7 +197,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NTU5NjYwLCJleHAiOjE3Mjc1NzA0NjB9.SJn1ONZeb6B14MU1mxjmwf3282mVXBEp3T7ekzZNBNU",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMwMjIzNjA3LCJleHAiOjE3MzAyMzQ0MDd9.M0k7nxWI16W0uxXOj_3FQmfgpAsgEaqoVSSjH848gS4",
 											"type": "string"
 										}
 									]
@@ -206,7 +206,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\" : \"Lorena\"\r\n}",
+									"raw": "{\"name\": \"Nicolás\", \r\n\"lastname\": \"Márquez\", \r\n\"email\": \"nicomars270@gmail.com\", \r\n\"role\": \"admin\"}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -214,15 +214,15 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/users/3",
-									"protocol": "http",
+									"raw": "https://localhost/backend/users/1",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend",
 										"users",
-										"3"
+										"1"
 									]
 								}
 							},
@@ -253,8 +253,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/users/2",
-									"protocol": "http",
+									"raw": "https://localhost/backend/users/2",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -295,8 +295,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/users/2",
-									"protocol": "http",
+									"raw": "https://localhost/backend/users/2",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -329,8 +329,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/auth/login",
-									"protocol": "http",
+									"raw": "https://localhost/backend/auth/login",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -364,8 +364,8 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend/admin/users",
-									"protocol": "http",
+									"raw": "https://localhost/backend/admin/users",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -394,8 +394,8 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend/admin/properties",
-									"protocol": "http",
+									"raw": "https://localhost/backend/admin/properties",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -424,8 +424,8 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend/admin/data-sources",
-									"protocol": "http",
+									"raw": "https://localhost/backend/admin/data-sources",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -452,14 +452,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend/properties",
-									"protocol": "http",
+									"raw": "https://localhost/backend/properties/2",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend",
-										"properties"
+										"properties",
+										"2"
 									]
 								}
 							},
@@ -481,8 +482,8 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/backend/properties/1",
-									"protocol": "http",
+									"raw": "https://localhost/backend/properties/1",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -520,8 +521,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/properties/2",
-									"protocol": "http",
+									"raw": "https://localhost/backend/properties/2",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -559,120 +560,15 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/backend/properties/2",
-									"protocol": "http",
+									"raw": "https://localhost/backend/properties/1",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"backend",
 										"properties",
-										"2"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "search_criteria",
-					"item": [
-						{
-							"name": "Criteria",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/backend/search_criteria",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"backend",
-										"search_criteria"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Search",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"location\": {\r\n        \"city\": \"Montevideo\",\r\n        \"country\": \"Uruguay\"\r\n    },\r\n    \"price_rangeMin\": 100000,\r\n    \"price_rangeMax\": 300000,\r\n    \"number_rooms\": 3,\r\n    \"property_type\": \"casa\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost/backend/search_criteria",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"backend",
-										"search_criteria"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "compare",
-					"item": [
-						{
-							"name": "Post a comparison",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"property1\": \"property_id_12345\",\r\n  \"property2\": \"property_id_67890\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost/backend/compare",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"backend",
-										"compare"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get a comparison",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/backend/compare/2",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"backend",
-										"compare",
-										"2"
+										"1"
 									]
 								}
 							},
@@ -703,8 +599,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost/data/auth/login",
-									"protocol": "http",
+									"raw": "https://localhost/data/auth/login",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
@@ -720,328 +616,75 @@
 					]
 				},
 				{
-					"name": "export",
+					"name": "scrape",
 					"item": [
 						{
-							"name": "Get General",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjM2MTIxLCJleHAiOjE3Mjc2Mzk3MjF9.qPEAK7b7UqPMKVsrA3lPcFsKv5BoS4bXhZHCIccqBW4",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/export/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"export",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get by Format",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/export/formato",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"export",
-										"formato"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "fetching",
-					"item": [
-						{
-							"name": "General Post for fetching",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjQwNzA0LCJleHAiOjE3Mjc2NDQzMDR9.DXC-Yh1cfUWuq-b_2mONBY76HunFwkdNbFcPzS0D5IY",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"sourceId\": 1,\r\n  \"nombre\": \"Inmobiliaria XYZ\",\r\n  \"tipo\": \"API\",\r\n  \"url\": \"https://api.inmobiliariaxyz.com/propiedades\",\r\n  \"activo\": true,\r\n  \"ultima_actualizacion\": \"2023-09-15T14:30:00Z\",\r\n  \"numero_propiedades\": 1000\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost/data/fetching/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"fetching",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Post by SourceId",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzI3NjQwNzA0LCJleHAiOjE3Mjc2NDQzMDR9.DXC-Yh1cfUWuq-b_2mONBY76HunFwkdNbFcPzS0D5IY",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": 1,\r\n  \"nombre\": \"Inmobiliaria XYZ\",\r\n  \"tipo\": \"API\",\r\n  \"url\": \"https://api.inmobiliariaxyz.com/propiedades\",\r\n  \"activo\": true,\r\n  \"ultima_actualizacion\": \"2023-09-15T14:30:00Z\",\r\n  \"numero_propiedades\": 1000,\r\n  \"error_rate\": 0.02,\r\n  \"api_key\": \"abc123xyz789\",\r\n  \"headers\": {\r\n    \"Authorization\": \"Bearer token123\",\r\n    \"Content-Type\": \"application/json\"\r\n  },\r\n  \"parametros\": {\r\n    \"limit\": \"100\",\r\n    \"offset\": \"0\"\r\n  },\r\n  \"selector_propiedades\": \".property-listing\",\r\n  \"transformacion\": \"JSON.parse(response).properties\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost/data/fetching/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"fetching",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Fetching Status By JobID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/fetching/status/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"fetching",
-										"status",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "scraping",
-					"item": [
-						{
-							"name": "Post Scrapping",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/scrapping/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"scrapping",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Post by site ID",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/scrapping/123",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"scrapping",
-										"123"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Scrapping Status by Job ID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/scrapping/status/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"scrapping",
-										"status",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "sources",
-					"item": [
-						{
-							"name": "Source Post",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/sources/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"sources",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Source Get All",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/sources/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"sources",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Source Get by ID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/sources/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"sources",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Source Modify by ID",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "http://localhost/data/sources/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"data",
-										"sources",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Source Delete by ID",
+							"name": "Cleanup",
 							"request": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/data/sources/1",
-									"protocol": "http",
+									"raw": "https://localhost/data/scrape/properties/cleanup/:3",
+									"protocol": "https",
 									"host": [
 										"localhost"
 									],
 									"path": [
 										"data",
-										"sources",
-										"1"
+										"scrape",
+										"properties",
+										"cleanup",
+										":3"
+									],
+									"variable": [
+										{
+											"key": "3",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Properties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost/data/properties",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"properties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Scraped Url",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost/data/scrape?=url=https://www.centralinmobiliariasalto.com.uy/?",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"data",
+										"scrape"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "url=https://www.centralinmobiliariasalto.com.uy/?"
+										}
 									]
 								}
 							},
