@@ -3,35 +3,33 @@ import { Router } from '@angular/router';
 import { PropertyCardComponent } from '../../components/property-card/property-card.component';
 import { Property } from '../../interfaces/property';
 import { NgFor } from '@angular/common';
-import {
-  IonGrid,
-  IonRow,
-  IonCol,
-} from '@ionic/angular/standalone';
 import { FiltersComponent } from '../../components/filters/filters.component';
 import { PropertyService } from '../../services/property.service';
+import { IonicModule, MenuController} from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { filterOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-all-properties',
   standalone: true,
   imports: [
-    IonCol,
-    IonRow,
-    IonGrid,
     PropertyCardComponent,
     NgFor,
     FiltersComponent,
+    IonicModule
   ],
   templateUrl: './all-properties.page.html',
   styleUrl: './all-properties.page.css',
 })
 export class AllPropertiesPage {
-  constructor() {
-  }
 
   private propertyService = inject(PropertyService);
-
   private router: Router = inject(Router);
+  private menu: MenuController = inject(MenuController);
+
+  constructor() { 
+    addIcons({ filterOutline});
+  }
 
   allProperties = this.propertyService.getProperties();
 
@@ -40,6 +38,11 @@ export class AllPropertiesPage {
 
   goToFavorites() {
     this.router.navigate(['/favorites']);
+  }
+  
+  openFilterMenu() {
+    this.menu.open('filterMenu');
+    console.log('Menu opened');
   }
 
   aplicarFiltros(filtros: any): void {
