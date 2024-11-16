@@ -2,6 +2,7 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { Property } from '../interfaces/property';
 import { CompareItem } from '../interfaces/compare-item';
 import {BackendApiService} from './backend-api.service';
+import {AlertService} from './alert.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ import {BackendApiService} from './backend-api.service';
 export class PropertyService {
   private compareList = signal<CompareItem[]>([]);
   private backendApiService = inject(BackendApiService);
+  private alertService = inject(AlertService);
 
   constructor() {
   }
@@ -41,8 +43,12 @@ export class PropertyService {
   addToCompare(property: Property) {
     const maxCompareLimit = 4; // Establece el límite de propiedades en la lista de comparación
     this.compareList.update((compareList) => {
-      // Si ya hay 4 propiedades en la lista, no agrega más
+      // Si ya hay 4 propiedades en la lista, no agrega más y mostrará un mensaje de error
       if (compareList.length >= maxCompareLimit) {
+        console.log('No se pueden comparar más de 4 propiedades');
+        this.alertService.showError(
+          'No se pueden comparar más de 4 propiedades'
+        );
         return compareList;
       }
 
@@ -53,6 +59,7 @@ export class PropertyService {
 
       // Si no está en la lista, agregarla
       if (!existingProperty) {
+        this.alertService.showSuccess('Propiedad añadida a la lista de comparación');
         return [...compareList, { property }];
       } else {
         return compareList; // Si ya está en la lista, no hacer nada

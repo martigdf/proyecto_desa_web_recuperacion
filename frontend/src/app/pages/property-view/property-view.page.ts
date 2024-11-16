@@ -1,13 +1,5 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonIcon,
-  IonModal,
-} from '@ionic/angular/standalone';
 import { PropertyService } from '../../services/property.service';
 import { Property } from '../../interfaces/property';
 import { addIcons } from 'ionicons';
@@ -21,16 +13,13 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AlertService } from '../../services/alert.service';
+import {IonicModule} from '@ionic/angular';
 
 @Component({
   selector: 'app-property-view',
   standalone: true,
   imports: [
-    IonIcon,
-    IonCardContent,
-    IonCardTitle,
-    IonCardHeader,
-    IonCard,
+    IonicModule,
   ],
   templateUrl: './property-view.page.html',
   styleUrl: './property-view.page.css',
@@ -43,7 +32,7 @@ export class PropertyViewPage implements OnInit {
   private alertService = inject(AlertService);
   id = input<string>();
   property: Property | undefined;
-  
+
 
   constructor() {
     addIcons({ bedOutline, waterOutline, resizeOutline, starOutline, star });
