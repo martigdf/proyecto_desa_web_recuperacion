@@ -24,7 +24,7 @@ export class FavoritesService {
   async addFavorite(propertyId: number): Promise<Property> {
     const userId = this.authService.getUserId();
     const body = JSON.stringify({ userId, propertyId });
-    return this.backendApi.post<Property>('favorites', body);
+    return this.backendApi.post<Property>(`${userId}/favorites/`, body);
   }
 
   // elimina un favorito
@@ -40,7 +40,7 @@ export class FavoritesService {
     if (existingFavorite === -1) {
       // Añade si no está en favoritos
       await this.addFavorite(property.id);
-      this.favoriteList.push(property); 
+      this.favoriteList.push(property);
       console.log("Favorito agregado");
     } else {
       // Elimina si ya está en favoritos
