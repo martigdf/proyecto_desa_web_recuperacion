@@ -21,10 +21,10 @@ export class FavoritesService {
   }
 
   // añade un favorito
-  async addFavorite(propertyId: number): Promise<Property> {
-    const userId = this.authService.getUserId();
-    const body = JSON.stringify({ userId, propertyId });
-    return this.backendApi.post<Property>(`users/favorites`, body);
+  async addFavorite(property_id: number): Promise<Property> {
+    const user_id = this.authService.getUserId();
+    const body = JSON.stringify({ user_id, property_id });
+    return this.backendApi.post<Property>(`users/${user_id}/favorites`, body);
   }
 
   // elimina un favorito
