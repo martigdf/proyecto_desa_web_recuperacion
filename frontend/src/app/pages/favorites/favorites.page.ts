@@ -24,8 +24,8 @@ export class FavoritesPage implements OnInit{
   }
 
   private async loadFavorites(): Promise<void> {
-    await this.favoritesService.getFavoriteList(); // Carga los favoritos en el servicio.
-    this.favoriteList = this.favoritesService['favoriteList']; // Asigna la lista sincronizada del servicio.
+    await this.favoritesService.getFavoriteList(); 
+    this.favoriteList = this.favoritesService['favoriteList'];
   }
 
   goToAllProperties() {

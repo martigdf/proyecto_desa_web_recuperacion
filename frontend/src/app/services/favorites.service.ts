@@ -28,9 +28,9 @@ export class FavoritesService {
   }
 
   // elimina un favorito
-  async removeFavorite(favoriteId: number): Promise<void> {
+  async removeFavorite(propertyId: number): Promise<void> {
     const userId = this.authService.getUserId();
-    await this.backendApi.delete<void>(`users/${userId}/favorites/${favoriteId}`);
+    await this.backendApi.delete<void>(`users/${userId}/favorites/${propertyId}`);
   }
 
   // añade o remueve una propiedad de la lista de favoritos del usuario
