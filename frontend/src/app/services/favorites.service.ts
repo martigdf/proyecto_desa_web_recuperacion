@@ -40,13 +40,13 @@ export class FavoritesService {
     if (existingFavorite === -1) {
       // Añade si no está en favoritos
       await this.addFavorite(property.id);
-      this.favoriteList.push(property);  // Agregar a la lista en memoria
+      this.favoriteList.push(property); 
       console.log("Favorito agregado");
     } else {
       // Elimina si ya está en favoritos
       const favoriteId = this.favoriteList[existingFavorite].id;
       await this.removeFavorite(favoriteId);
-      this.favoriteList.splice(existingFavorite, 1);  // Eliminar de la lista en memoria
+      this.favoriteList.splice(existingFavorite, 1);
       console.log("Favorito eliminado");
     }
   }
