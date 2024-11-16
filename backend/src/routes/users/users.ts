@@ -273,8 +273,7 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                 reply.status(501).send({ message: "Favoritos del usuario no encontrados" });
                 return;
             }
-            const favorites = res.rows[0];
-            return favorites;
+            reply.code(200).send(res.rows);
         }
     });
 
@@ -316,8 +315,7 @@ const usersRoutes: FastifyPluginAsync = async (fastify: FastifyInstance,
                 return;
             }
             reply.code(201).send({message: "Favorito creado"});
-            const favorite = res.rows[0];
-            return favorite;
+            reply.code(201).send(res.rows[0]);
         }
     });
 
