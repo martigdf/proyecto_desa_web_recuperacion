@@ -1,4 +1,4 @@
-<ion-split-pane contentId="main-content" when="lg" class="h-screen mt-14 pb-14">
+<ion-split-pane contentId="main-content" when="lg">
   <!-- Sidebar -->
   <ion-menu
     contentId="main-content"
@@ -14,7 +14,7 @@
   <ion-router-outlet id="main-content">
 
     <div 
-      class="overflow-auto max-w-full h-full">
+      class="overflow-auto max-w-full h-screen mt-14 pb-16">
 
       <!-- Botón de filtro mobile -->
       <div
@@ -35,7 +35,7 @@
         </ion-menu-toggle>
       </div>
       <ion-grid
-        class="min-w-full mb-5">
+        class="min-w-full">
         <ion-row>
           <ion-col
             *ngFor="let property of this.properties"
