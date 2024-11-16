@@ -36,8 +36,8 @@
 											}
 										},
 										"url": {
-											"raw": "http://localhost/backend/users/2/favorites",
-											"protocol": "http",
+											"raw": "https://localhost/backend/users/2/favorites",
+											"protocol": "https",
 											"host": [
 												"localhost"
 											],
@@ -69,8 +69,8 @@
 											}
 										},
 										"url": {
-											"raw": "http://localhost/backend/users/2/favorites",
-											"protocol": "http",
+											"raw": "https://localhost/backend/users/2/favorites",
+											"protocol": "https",
 											"host": [
 												"localhost"
 											],
@@ -139,8 +139,8 @@
 											}
 										},
 										"url": {
-											"raw": "http://localhost/backend/users/2/favorites/3",
-											"protocol": "http",
+											"raw": "https://localhost/backend/users/2/favorites/3",
+											"protocol": "https",
 											"host": [
 												"localhost"
 											],
