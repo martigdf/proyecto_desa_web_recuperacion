@@ -56,23 +56,23 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-        /*    const res = await fastify.query(`select
+            const res = await query(`SELECT
                 id,
                 title,
                 description,
                 price,
                 location,
-                area,
                 number_of_rooms,
                 number_of_bathrooms,
-                contact_details
-                from properties`);
-            if(res.rows.length === 0) {
+                main_img_url,
+                contact_data,
+                property_type
+                FROM properties`);
+            if (res.rows.length === 0) {
                 reply.code(404).send({ message: "No hay propiedades registradas" });
                 return;
             }
-            return res.rows;*/
-            reply.status(501).send({ message: "Not implemented" });
+            return res.rows;
         }
     });
 
@@ -97,8 +97,14 @@ const adminRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         },
         onRequest: fastify.verifyAdmin,
         handler: async function (request, reply) {
-            reply.status(501).send({ message: "Not implemented" });
+            // Consulta a la base de datos
+            const res = await query(`select
+                name,
+                url
+                from data_sources`);
+            if(res.rows.length === 0) {
         }
+        return res.rows}
     });
 };
 
