@@ -17,20 +17,20 @@ export class FavoritesService {
   // obtiene los favoritos del usuario desde el backend
   async getFavoriteList(): Promise<void> {
     const userId = this.authService.getUserId();
-    this.favoriteList = await this.backendApi.get<Property[]>(`${userId}/favorites`);
+    this.favoriteList = await this.backendApi.get<Property[]>(`users/${userId}/favorites`);
   }
 
   // añade un favorito
   async addFavorite(propertyId: number): Promise<Property> {
     const userId = this.authService.getUserId();
     const body = JSON.stringify({ userId, propertyId });
-    return this.backendApi.post<Property>(`${userId}/favorites/`, body);
+    return this.backendApi.post<Property>(`users/favorites`, body);
   }
 
   // elimina un favorito
   async removeFavorite(favoriteId: number): Promise<void> {
     const userId = this.authService.getUserId();
-    await this.backendApi.delete<void>(`${userId}/favorites/${favoriteId}`);
+    await this.backendApi.delete<void>(`users/${userId}/favorites/${favoriteId}`);
   }
 
   // añade o remueve una propiedad de la lista de favoritos del usuario
