@@ -18,7 +18,7 @@ import { AlertService } from '../../services/alert.service';
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.css'],
 })
-export class PropertyCardComponent {
+export class PropertyCardComponent implements OnInit{
   @Input() property!: Property;
   private router = inject(Router);
   private propertyService = inject(PropertyService);
@@ -26,6 +26,11 @@ export class PropertyCardComponent {
   private alertService = inject(AlertService);
   private favoritesService = inject(FavoritesService);
   constructor() {}
+
+  ngOnInit() {
+    // Cargar la lista de favoritos al iniciar el componente
+    this.favoritesService.getFavoriteList();
+  }
 
   addToCompareList(property: Property) {
     this.propertyService.addToCompare(property);
