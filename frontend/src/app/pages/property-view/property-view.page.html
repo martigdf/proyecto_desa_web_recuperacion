@@ -27,14 +27,6 @@
             <ion-icon name="water-outline" class="ml-2 text-blue-500"></ion-icon
             >: {{property?.number_of_bathrooms}}
           </li>
-          <li class="flex items-center">
-            Area del terreno:
-            <ion-icon
-              name="resize-outline"
-              class="ml-2 text-green-500"
-            ></ion-icon>
-            {{property?.area}} m<sup>2</sup>
-          </li>
         </ul>
         <div class="grid grid-cols-3 gap-2 mb-4 border-b border-t items-center">
           <img
@@ -53,15 +45,14 @@
         >
       </ion-card-header>
       <ion-card-content>
-        <p class="text-base">Por dudas y concertar una visita, contacta a:</p>
+        <p class="text-base">Por dudas y concertar una visita, contacta al número:</p>
         <ul class="text-base">
-          <li>Email: {{property?.contact_details}}</li>
+          <li>{{property?.contact_data}}</li>
           <li>
-            <a
-              href="#"
+            <ion-button
+              onClick="this.goToAllProperties()"
               class="bg-primary text-primary-foreground rounded-lg p-2 block text-center hover:bg-primary/80"
-              >Ver publicacion original</a
-            >
+            >Volver</ion-button>
           </li>
         </ul>
       </ion-card-content>
