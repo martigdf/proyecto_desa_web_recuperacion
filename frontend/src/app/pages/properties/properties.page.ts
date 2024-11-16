@@ -16,5 +16,9 @@ export class PropertiesPage {
 
   propertiesList = this.propertyService.getProperties();
 
-  constructor() {}
+  constructor() {
+    this.propertyService.fetchProperties();
+    console.log('PropertiesPage constructor');
+    console.log(this.propertiesList);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyCardComponent } from '../../components/property-card/property-card.component';
 import { Property } from '../../interfaces/property';
@@ -26,20 +26,25 @@ export class AllPropertiesPage {
   private propertyService = inject(PropertyService);
   private router: Router = inject(Router);
   private menu: MenuController = inject(MenuController);
+  private allProperties!: WritableSignal<Property[]>;
+  properties!: Property[];
 
-  constructor() { 
+  constructor() {
     addIcons({ filterOutline});
   }
 
-  allProperties = this.propertyService.getProperties();
-
-  // Lista filtrada de propiedades
-  properties: Property[] = [...this.allProperties()];
+  async ngOnInit() {
+    await this.propertyService.fetchProperties();
+    this.allProperties = this.propertyService.getProperties();
+    if(this.allProperties) {
+      this.properties = this.allProperties();
+    }
+  }
 
   goToFavorites() {
     this.router.navigate(['/favorites']);
   }
-  
+
   openFilterMenu() {
     this.menu.open('filterMenu');
     console.log('Menu opened');
@@ -78,8 +83,8 @@ export class AllPropertiesPage {
         !filtros.departamento || property.location === filtros.departamento;
       /*
       // Filtro de Barrio
-      const cumpleBarrio = 
-      !filtros.barrio || 
+      const cumpleBarrio =
+      !filtros.barrio ||
       (property.barrio && property.barrio.toLowerCase().includes(filtros.barrio.toLowerCase()));
 */
       // incluye la propiedad si cumple con todas las condiciones de filtro

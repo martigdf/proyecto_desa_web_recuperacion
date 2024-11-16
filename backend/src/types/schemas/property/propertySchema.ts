@@ -2,9 +2,9 @@ import { Static, Type } from "@sinclair/typebox";
 
 //Ubicación propiedad
 export const UbicationSchema = Type.Object({
-    address: Type.String({ minLength: 2, maxLength: 100 }),
-    city: Type.String({ minLength: 2, maxLength: 50 }),
-    country: Type.String({ minLength: 2, maxLength: 50 }),
+    address: Type.Optional(Type.String({ minLength: 2, maxLength: 100 })),
+    city: Type.Optional(Type.String({ minLength: 2, maxLength: 50 })),
+    country: Type.Optional( Type.String({ minLength: 2, maxLength: 50 })),
 });
 
 //Datos de contacto
@@ -51,12 +51,13 @@ export const PropertyGetQuerySchema = Type.Object({
     title: Type.Optional(Type.String({ minLength: 2, maxLength: 100 })),
     description: Type.Optional(Type.String({ maxLength: 500 })),
     price: Type.Optional(Type.Number({ minimum: 0 })),
-    location: Type.Optional(UbicationSchema),
-    area: Type.Optional(Type.Number({ minimum: 0, maximum: 1000 })),
-    number_rooms: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
-    number_bathrooms: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
+    location: Type.Optional(Type.String()),
+    //area: Type.Optional(Type.Number({ minimum: 0, maximum: 1000 })),
+    number_of_rooms: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
+    number_of_bathrooms: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
     publication_date: Type.Optional(Type.String({ format: 'date-time' })),
-    contact_details: Type.Optional(ContactDetailsSchema),
+    contact_data: Type.Optional(Type.String()),
+    main_img_url: Type.Optional(Type.String()),
 });
 
 export const PropertyIdReference = Type.Ref(PropertyIdSchema);

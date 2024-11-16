@@ -91,7 +91,7 @@ insert into properties (title, description, price, location, number_of_rooms, nu
     123456789', 'Casa'),
           ('Departamento en la montaña', 'Departamento en la montaña con vista al valle', 100000, 'Montaña de la luna', 3, 2, 'https://images.adsttc.com/media/images/62a6/8414/20f5/9701/6830/9064/newsletter/house-on-a-hill-amunt_7.jpg?1655079979', '
     123456789', 'Departamento'),
-          ('Casa en la ciudad', 'Casa en la ciudad con vista al río', 200000, 'Ciudad de la luna', 3, 2, 'https://www.google.com', '
+          ('Casa en la ciudad', 'Casa en la ciudad con vista al río', 200000, 'Ciudad de la luna', 3, 2, 'https://bostonglobe-prod.cdn.arcpublishing.com/resizer/v2/MBNZYUHTMAI6HCSJ6IGLDM2VXE.jpg?auth=cbaf28c03d41c51abe1459b34de7ee026fd37a978ff93aa741a442b43a1150c8&width=1440', '
     123456789', 'Casa'),
           ('Departamento en la playa', 'Departamento en la playa con vista al mar', 110000, 'Playa de la luna', 2, 1, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/416582773.jpg?k=8d7dc0d8f7999e23cc2d4ef48a6409deb721778ee44c62cff1ea13502879b470&o=&hp=1', '
     123456789', 'Departamento'),

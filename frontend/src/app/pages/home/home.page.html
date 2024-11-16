@@ -1,11 +1,11 @@
-<ion-content
-  class="my-6 overflow-y-auto min-h-[calc(100vh-8rem)] bg-gray-50"
->
-  <ion-toolbar class="bg-transparent">
-    <ion-title class="text-green-800 font-semibold text-4xl"
-      >RentMatch</ion-title
-    >
-  </ion-toolbar>
+<div class="mt-14 pb-14 h-screen overflow-y-auto bg-gray-50">
+  <ion-header>
+    <ion-toolbar class="bg-transparent">
+      <ion-title class="text-green-800 font-semibold text-4xl"
+        >RentMatch</ion-title
+      >
+    </ion-toolbar>
+  </ion-header>
 
   <ion-grid>
     <ion-row>
@@ -22,7 +22,6 @@
               comparando miles de propiedades en un solo lugar. Ahorra tiempo y
               dinero con nuestras herramientas de comparación fáciles de usar.
             </p>
-            
           </ion-card-content>
           <ion-card class="mb-6 shadow-none mt-5">
             <ion-card-title class="text-xl font-bold text-purple-800"
@@ -55,70 +54,69 @@
       </ion-col>
 
       <ion-col size="12" size-md="6">
-
-          <ion-card class="mb-6 shadow-lg h-full">
+        <ion-card class="mb-6 shadow-lg h-full">
+          <ion-card-header>
+            <ion-card-title class="text-2xl font-bold text-purple-800"
+              >¿Por qué elegir RentMatch?</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list class="mb-6">
+              <ion-item>
+                <ion-icon
+                  name="speedometer-outline"
+                  slot="start"
+                  class="text-purple-600"
+                ></ion-icon>
+                <ion-label class="text-gray-700"
+                  >Comparación Rápida y Fácil</ion-label
+                >
+              </ion-item>
+              <ion-item>
+                <ion-icon
+                  name="albums-outline"
+                  slot="start"
+                  class="text-purple-600"
+                ></ion-icon>
+                <ion-label class="text-gray-700"
+                  >Amplia Base de Datos</ion-label
+                >
+              </ion-item>
+              <ion-item>
+                <ion-icon
+                  name="options-outline"
+                  slot="start"
+                  class="text-purple-600"
+                ></ion-icon>
+                <ion-label class="text-gray-700"
+                  >Filtros Personalizados</ion-label
+                >
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+          <ion-card class="mb-6 shadow-none h-full">
             <ion-card-header>
               <ion-card-title class="text-2xl font-bold text-purple-800"
-                >¿Por qué elegir RentMatch?</ion-card-title
+                >Testimonios</ion-card-title
               >
             </ion-card-header>
             <ion-card-content>
-              <ion-list class="mb-6">
-                <ion-item>
-                  <ion-icon
-                    name="speedometer-outline"
-                    slot="start"
-                    class="text-purple-600"
-                  ></ion-icon>
-                  <ion-label class="text-gray-700"
-                    >Comparación Rápida y Fácil</ion-label
-                  >
-                </ion-item>
-                <ion-item>
-                  <ion-icon
-                    name="albums-outline"
-                    slot="start"
-                    class="text-purple-600"
-                  ></ion-icon>
-                  <ion-label class="text-gray-700"
-                    >Amplia Base de Datos</ion-label
-                  >
-                </ion-item>
-                <ion-item>
-                  <ion-icon
-                    name="options-outline"
-                    slot="start"
-                    class="text-purple-600"
-                  ></ion-icon>
-                  <ion-label class="text-gray-700"
-                    >Filtros Personalizados</ion-label
-                  >
-                </ion-item>
-              </ion-list>
-            </ion-card-content>
-            <ion-card class="mb-6 shadow-none h-full">
-              <ion-card-header>
-                <ion-card-title class="text-2xl font-bold text-purple-800"
-                  >Testimonios</ion-card-title
+              <ion-item>
+                <ion-label class="text-gray-700"
+                  >"RentMatch me ayudó a encontrar el apartamento perfecto en
+                  solo unos días. ¡Muy recomendable!" - Ana G.</ion-label
                 >
-              </ion-card-header>
-              <ion-card-content>
-                <ion-item>
-                  <ion-label class="text-gray-700"
-                    >"RentMatch me ayudó a encontrar el apartamento perfecto en
-                    solo unos días. ¡Muy recomendable!" - Ana G.</ion-label
-                  >
-                </ion-item>
-                <ion-item>
-                  <ion-label class="text-gray-700"
-                    >"La herramienta de comparación es increíblemente útil y fácil
-                    de usar. Encontré un alquiler que se ajusta a mi presupuesto y
-                    necesidades." - Carlos M.</ion-label
-                  >
-                </ion-item>
-              </ion-card-content>
-            </ion-card>
+              </ion-item>
+              <ion-item>
+                <ion-label class="text-gray-700"
+                  >"La herramienta de comparación es increíblemente útil y fácil
+                  de usar. Encontré un alquiler que se ajusta a mi presupuesto y
+                  necesidades." - Carlos M.</ion-label
+                >
+              </ion-item>
+            </ion-card-content>
           </ion-card>
+        </ion-card>
       </ion-col>
     </ion-row>
 
@@ -159,7 +157,8 @@
                   class="text-purple-600"
                 ></ion-icon>
                 <ion-label class="text-gray-700"
-                  >Dirección: Artigas 1251, Salto, Departamento de Salto, Uruguay
+                  >Dirección: Artigas 1251, Salto, Departamento de Salto,
+                  Uruguay
                 </ion-label>
               </ion-item>
             </ion-list>
@@ -168,4 +167,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+</div>

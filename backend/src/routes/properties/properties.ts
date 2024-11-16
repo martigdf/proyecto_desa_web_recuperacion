@@ -44,10 +44,11 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
                 description,
                 price,
                 location,
-                area,
-                number_rooms,
-                number_bathrooms,
-                contact_details
+                number_of_rooms,
+                number_of_bathrooms,
+                main_img_url,
+                contact_data,
+                property_type
                 FROM properties`);
             if (res.rows.length === 0) {
                 reply.code(404).send({ message: "No hay propiedades registradas" });
@@ -88,15 +89,16 @@ const propertyRoute: FastifyPluginAsync = async (fastify: FastifyInstance,
         handler: async function (request, reply) {
             const { id } = request.params as { id: string };
             const res = await query(`SELECT
-                id,
-                title,
-                description,
-                price,
-                location,
-                area,
-                number_rooms,
-                number_bathrooms,
-                contact_details
+                                         id,
+                                         title,
+                                         description,
+                                         price,
+                                         location,
+                                         number_of_rooms,
+                                         number_of_bathrooms,
+                                         main_img_url,
+                                         contact_data,
+                                         property_type
                 FROM properties WHERE id = ${id}`);
             if (res.rows.length === 0) {
                 reply.code(404).send({ message: "Propiedad no encontrada" });

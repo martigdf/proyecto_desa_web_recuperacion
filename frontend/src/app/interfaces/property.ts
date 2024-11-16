@@ -8,5 +8,5 @@ export interface Property {
     number_of_rooms: number,
     number_of_bathrooms: number,
     contact_details: string,
-    img_url: string
+    main_img_url: string
 }
