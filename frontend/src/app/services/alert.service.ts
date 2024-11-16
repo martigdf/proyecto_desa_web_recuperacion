@@ -24,7 +24,7 @@ export class AlertService {
     const toast = await this.toastController.create({
       message,
       duration: 3000,
-      color: 'bg-customGreen',
+      color: 'success',
       position: 'bottom',
     });
     await toast.present();
