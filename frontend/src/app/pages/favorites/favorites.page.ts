@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyCardComponent } from "../../components/property-card/property-card.component";
 import { NgFor, NgIf } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FavoritesService } from '../../services/favorites.service';
+import { Property } from '../../interfaces/property';
 
 @Component({
   selector: 'app-favorites',
@@ -12,13 +13,20 @@ import { FavoritesService } from '../../services/favorites.service';
   templateUrl: './favorites.page.html',
   styleUrl: './favorites.page.css'
 })
-export class FavoritesPage {
+export class FavoritesPage implements OnInit{
+  favoriteList: Property[] = [];
 
   private router: Router = inject(Router);
   private favoritesService = inject(FavoritesService);
 
-  // lista de favoritos
-  favoriteList = this.favoritesService.getFavoriteList();
+  ngOnInit() {
+    this.loadFavorites();
+  }
+
+  private async loadFavorites(): Promise<void> {
+    await this.favoritesService.getFavoriteList(); 
+    this.favoriteList = this.favoritesService['favoriteList'];
+  }
 
   goToAllProperties() {
     this.router.navigate(['/all-properties']);

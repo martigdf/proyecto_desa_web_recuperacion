@@ -27,6 +27,7 @@ export class PropertyCardComponent {
   private favoritesService = inject(FavoritesService);
   constructor() {}
 
+
   addToCompareList(property: Property) {
     this.propertyService.addToCompare(property);
   }

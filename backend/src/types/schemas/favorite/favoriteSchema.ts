@@ -2,13 +2,13 @@ import { Static, Type } from "@sinclair/typebox";
 
 export const FavoriteSchema = Type.Object({
     id_favorite: Type.Number(),
-    userId:Type.Number(),
-    propertyId: Type.Number(),
+    user_id:Type.Number(),
+    property_id: Type.Number(),
 })
 
 export const FavoritePostSchema = Type.Object({
-    userId: Type.Number(),
-    propertyId: Type.Number(),
+    user_id: Type.Number(),
+    property_id: Type.Number(),
 })
 
 export const FavoriteIdSchema = Type.Object({
