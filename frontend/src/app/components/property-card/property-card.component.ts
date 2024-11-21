@@ -32,6 +32,10 @@ export class PropertyCardComponent {
     this.propertyService.addToCompare(property);
   }
 
+  isHome(): boolean {
+    return this.propertyService.isPropertyInCompareList(this.property.id)
+  }
+
   toggleFavorite() {
     if (this.authService.isValidUser()) {
       this.favoritesService.addOrRemoveFavorite(this.property);
