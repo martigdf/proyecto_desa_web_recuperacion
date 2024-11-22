@@ -1,4 +1,4 @@
-<div class="p-4 overflow-auto max-w-full h-screen mt-14 pb-14 max-h-[calc(100vh-2rem)] justify-center">  
+<div class="p-4 overflow-auto max-w-full h-screen mt-14 pb-14 max-h-[calc(100vh-2rem)]">  
 <!-- Condición para mostrar la tabla solo si hay propiedades en la lista de comparación -->
   <div *ngIf="compareList().length > 0; else noCompareMessage">
     <app-compare-table [itemList]="this.compareList()"></app-compare-table>
