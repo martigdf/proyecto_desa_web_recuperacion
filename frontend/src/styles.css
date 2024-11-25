@@ -12,3 +12,44 @@
     animation-delay: 4s;
   }
 }
+
+@layer components {
+  .form-container {
+    @apply bg-white backdrop-blur-md border 
+    border-white py-4 px-3 shadow sm:rounded-lg rounded-lg;
+  }
+
+  .form-image {
+    @apply relative h-full bg-[url('https://kato-lawyer-souzoku.jp/wp-content/uploads/fudousan_201.jpg')] bg-cover bg-center
+  }
+
+  .form-format{
+    @apply flex h-screen flex-col justify-center mt-14 pb-14 px-4 sm:px-6 lg:px-8
+  }
+
+  .form-heading {
+    @apply text-center text-2xl font-bold tracking-tight text-[#557665];
+  }
+
+  .form-input {
+    @apply block w-full appearance-none rounded-md border border-gray-300 bg-transparent 
+    px-2 py-1 placeholder-gray-400 text-black
+    focus:outline-none sm:text-sm;
+  }
+
+  .form-label {
+    @apply block text-sm font-bold text-[#557665];
+  }
+
+  .form-error {
+    @apply text-red-500 text-xs italic;
+  }
+
+  .form-button {
+    @apply flex w-full justify-center rounded-md border border-transparent bg-[#557665] py-1 px-2 text-sm font-medium text-white shadow-sm hover:bg-[#386150] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+  }
+
+  .form-link {
+    @apply font-medium text-[#28473a] hover:text-[#17211b];
+  }
+}
