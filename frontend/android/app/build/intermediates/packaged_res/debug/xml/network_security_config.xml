@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">10.4.201.207</domain>
+    </domain-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="@raw/ucu" /> <!-- Certificado del sitio -->
+            <certificates src="system"/>
+        </trust-anchors> </debug-overrides>
+</network-security-config>

@@ -1,77 +1,66 @@
 <div
-  class="relative h-full bg-[url('https://kato-lawyer-souzoku.jp/wp-content/uploads/fudousan_201.jpg')] bg-cover bg-center"
+  class="form-image"
 >
   <div
-    class="flex h-screen flex-col justify-center mt-14 pb-14 px-4 sm:px-6 lg:px-8"
+    class="form-format"
   >
-    <div class="mt-8 mx-auto w-full max-w-md z-10 relative ">
-      <div
-        class="bg-white backdrop-blur-md border border-white py-8 px-4 shadow sm:rounded-lg sm:px-10 rounded-lg"
-      >
-        <h2
-          class="mt-6 text-center text-2xl sm:text-3xl font-bold tracking-tight text-[#557665]"
-        >
-          Sign in to your account
-        </h2>
+    <div class="mt-8 mx-auto w-full max-w-md z-10 relative">
+      <div class="form-container">
+        <h2 class="form-heading">Sign in to your account</h2>
+
         <form class="mt-8 space-y-6" (ngSubmit)="this.onSubmitLogin()">
+          <!-- Email -->
           <div>
-            <ion-label
-              for="email"
-              class="block text-sm font-bold text-[#557665]"
-              >Email address</ion-label
-            >
+            <label for="email" class="form-label">Email address</label>
             <div class="mt-1">
-              <input
+              <ion-input
                 [(ngModel)]="this.email"
                 id="email"
                 name="email"
                 type="email"
                 autocomplete="email"
                 required=""
-                class="block w-full appearance-none border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm rounded-lg"
-              />
+                class="form-input"
+              ></ion-input>
             </div>
           </div>
 
+          <!-- Contraseña -->
           <div>
-            <ion-label
-              for="password"
-              class="block text-sm font-bold text-[#557665]"
-              >Password</ion-label
-            >
+            <label for="password" class="form-label">Password</label>
             <div class="mt-1">
-              <input
+              <ion-input
                 [(ngModel)]="this.password"
                 id="password"
                 name="password"
                 type="password"
                 autocomplete="current-password"
                 required=""
-                class="block w-full appearance-none border border-gray-300 bg-transparent px-3 py-2 placeholder-gray-400 text-black focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm rounded-lg"
-              />
+                class="form-input"
+              ></ion-input>
             </div>
           </div>
 
-          <div class="flex items-center justify-between">
+          <div class="flex flex-wrap items-center justify-between sm:flex-nowrap">
             <div class="flex items-center">
-              <input
+              <ion-checkbox
                 id="remember_me"
                 name="remember_me"
                 type="checkbox"
-                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                class="ml-1 sm:ml-4"
               />
               <ion-label
                 for="remember_me"
-                class="ml-2 block text-sm text-[#557665]"
+                class="ml-1 sm:ml-2 block text-sm text-[#557665]"
               >
                 Remember me
               </ion-label>
             </div>
 
-            <div class="text-sm">
+            <div class="text-sm mt-2 sm:mt-0">
               <a
                 href="#"
-                class="font-medium text-[#386150] hover:text-[#8ABFA3]"
+                class="mr-4 font-medium text-[#386150] hover:text-[#8ABFA3]"
               >
                 Forgot your password?
               </a>
@@ -81,7 +70,7 @@
           <div>
             <button
               type="submit"
-              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium text-white bg-[#557665] hover:bg-[#386150] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#508a72] rounded-lg"
+              class="form-button"
             >
               Sign in
             </button>
@@ -90,7 +79,9 @@
                 type="button"
                 mat-raised-button
                 (click)="signInWithGoogle()"
-                class="flex items-center justify-center border border-transparent bg-white py-2 px-4 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-lg"
+                class="flex items-center justify-center border border-transparent 
+                bg-white py-2 px-4 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 
+                focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-lg"
               >
                 <img
                   src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"

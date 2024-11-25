@@ -1,0 +1,15 @@
+{
+	"appId": "com.example.app",
+	"appName": "frontend",
+	"webDir": "dist/frontend/browser/",
+	"server": {
+		"androidScheme": "https",
+		"allowNavigation": [
+			"localhost",
+			"10.4.201.207"
+		]
+	},
+	"android": {
+		"allowMixedContent": true
+	}
+}
