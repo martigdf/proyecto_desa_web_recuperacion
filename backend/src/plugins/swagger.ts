@@ -20,10 +20,8 @@ const options : SwaggerOptions = {
             {name: 'auth', description: 'Auth description'},
             {name: 'users', description: 'User CRUD operations'},
             {name: 'properties', description: 'Property description'},
-            {name: 'search_criteria', description: 'Search Criteria description'},
             {name: 'favorites', description: 'Favorites description'},
             {name: 'admin', description: 'Admin description'},
-            {name: 'compare', description: 'Comparison description'},
         ],
         components: {
             securitySchemes: {
@@ -50,7 +48,7 @@ export default fp<SwaggerOptions>(async (fastify) => {
     fastify.register(swagger, options);
     await fastify.register(swaggerUI, {routePrefix: 'docs',
         uiConfig: {
-            docExpansion: 'full',
+            docExpansion: 'none',
             deepLinking: false
         },
         uiHooks: {

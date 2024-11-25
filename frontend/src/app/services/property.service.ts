@@ -43,6 +43,16 @@ export class PropertyService {
   addToCompare(property: Property) {
     const maxCompareLimit = 4; // Establece el límite de propiedades en la lista de comparación
     this.compareList.update((compareList) => {
+      const existingPropertyIndex = compareList.findIndex(
+        (prop) => prop.property.id === property.id
+      );
+
+      // Si la propiedad ya está en la lista removerla (para usar el boton en la card)
+      if (existingPropertyIndex !== -1) {
+        this.alertService.showSuccess('Propiedad removida de la lista de comparación');
+        return compareList.filter((_, index) => index !== existingPropertyIndex);
+      }
+
       // Si ya hay 4 propiedades en la lista, no agrega más y mostrará un mensaje de error
       if (compareList.length >= maxCompareLimit) {
         console.log('No se pueden comparar más de 4 propiedades');
@@ -75,5 +85,9 @@ export class PropertyService {
     this.properties.update((properties) =>
       properties.filter((property) => property.id !== propertyId)
     );
+  }
+
+  isPropertyInCompareList(propertyId: number): boolean {
+    return this.compareList().some(prop => prop.property.id === propertyId);
   }
 }
