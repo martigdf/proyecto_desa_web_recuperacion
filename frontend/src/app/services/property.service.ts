@@ -88,10 +88,11 @@ export class PropertyService {
     this.compareList.update(compareList => compareList.filter(prop => prop.property.id!== propertyId));
   }
 
-  removeProperty(propertyId: number) {
+  async removeProperty(propertyId: number) {
     this.properties.update((properties) =>
       properties.filter((property) => property.id !== propertyId)
     );
+    await this.backendApiService.delete<void>(`properties/${propertyId}`);
   }
 
   isPropertyInCompareList(propertyId: number): boolean {
