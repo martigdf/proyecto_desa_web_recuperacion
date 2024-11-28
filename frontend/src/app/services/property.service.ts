@@ -25,6 +25,13 @@ export class PropertyService {
     console.log('Properties signal:', this.properties());
   }
 
+  async fetchPropertyById(id: number) {
+    console.log('Fetching property by id:', id);
+    const property = await this.backendApiService.get<Property>(`properties/${id}`);
+    console.log('Property fetched:', property);
+    return property;
+  }
+
   get getAllProperties() {
     // Devolvemos un array con las propiedades
     return computed(() => this.properties());

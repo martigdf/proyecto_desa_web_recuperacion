@@ -34,7 +34,7 @@ export class PropertiesTableComponent  implements OnInit {
   }
 
   removeProperty(item: Property) {
-    this.propertyService.removeFromCompare(item.id);
+    this.propertyService.removeProperty(item.id);
   }
 
   goToviewProperty(item: Property) {

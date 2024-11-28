@@ -28,8 +28,8 @@
     <div>
       <h2 class="text-lg font-semibold text-gray-700 mb-2">Rango de Precios</h2>
       <ion-range 
-        min="0" 
-        max="10000" 
+        min="20000" 
+        max="300000" 
         step="100" 
         dualKnobs="true"
         [value]="{ lower: filtrosForm.value.minPrice, upper: filtrosForm.value.maxPrice }"
@@ -59,17 +59,6 @@
       </ion-select>
     </div>
     
-    <!-- Barrio -->
-    <div>
-      <h2 class="text-lg font-semibold text-gray-700 mb-2">Barrio</h2>
-      <ion-input 
-        formControlName="barrio" 
-        class="w-full border border-gray-300 rounded-lg p-2 text-gray-700" 
-        type="text" 
-        placeholder="Ingrese el barrio" 
-      >
-      </ion-input>
-    </div>
 
     <!-- Restablecer -->
     <div class="pt-4">
