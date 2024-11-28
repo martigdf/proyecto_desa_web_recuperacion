@@ -1,5 +1,6 @@
- <div class="p-4 overflow-auto max-w-full h-screen mt-14 pb-14">
-    <ion-card class="bg-card rounded-lg p-4 mb-4">
+<div class="p-4 overflow-auto max-w-full h-screen mt-14 pb-14">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <ion-card class="md:col-span-3 bg-card rounded-lg p-4 mb-4">
       <ion-card-header class="flex flex-row">
         <ion-card-title class="text-2xl font-bold mb-2 flex-1"
           >{{property?.title}}</ion-card-title
@@ -15,7 +16,7 @@
         </button>
       </ion-card-header>
       <ion-card-content>
-        <p class="text-lg mb-2">{{property?.description}}</p>
+        <h2 class="text-lg mb-2 border-b">{{property?.description}}</h2>
         <ul class="text-base">
           <li class="flex items-center">
             Numero de habitaciones
@@ -27,8 +28,16 @@
             <ion-icon name="water-outline" class="ml-2 text-blue-500"></ion-icon
             >: {{property?.number_of_bathrooms}}
           </li>
+          <li class="flex items-center">
+            Ubicación
+            <ion-icon
+              name="location-outline"
+              class="ml-1 text-green-500"
+            ></ion-icon
+            >: {{property?.departamento}}, {{property?.barrio}}
+          </li>
         </ul>
-        <div class="grid grid-cols-3 gap-2 mb-4 border-b border-t items-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 border-b border-t items-center">
           <img
             src="{{property?.main_img_url}}"
             alt="Property Image 1"
@@ -38,23 +47,20 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="bg-card rounded-lg p-4 mb-4">
+    <ion-card class="md:col-span-1 bg-card rounded-lg p-3 mb-4">
       <ion-card-header>
         <ion-card-title class="text-lg font-bold mb-2"
           >Contacto del vendedor</ion-card-title
         >
       </ion-card-header>
       <ion-card-content>
-        <p class="text-base">Por dudas y concertar una visita, contacta al número:</p>
+        <p class="text-base">
+          Por dudas y concertar una visita, contacta a:
+        </p>
         <ul class="text-base">
           <li>{{property?.contact_data}}</li>
-          <li>
-            <ion-button
-              (click)="goToAllProperties()"
-              class="bg-primary text-primary-foreground rounded-lg p-2 block text-center hover:bg-primary/80"
-            >Volver</ion-button>
-          </li>
         </ul>
       </ion-card-content>
     </ion-card>
   </div>
+</div>

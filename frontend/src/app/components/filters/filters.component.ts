@@ -24,8 +24,8 @@ export class FiltersComponent  implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.filtrosForm = this.fb.group({
-      minPrice: [0],
-      maxPrice: [10000],
+      minPrice: [20000],
+      maxPrice: [300000],
       precioMin: [''],
       precioMax: [''],
       habitaciones: [''],
@@ -49,6 +49,7 @@ export class FiltersComponent  implements OnInit {
       maxPrice: upper
     });
   }
+
 
   // Para que el formulario se resetee
   resetFilters() {

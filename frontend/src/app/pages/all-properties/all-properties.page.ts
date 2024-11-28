@@ -8,6 +8,7 @@ import { PropertyService } from '../../services/property.service';
 import { IonicModule, MenuController} from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { filterOutline } from 'ionicons/icons';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-all-properties',
@@ -26,6 +27,7 @@ export class AllPropertiesPage {
   private propertyService = inject(PropertyService);
   private router: Router = inject(Router);
   private menu: MenuController = inject(MenuController);
+  private favoritesService = inject(FavoritesService);
   private allProperties!: WritableSignal<Property[]>;
   properties!: Property[];
 
@@ -34,6 +36,7 @@ export class AllPropertiesPage {
   }
 
   async ngOnInit() {
+    this.favoritesService.getFavoriteList();
     await this.propertyService.fetchProperties();
     this.allProperties = this.propertyService.getProperties();
     if(this.allProperties) {
@@ -80,7 +83,7 @@ export class AllPropertiesPage {
 
       // Filtro de Departamento
       const cumpleDepartamento =
-        !filtros.departamento || property.location === filtros.departamento;
+        !filtros.departamento || property.departamento === filtros.departamento;
       /*
       // Filtro de Barrio
       const cumpleBarrio =

@@ -25,7 +25,8 @@ export class PropertyCardComponent {
   private authService = inject(AuthService);
   private alertService = inject(AlertService);
   private favoritesService = inject(FavoritesService);
-  constructor() {}
+  constructor() {
+  }
 
 
   addToCompareList(property: Property) {

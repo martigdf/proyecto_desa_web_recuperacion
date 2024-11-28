@@ -5,6 +5,7 @@ import { Property } from '../../interfaces/property';
 import { addIcons } from 'ionicons';
 import {
   bedOutline,
+  locationOutline,
   resizeOutline,
   star,
   starOutline,
@@ -35,17 +36,17 @@ export class PropertyViewPage implements OnInit {
 
 
   constructor() {
-    addIcons({ bedOutline, waterOutline, resizeOutline, starOutline, star });
+    addIcons({ bedOutline, waterOutline, resizeOutline, starOutline, star, locationOutline });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     const propertyId = this.id();
     if (propertyId) {
-      const selectedProperty = this.propertyService.getPropertyById(
+      const selectedProperty = await this.propertyService.fetchPropertyById(
         parseInt(propertyId)
       );
       if (selectedProperty) {
-        this.property = selectedProperty();
+        this.property = selectedProperty;
       }
     }
   }

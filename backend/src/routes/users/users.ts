@@ -221,7 +221,7 @@ const usersRoutes: FastifyPluginAsync = async (
           type: "array",
           items: PropertyGetQuerySchema,
         },
-        501: {
+        404: {
           description: "Favoritos del usuario no encontrados",
           type: "object",
           properties: {
@@ -242,11 +242,11 @@ const usersRoutes: FastifyPluginAsync = async (
       );
       if (res.rows.length === 0) {
         reply
-          .status(501)
+          .status(404)
           .send({ message: "Favoritos del usuario no encontrados" });
         return;
       }
-      reply.code(200).send(res.rows);
+      return res.rows;
     },
   });
 
