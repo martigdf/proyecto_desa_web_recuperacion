@@ -27,7 +27,7 @@ export class AuthGoogleService {
   }
 
   login() {
-    window.location.href = 'https://localhost/backend/auth/login/google';
+    window.location.href = 'https://192.168.1.9/backend/auth/login/google';
   }
 
   async handleAuthCallback() {
@@ -55,7 +55,7 @@ export class AuthGoogleService {
 
   private async loginWithGoogle(email: string): Promise<any> {
     const response = await fetch(
-      'https://localhost/backend/auth/login/google/login',
+      'https://192.168.1.9/backend/auth/login/google/login',
       {
         method: 'POST',
         headers: {

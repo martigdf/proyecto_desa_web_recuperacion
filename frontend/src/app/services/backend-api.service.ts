@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class BackendApiService {
-  readonly API_URL = 'https://localhost/backend/';
+  readonly API_URL = 'https://192.168.1.9/backend/';
   private token? = localStorage.getItem('token');
 
   private getHeaders(): HeadersInit {

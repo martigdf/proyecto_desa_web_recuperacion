@@ -1,6 +1,6 @@
 <div class="p-4 overflow-auto max-w-full h-screen mt-14 pb-14">  
 <!-- Condición para mostrar la tabla solo si hay propiedades en la lista de comparación -->
-  <div *ngIf="compareList().length > 0; else noCompareMessage">
+  <div *ngIf="compareList().length > 0; else noCompareMessage" class="pb-14">
     <app-compare-table [itemList]="this.compareList()"></app-compare-table>
   </div>
 
