@@ -3,6 +3,7 @@ import { Property } from '../interfaces/property';
 import { CompareItem } from '../interfaces/compare-item';
 import {BackendApiService} from './backend-api.service';
 import {AlertService} from './alert.service';
+import {UsersService} from '../services/users.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,8 @@ export class PropertyService {
   private compareList = signal<CompareItem[]>([]);
   private backendApiService = inject(BackendApiService);
   private alertService = inject(AlertService);
+  private userService = inject(UsersService);
+  _apiService: BackendApiService = inject(BackendApiService);
 
   constructor() {
   }
@@ -43,6 +46,20 @@ export class PropertyService {
     return computed(() =>
       this.properties().find((property) => property.id === id)
     );
+  }
+
+  async getPropertiesByDepartment(userId: string) {
+    try {
+      const user = await this.userService.getUser(userId);
+      const userDepartment = user.departamento;
+  
+      return computed(() =>
+        this.properties().filter((property) => property.departamento === userDepartment)
+      );
+    } catch (error) {
+      console.error('Error fetching properties by department:', error);
+      throw error;
+    }
   }
 
   getCompareList = computed(() => this.compareList);

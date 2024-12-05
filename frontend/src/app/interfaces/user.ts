@@ -5,6 +5,7 @@ export interface User {
     email: string,
     role: string,
     registration_date: string
+    departamento: string
 }
 
 export interface UserPost {

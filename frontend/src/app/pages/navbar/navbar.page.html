@@ -47,6 +47,17 @@
             >
           </button>
         </li>
+        <li>
+          <button
+            class="nav-link text-white flex items-center"
+            (click)="goToYourProperties()"
+            [ngClass]="{'ml-4': currentRoute !== '/propiedadesuser'}"
+          >
+            <span *ngIf="currentRoute !== '/propiedadesuser'" class="ml-2"
+              >Propiedades en tu ciudad</span
+            >
+          </button>
+        </li>
       </ng-container>
     </ul>
 

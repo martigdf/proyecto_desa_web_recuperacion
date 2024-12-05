@@ -101,6 +101,10 @@ export class NavbarPage implements OnInit {
     this.router.navigate(['/property-compare']);
   }
 
+  goToYourProperties(): void {
+    this.router.navigate(['/propiedadesuser']);
+  }
+
   removeFromCompare(propertyId: number): void {
     this.propertyService.removeFromCompare(propertyId);
   }

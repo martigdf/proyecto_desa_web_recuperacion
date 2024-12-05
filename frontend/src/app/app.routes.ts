@@ -14,6 +14,7 @@ import {EditUserPage} from './pages/edit-user/edit-user.page';
 import {isAdminOrSelfGuard} from './guards/is-admin-or-self.guard';
 import { isAdminOrUserGuard } from './guards/is-admin-or-user.guard';
 import { PropertiesPage } from './pages/properties/properties.page';
+import { PropiedadesUsuarioPage } from './pages/propiedades-usuario/propiedades-usuario.page';
 
 export const routes: Routes = [
   {
@@ -69,5 +70,9 @@ export const routes: Routes = [
     path: 'edit-user/:userId',
     component: EditUserPage,
     canActivate: [isAdminOrSelfGuard],
+  },
+  {
+    path: 'propiedadesuser',
+    component: PropiedadesUsuarioPage,
   }
 ];

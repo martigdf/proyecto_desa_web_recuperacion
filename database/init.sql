@@ -9,7 +9,8 @@ CREATE table if not exists users (
     email text not null unique,
     password text not null,
     role varchar(10) check (role in ('admin', 'user')) not null,
-    registration_date timestamp default now() not null
+    registration_date timestamp default now() not null,
+    departamento varchar(100) not null
 );
 
 CREATE table if not exists properties (
@@ -54,13 +55,13 @@ CREATE TABLE IF NOT EXISTS data_source (
     url VARCHAR(255) NOT NULL
 );
 
-insert into users (name, lastname, email, password, role)
-    values('Nicolás', 'Márquez', 'nicomars270@gmail.com', crypt('27DEenero2003_', gen_salt('bf')), 'admin'),
-          ('Martina', 'Guzmán', 'martina14288@gmail.com', crypt('28DEenero2003_', gen_salt('bf')), 'admin'),
-          ('Ana', 'Sena', 'anaclarasenanunez@gmail.com', crypt('Ana0411!', gen_salt('bf')), 'admin'),
-          ('Juan', 'Pérez', 'juan@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user'),
-          ('Martin', 'Martinez', 'mm@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user'),
-          ('Jose', 'Gutierrez', 'jg@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user');
+insert into users (name, lastname, email, password, role, departamento)
+    values('Nicolás', 'Márquez', 'nicomars270@gmail.com', crypt('27DEenero2003_', gen_salt('bf')), 'admin', 'Montevideo'),
+          ('Martina', 'Guzmán', 'martina14288@gmail.com', crypt('28DEenero2003_', gen_salt('bf')), 'admin', 'Salto'),
+          ('Ana', 'Sena', 'anaclarasenanunez@gmail.com', crypt('Ana0411!', gen_salt('bf')), 'admin', 'Maldonado'),
+          ('Juan', 'Pérez', 'juan@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user', 'Montevideo'),
+          ('Martin', 'Martinez', 'mm@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user', 'Maldonado'),
+          ('Jose', 'Gutierrez', 'jg@correo.com', crypt('28DESeptiembre2024!', gen_salt('bf')), 'user', 'Maldonado');
 
 insert into properties (title, description, price, departamento, barrio, number_of_rooms, number_of_bathrooms, main_img_url, contact_data, property_type)
     values('Casa en Punta del Este', 'Casa en Punta del Este con vista al mar', 100000, 'Maldonado', 'Punta del Este', 3, 2, 'https://www.lacasadelbosque.com.uy/assets/images/la-casa-del-bosque-2019-20-1320x880.jpg', '091234567', 'Casa'),
