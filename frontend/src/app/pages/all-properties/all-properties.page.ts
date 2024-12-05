@@ -36,7 +36,6 @@ export class AllPropertiesPage {
   }
 
   async ngOnInit() {
-    this.favoritesService.getFavoriteList();
     await this.propertyService.fetchProperties();
     this.allProperties = this.propertyService.getProperties();
     if(this.allProperties) {

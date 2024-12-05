@@ -23,7 +23,7 @@ export class AuthService {
     // Hacer llamada a la API
     try{
       // Hacer llamada a la API
-      const response = await fetch('https://192.168.1.9/backend/auth/login',{
+      const response = await fetch('https://localhost/backend/auth/login',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
