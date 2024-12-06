@@ -36,8 +36,10 @@ export class PropiedadesUsuarioPage  implements OnInit {
   }
 
   async ngOnInit() {
+    await this.propertyService.fetchProperties();
     const userId = this.authService.getUserId().toString();
-    this.propertyService.getPropertiesByDepartment(userId);
+    const propertiesSignal = await this.propertyService.getPropertiesByDepartment(userId);
+    this.properties = propertiesSignal();
   }
 
   goToFavorites() {
@@ -49,34 +51,4 @@ export class PropiedadesUsuarioPage  implements OnInit {
     console.log('Menu opened');
   }
 
-  aplicarFiltros(filtros: any): void {
-    // no tiene filtros aplicados, restaura todas las propiedades
-    if (!filtros || Object.keys(filtros).every((key) => !filtros[key])) {
-      this.properties = [...this.allProperties()];
-      return;
-    }
-
-    const maxPriceLimit =
-      filtros.maxPrice === 10000
-        ? Math.max(...this.allProperties().map((p) => p.price))
-        : filtros.maxPrice;
-    this.properties = this.allProperties().filter((property) => {
-      console.log('Valor del filtro de habitaciones:', filtros.habitaciones);
-      console.log(
-        'Número de habitaciones de la propiedad:',
-        property.number_of_rooms
-      );
-      const cumplePrecio =
-        (filtros.minPrice == null || property.price >= filtros.minPrice) &&
-        (filtros.maxPrice == null || property.price <= maxPriceLimit);
-        
-      // Filtro de Departamento
-      const cumpleDepartamento =
-        !filtros.departamento || property.departamento === filtros.departamento;
-      return (
-        cumplePrecio &&
-        cumpleDepartamento /*&& cumpleBarrio*/
-      );
-    });
-  }
 }
